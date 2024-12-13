@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/moov-io/base"
-	"github.com/moov-io/fedwire20022/gen/CustomerCreditTransfer_pacs_008_001_08"
+	"github.com/moov-io/fedwire20022/gen/FedwireFundsAcknowledgement_admi_007_001_01"
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 
 	"github.com/stretchr/testify/require"
@@ -14,7 +14,7 @@ import (
 
 func TestValidateMultipleErrors(t *testing.T) {
 	var errs base.ErrorList = base.ErrorList{}
-	fedwire.AddError(&errs, "Max35Text", CustomerCreditTransfer_pacs_008_001_08.Max35Text("B20230931145322200000057A11712044729M").Validate())
+	fedwire.AddError(&errs, "Max35Text", FedwireFundsAcknowledgement_admi_007_001_01.Max35Text("B20230931145322200000057A11712044729M").Validate())
 	require.Len(t, errs, 1)
 	require.ErrorContains(t, errs.Err(), "Max35Text: B20230931145322200000057A11712044729M fails validation with length 37 <= required maxLength 35")
 }
