@@ -97,9 +97,11 @@ import (
 	{{ else }}
 		func (v {{ .GoName }}) Validate() error {
 			{{- if .Restriction.Pattern }}
+                        {{- if ne .GoName "XSequenceNumberFedwireFunds1" }}
 				if err := fedwire.ValidatePattern(string(v), `{{ .Restriction.Pattern.Value }}`); err != nil {
                                 	return err
                                 }
+                        {{- end }}
 			{{- end }}
 			{{- if .Restriction.Enums }}
 				if err := fedwire.ValidateEnumeration(string(v), {{ range .Restriction.Enums }}"{{ .Value }}", {{ end }}); err != nil {

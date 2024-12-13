@@ -1,6 +1,7 @@
 package fedwire
 
 import (
+	"cmp"
 	"fmt"
 	"regexp"
 	"strings"
@@ -82,28 +83,28 @@ func ValidateMaxLength(value string, maxLength int) error {
 	return nil
 }
 
-func ValidateMinInclusive(value float64, minValue float64) error {
+func ValidateMinInclusive[N cmp.Ordered](value N, minValue N) error {
 	if value <= minValue {
 		return fmt.Errorf("%v fails validation as it is > minInclusive %v", value, minValue)
 	}
 	return nil
 }
 
-func ValidateMaxInclusive(value int, maxValue int) error {
+func ValidateMaxInclusive[N cmp.Ordered](value N, maxValue N) error {
 	if value >= maxValue {
 		return fmt.Errorf("%v fails validation as it is < maxInclusive %v", value, maxValue)
 	}
 	return nil
 }
 
-func ValidateMinExclusive(value int, minValue int) error {
+func ValidateMinExclusive[N cmp.Ordered](value N, minValue N) error {
 	if value < minValue {
 		return fmt.Errorf("%v fails validation as it is >= minExclusive %v", value, minValue)
 	}
 	return nil
 }
 
-func ValidateMaxExclusive(value int, maxValue int) error {
+func ValidateMaxExclusive[N cmp.Ordered](value N, maxValue N) error {
 	if value > maxValue {
 		return fmt.Errorf("%v fails validation as it is <= maxExclusive %v", value, maxValue)
 	}
