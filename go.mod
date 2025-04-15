@@ -3,7 +3,7 @@ module github.com/moov-io/fedwire20022
 go 1.23.3
 
 require (
-	cloud.google.com/go v0.120.0
+	cloud.google.com/go v0.120.1
 	github.com/moov-io/base v0.54.3
 	github.com/stretchr/testify v1.10.0
 )
