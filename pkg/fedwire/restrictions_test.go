@@ -74,29 +74,29 @@ func TestValidateMaxLength(t *testing.T) {
 }
 
 func TestValidateMinInclusive(t *testing.T) {
-	minVal := 3.0
-	require.Error(t, fedwire.ValidateMinInclusive(3.0, minVal))
-	require.NoError(t, fedwire.ValidateMinInclusive(5.0, minVal))
-	require.Error(t, fedwire.ValidateMinInclusive(2.0, minVal))
+	minVal := 3
+	require.NoError(t, fedwire.ValidateMinInclusive(3, minVal))
+	require.NoError(t, fedwire.ValidateMinInclusive(5, minVal))
+	require.Error(t, fedwire.ValidateMinInclusive(2, minVal))
 }
 
 func TestValidateMaxInclusive(t *testing.T) {
 	maxVal := 3
-	require.Error(t, fedwire.ValidateMaxInclusive(3, maxVal))
+	require.NoError(t, fedwire.ValidateMaxInclusive(3, maxVal))
 	require.NoError(t, fedwire.ValidateMaxInclusive(2, maxVal))
 	require.Error(t, fedwire.ValidateMaxInclusive(5, maxVal))
 }
 
 func TestValidateMinExclusive(t *testing.T) {
-	minVal := 3
-	require.NoError(t, fedwire.ValidateMinExclusive(3, minVal))
-	require.NoError(t, fedwire.ValidateMinExclusive(5, minVal))
-	require.Error(t, fedwire.ValidateMinExclusive(2, minVal))
+	minVal := 3.0
+	require.Error(t, fedwire.ValidateMinExclusive(3.0, minVal))
+	require.NoError(t, fedwire.ValidateMinExclusive(5.0, minVal))
+	require.Error(t, fedwire.ValidateMinExclusive(2.0, minVal))
 }
 
 func TestValidateMaxExclusive(t *testing.T) {
 	maxVal := 3
-	require.NoError(t, fedwire.ValidateMaxExclusive(3, maxVal))
+	require.Error(t, fedwire.ValidateMaxExclusive(3, maxVal))
 	require.NoError(t, fedwire.ValidateMaxExclusive(2, maxVal))
 	require.Error(t, fedwire.ValidateMaxExclusive(5, maxVal))
 }
