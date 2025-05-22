@@ -59,6 +59,32 @@ func (t ISODateTime) Validate() error {
 	return err
 }
 
+type ISONormalisedDateTime time.Time
+
+func UnmarshalISONormalisedDateTime(text string) ISONormalisedDateTime {
+	dateTime := ISONormalisedDateTime{}
+	_ = dateTime.UnmarshalText([]byte(text))
+	return dateTime
+}
+
+func MarshalISONormalisedDateTime(t ISONormalisedDateTime) string {
+	txt, _ := t.MarshalText()
+	return string(txt)
+}
+
+func (t *ISONormalisedDateTime) UnmarshalText(text []byte) error {
+	return (*xsdDateTime)(t).UnmarshalText(text)
+}
+
+func (t ISONormalisedDateTime) MarshalText() ([]byte, error) {
+	return xsdDateTime(t).MarshalText()
+}
+
+func (t ISONormalisedDateTime) Validate() error {
+	_, err := t.MarshalText()
+	return err
+}
+
 type xsdDate civil.Date
 
 func (t *xsdDate) UnmarshalText(text []byte) error {
