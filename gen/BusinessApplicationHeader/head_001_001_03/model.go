@@ -233,7 +233,7 @@ type PostalAddress24 struct {
 	AdrLine     []*Max70Text        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 AdrLine,omitempty"`
 }
 
-type Sgntr struct {
+type SignatureEnvelope struct {
 	Signature *xmldsig.Signature `xml:"http://www.w3.org/2000/09/xmldsig# Signature"`
 }
 
