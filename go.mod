@@ -4,7 +4,7 @@ go 1.23.3
 
 require (
 	cloud.google.com/go v0.121.3
-	github.com/moov-io/base v0.56.0
+	github.com/moov-io/base v0.57.0
 	github.com/stretchr/testify v1.10.0
 )
 
