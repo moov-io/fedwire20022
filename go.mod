@@ -2,7 +2,7 @@ module github.com/moov-io/fedwire20022
 
 go 1.24.0
 
-toolchain go1.24.13
+toolchain go1.25.7
 
 require (
 	cloud.google.com/go v0.123.0
