@@ -3,53 +3,105 @@ package fedwire_test
 import (
 	"encoding/xml"
 	"testing"
-	"time"
 
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 
-	"cloud.google.com/go/civil"
 	"github.com/stretchr/testify/require"
 )
 
-func TestISODateFormat(t *testing.T) {
-	when := civil.Date{
-		Year:  2019,
-		Month: time.March,
-		Day:   21,
-	}
+func TestISOTime(t *testing.T) {
+	// UTC
+	input := `<ISOTime>13:15:05Z</ISOTime>`
 
-	require.Equal(t, fedwire.ISODate(when), fedwire.UnmarshalISODate("2019-03-21"))
-
-	out, err := fedwire.ISODate(when).MarshalText()
+	var when fedwire.ISOTime
+	err := xml.Unmarshal([]byte(input), &when)
 	require.NoError(t, err)
-	require.Equal(t, "2019-03-21", string(out))
+	require.Equal(t, "0000-01-01T13:15:05Z", when.String())
 
-	out, err = xml.Marshal(fedwire.ISODate(when))
+	bs, err := when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "<ISODate>2019-03-21</ISODate>", string(out))
+	require.Equal(t, "13:15:05Z", string(bs))
 
-	var read fedwire.ISODate
-	err = xml.Unmarshal([]byte("<ISODate>2019-03-21</ISODate>"), &read)
+	// Local with offset
+	input = `<ISOTime>08:15:05-05:00</ISOTime>`
+
+	err = xml.Unmarshal([]byte(input), &when)
 	require.NoError(t, err)
-	require.True(t, when == (civil.Date)(read))
+	require.Equal(t, "0000-01-01T08:15:05-05:00", when.String())
+
+	bs, err = when.MarshalText()
+	require.NoError(t, err)
+	require.Equal(t, "13:15:05Z", string(bs))
 }
 
-func TestISODateTimeFormat(t *testing.T) {
-	loc, _ := time.LoadLocation("America/New_York")
-	when := time.Date(2019, time.March, 21, 10, 36, 19, 0, loc)
+func TestISODate(t *testing.T) {
+	// UTC
+	input := `<ISODate>2026-02-11Z</ISODate>`
 
-	require.Equal(t, fedwire.ISODateTime(when), fedwire.UnmarshalISODateTime("2019-03-21T10:36:19"))
-
-	out, err := fedwire.ISODateTime(when).MarshalText()
+	var when fedwire.ISODate
+	err := xml.Unmarshal([]byte(input), &when)
 	require.NoError(t, err)
-	require.Equal(t, "2019-03-21T10:36:19", string(out))
+	require.Equal(t, "2026-02-11T00:00:00Z", when.String())
 
-	out, err = xml.Marshal(fedwire.ISODateTime(when))
+	bs, err := when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "<ISODateTime>2019-03-21T10:36:19</ISODateTime>", string(out))
+	require.Equal(t, "2026-02-11Z", string(bs))
 
-	var read fedwire.ISODateTime
-	err = xml.Unmarshal([]byte("<ISODateTime>2019-03-21T10:36:19</ISODateTime>"), &read)
+	// Local date format (YYYY-MM-DD)
+	input = `<ISODate>2026-02-11</ISODate>`
+
+	err = xml.Unmarshal([]byte(input), &when)
 	require.NoError(t, err)
-	require.True(t, when.Equal(time.Time(read)))
+	require.Equal(t, "2026-02-11T00:00:00Z", when.String())
+
+	bs, err = when.MarshalText()
+	require.NoError(t, err)
+	require.Equal(t, "2026-02-11Z", string(bs))
+
+	// Local date with UTC offset format (YYYY-MM-DD+/-hh:mm)
+	input = `<ISODate>2026-02-11-05:00</ISODate>`
+
+	err = xml.Unmarshal([]byte(input), &when)
+	require.NoError(t, err)
+	require.Equal(t, "2026-02-11T00:00:00-05:00", when.String())
+
+	bs, err = when.MarshalText()
+	require.NoError(t, err)
+	require.Equal(t, "2026-02-11Z", string(bs))
+
+	// Local date with UTC offset format (YYYY-MM-DD+/-hh:mm)
+	input = `<ISODate>2026-02-11+03:00</ISODate>`
+
+	err = xml.Unmarshal([]byte(input), &when)
+	require.NoError(t, err)
+	require.Equal(t, "2026-02-11T00:00:00+03:00", when.String())
+
+	bs, err = when.MarshalText()
+	require.NoError(t, err)
+	require.Equal(t, "2026-02-10Z", string(bs))
+}
+
+func TestISODateTime(t *testing.T) {
+	// UTC
+	input := `<ISODateTime>2024-04-02T13:15:05Z</ISODateTime>`
+
+	var when fedwire.ISODateTime
+	err := xml.Unmarshal([]byte(input), &when)
+	require.NoError(t, err)
+	require.Equal(t, "2024-04-02T13:15:05Z", when.String())
+
+	bs, err := when.MarshalText()
+	require.NoError(t, err)
+	require.Equal(t, "2024-04-02T13:15:05Z", string(bs))
+
+	// Local with offset
+	input = `<ISODateTime>2024-04-02T08:15:05-05:00</ISODateTime>`
+
+	err = xml.Unmarshal([]byte(input), &when)
+	require.NoError(t, err)
+	require.Equal(t, "2024-04-02T08:15:05-05:00", when.String())
+
+	bs, err = when.MarshalText()
+	require.NoError(t, err)
+	require.Equal(t, "2024-04-02T08:15:05-05:00", string(bs))
 }
