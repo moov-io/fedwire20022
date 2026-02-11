@@ -32,7 +32,7 @@ import (
 		{{- range .Elements }}
 			{{- $elemGoForeignModule := .GoForeignModule -}}
 		        {{- $elemGoTypeName := .GoTypeName -}}
-		        {{- if or (eq .GoTypeName "ISODate") (eq .GoTypeName "ISODateTime") (eq .GoTypeName "ISONormalisedDateTime") -}}
+		        {{- if or (eq .GoTypeName "ISOTime") (eq .GoTypeName "ISODate") (eq .GoTypeName "ISODateTime") (eq .GoTypeName "ISONormalisedDateTime") -}}
 		        	{{- $elemGoForeignModule = "fedwire." -}}
 		        {{ end }}
 
@@ -85,7 +85,7 @@ import (
 			{{- range .Elements }}
 				{{- $elemGoForeignModule := .GoForeignModule -}}
 				{{- $elemGoTypeName := .GoTypeName -}}
-				{{- if or (eq .GoTypeName "ISODate") (eq .GoTypeName "ISODateTime") -}}
+				{{- if or (eq .GoTypeName "ISOTime") (eq .GoTypeName "ISODate") (eq .GoTypeName "ISODateTime") -}}
 					{{- $elemGoForeignModule = "fedwire." -}}
 				{{- else if eq .GoTypeName "ISONormalisedDateTime" -}}
 					{{- $elemGoForeignModule = "fedwire." -}}
@@ -116,6 +116,7 @@ import (
 		{{ template "ActiveCurrencyAndAmountSimpleType" . }}
 	{{ else if eq .GoName "ActiveOrHistoricCurrencyAndAmountSimpleType" }}
 		{{ template "ActiveOrHistoricCurrencyAndAmountSimpleType" . }}
+        {{ else if eq .GoName "ISOTime" }}
 	{{ else if eq .GoName "ISODate" }}
 	{{ else if eq .GoName "ISODateTime" }}
 	{{ else if eq .GoName "ISONormalisedDateTime" }}

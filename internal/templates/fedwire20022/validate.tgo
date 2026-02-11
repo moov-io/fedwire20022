@@ -90,6 +90,7 @@ import (
 {{ range .ExportableSimpleTypes }}
 	{{ if eq .GoName "ActiveCurrencyAndAmountSimpleType" }}
 	{{ else if eq .GoName "ActiveOrHistoricCurrencyAndAmountSimpleType" }}
+        {{ else if eq .GoName "ISOTime" }}
 	{{ else if eq .GoName "ISODate" }}
 	{{ else if eq .GoName "ISODateTime" }}
 	{{ else if eq .GoName "ISONormalisedDateTime" }}

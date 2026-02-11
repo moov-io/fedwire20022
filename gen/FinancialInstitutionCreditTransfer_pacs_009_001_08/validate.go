@@ -1794,10 +1794,6 @@ func (v IMADFedwireFunds1) Validate() error {
 	return nil
 }
 
-func (v ISOTime) Validate() error {
-	return nil
-}
-
 func (v Instruction3Code) Validate() error {
 	if err := fedwire.ValidateEnumeration(string(v), "CHQB", "HOLD", "PHOB", "TELB"); err != nil {
 		return err

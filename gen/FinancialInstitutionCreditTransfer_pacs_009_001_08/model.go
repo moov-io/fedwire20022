@@ -4,7 +4,6 @@ package FinancialInstitutionCreditTransfer_pacs_009_001_08
 
 import (
 	"encoding/xml"
-	"time"
 
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
@@ -467,10 +466,10 @@ type SettlementInstruction71 struct {
 }
 
 type SettlementTimeRequest2 struct {
-	CLSTm  *ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 CLSTm,omitempty"`
-	TillTm *ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 TillTm,omitempty"`
-	FrTm   *ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 FrTm,omitempty"`
-	RjctTm *ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 RjctTm,omitempty"`
+	CLSTm  *fedwire.ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 CLSTm,omitempty"`
+	TillTm *fedwire.ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 TillTm,omitempty"`
+	FrTm   *fedwire.ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 FrTm,omitempty"`
+	RjctTm *fedwire.ISOTime `xml:"urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08 RjctTm,omitempty"`
 }
 
 type StructuredRemittanceInformation161 struct {
@@ -644,8 +643,6 @@ type ExternalTaxAmountType1Code string
 type IBAN2007Identifier string
 
 type IMADFedwireFunds1 string
-
-type ISOTime time.Time
 
 type Instruction3Code string
 
