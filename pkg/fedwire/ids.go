@@ -8,9 +8,18 @@ import (
 	"github.com/google/uuid"
 )
 
-// BusinessMessageID creates a FedWire Business Message Identifier from a base64-encoded UUID v4 and a prefix (up to 3 characters)
+// BusinessMessageID creates a FedWire Business Message Identifier from
+// a base64-encoded UUID v4 and a prefix (up to 3 characters)
 func BusinessMessageID(prefix string) string {
 	random := strings.ReplaceAll(uuid.New().String(), "-", "")
+	return strings.TrimSpace(fmt.Sprintf("%3.3s", prefix) + random)
+}
+
+// BusinessMessageID creates a FedWire Business Message Identifier from
+// a base64-encoded SHA UUID v4 and a prefix (up to 3 characters)
+func BusinessMessageIDHash(prefix string, input ...string) string {
+	key := strings.Join(input, "|")
+	random := strings.ReplaceAll(uuid.NewSHA1(uuid.Nil, []byte(key)).String(), "-", "")
 	return strings.TrimSpace(fmt.Sprintf("%3.3s", prefix) + random)
 }
 

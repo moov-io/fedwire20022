@@ -27,6 +27,14 @@ func TestBusinessMessageID(t *testing.T) {
 	require.NoError(t, fedwire.ValidBusinessMessageID(id))
 }
 
+func TestBusinessMessageIDHash(t *testing.T) {
+	id := fedwire.BusinessMessageIDHash("ct_", "abc123", "xyz987")
+	require.Len(t, id, 35)
+	require.True(t, strings.HasPrefix(id, "ct_"))
+	require.NoError(t, fedwire.ValidBusinessMessageID(id))
+	require.Equal(t, "ct_d99fe29b70a65320ac08d857b2b7af62", id)
+}
+
 func TestValidBusinessMessageID(t *testing.T) {
 	t.Run("valid", func(t *testing.T) {
 		inputs := []string{
