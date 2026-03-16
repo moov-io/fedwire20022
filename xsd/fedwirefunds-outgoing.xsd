@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  fwfunds-iso-message-transformer
+  %%
+  Copyright (C) 2012 - 2023 System IT Tooling Competency Group, FRS
+  %%
+  frs-information-security-classification: Restricted FR - Source Code
+  #L%
+  -->
+
+
+<xs:schema elementFormDefault="qualified"
+           targetNamespace="urn:fedwirefunds:outgoing:v001"
+           xmlns="urn:fedwirefunds:outgoing:v001"
+           xmlns:bah="urn:iso:std:iso:20022:tech:xsd:head.001.001.03"
+           xmlns:a2="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01"
+           xmlns:a4="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02"
+           xmlns:a7="urn:iso:std:iso:20022:tech:xsd:admi.007.001.01"
+           xmlns:a11="urn:iso:std:iso:20022:tech:xsd:admi.011.001.01"
+           xmlns:p2="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10"
+           xmlns:p4="urn:iso:std:iso:20022:tech:xsd:pacs.004.001.10"
+           xmlns:p8="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08"
+           xmlns:p9="urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08"
+           xmlns:p28="urn:iso:std:iso:20022:tech:xsd:pacs.028.001.03"
+           xmlns:pain13="urn:iso:std:iso:20022:tech:xsd:pain.013.001.07"
+           xmlns:pain14="urn:iso:std:iso:20022:tech:xsd:pain.014.001.07"
+           xmlns:c29="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09"
+           xmlns:c52="urn:iso:std:iso:20022:tech:xsd:camt.052.001.08"
+           xmlns:c56="urn:iso:std:iso:20022:tech:xsd:camt.056.001.08"
+           xmlns:i110="urn:iso:std:iso:20022:tech:xsd:camt.110.001.01"
+           xmlns:i111="urn:iso:std:iso:20022:tech:xsd:camt.111.001.01"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admi.002.001.01" schemaLocation="iso/admi.002.001.01.xsd" />
+    
+    <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02" schemaLocation="iso/admi.004.001.02.xsd" />
+    	
+	<xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admi.007.001.01" schemaLocation="iso/admi.007.001.01.xsd" />
+	
+	<xs:import namespace="urn:iso:std:iso:20022:tech:xsd:admi.011.001.01" schemaLocation="iso/admi.011.001.01.xsd" />
+	
+	<xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.029.001.09" schemaLocation="iso/camt.029.001.09.xsd" />
+		
+	<xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.052.001.08" schemaLocation="iso/camt.052.001.08.xsd" />
+		
+	<xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.056.001.08" schemaLocation="iso/camt.056.001.08.xsd" />
+	
+	<xs:import namespace="urn:iso:std:iso:20022:tech:xsd:head.001.001.03" schemaLocation="iso/head.001.001.03.xsd" />
+	
+	<xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10" schemaLocation="iso/pacs.002.001.10.xsd" />
+	
+	<xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pacs.004.001.10" schemaLocation="iso/pacs.004.001.10.xsd" />
+    
+    <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08" schemaLocation="iso/pacs.008.001.08.xsd" />
+    
+    <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08" schemaLocation="iso/pacs.009.001.08.xsd" />
+    
+    <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pacs.028.001.03" schemaLocation="iso/pacs.028.001.03.xsd" />
+    
+    <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pain.013.001.07" schemaLocation="iso/pain.013.001.07.xsd" />
+    
+    <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:pain.014.001.07" schemaLocation="iso/pain.014.001.07.xsd" />
+
+    <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.110.001.01" schemaLocation="iso/camt.110.001.01.xsd" />
+
+    <xs:import namespace="urn:iso:std:iso:20022:tech:xsd:camt.111.001.01" schemaLocation="iso/camt.111.001.01.xsd" />
+    
+    <xs:element name="FedwireFundsOutgoing">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element ref="FedwireFundsTechnicalHeader" minOccurs="0" />
+                <xs:element ref="FedwireFundsOutgoingMessage" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsTechnicalHeader">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsOutgoingMessage">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice>
+                    <xs:element ref="FedwireFundsCustomerCreditTransfer" />
+					<xs:element ref="FedwireFundsMessageReject" />
+					<xs:element ref="FedwireFundsPaymentStatus" />
+					<xs:element ref="FedwireFundsBroadcast" />
+					<xs:element ref="FedwireFundsAcknowledgement" />
+			 		<xs:element ref="FedwireFundsSystemResponse" />
+					<xs:element ref="FedwireFundsPaymentReturn" />
+					<xs:element ref="FedwireFundsFinancialInstitutionCreditTransfer" />
+					<xs:element ref="FedwireFundsPaymentStatusRequest" />
+					<xs:element ref="FedwireFundsDrawdownRequest" />
+					<xs:element ref="FedwireFundsDrawdownResponse" />
+					<xs:element ref="FedwireFundsReturnRequestResponse" />
+					<xs:element ref="FedwireFundsReturnRequest" />
+                    <xs:element ref="FedwireFundsInvestigationRequest" />
+                    <xs:element ref="FedwireFundsInvestigationResponse" />
+					
+					<!-- camt.052 responses --> 
+					<xs:element ref="FedwireFundsAccountBalanceReport_Master" />
+					<xs:element ref="FedwireFundsAccountBalanceReport_Self" />
+					<xs:element ref="FedwireFundsActivityReport" />
+					<xs:element ref="FedwireFundsEndpointDetailsReport" />
+					<xs:element ref="FedwireFundsEndpointGapReport" />
+					<xs:element ref="FedwireFundsEndpointTotalsReport" /> 
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsCustomerCreditTransfer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="p8:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsMessageReject">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="a2:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsPaymentStatus">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="p2:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsBroadcast">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="a4:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsAcknowledgement">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="a7:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsSystemResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="a11:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsPaymentReturn">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="p4:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsFinancialInstitutionCreditTransfer">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="p9:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsPaymentStatusRequest">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="p28:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsDrawdownRequest">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="pain13:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsDrawdownResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="pain14:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsReturnRequestResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="c29:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsAccountBalanceReport_Master">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="c52:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsAccountBalanceReport_Self">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="c52:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsActivityReport">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="c52:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsEndpointDetailsReport">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="c52:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsEndpointGapReport">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="c52:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsEndpointTotalsReport">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="c52:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="FedwireFundsReturnRequest">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="c56:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="FedwireFundsInvestigationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="i110:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="FedwireFundsInvestigationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bah:AppHdr" />
+                <xs:element ref="i111:Document" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>
