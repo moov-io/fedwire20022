@@ -7,7 +7,7 @@ import (
 )
 
 // MarshalXML is a custom marshaller that allows us to manipulate the XML tag in order to use the proper namespace prefix
-func (v Sgntr) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+func (v SignatureEnvelope) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	e.EncodeToken(xml.StartElement{Name: xml.Name{Local: start.Name.Local}})
 	e.EncodeElement(v.Signature, xml.StartElement{Name: xml.Name{Local: "ds:Signature"}})
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})

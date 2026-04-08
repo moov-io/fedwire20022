@@ -11,28 +11,28 @@ import (
 // XSD Elements
 
 type Document struct {
-	XMLName xml.Name
-
-	Admi00200101 Admi00200101 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 admi.002.001.01"`
+	XMLName      xml.Name     `xml:"Document"`
+	XmlnsUrn     string       `xml:"xmlns:urn,attr"`
+	Admi00200101 Admi00200101 `xml:"admi.002.001.01"`
 }
 
 // XSD ComplexType declarations
 
 type MessageReference struct {
-	Ref Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 Ref"`
+	Ref Max35Text `xml:"Ref"`
 }
 
 type RejectionReason2 struct {
-	RjctgPtyRsn Max35Text            `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 RjctgPtyRsn"`
-	RjctnDtTm   *fedwire.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 RjctnDtTm,omitempty"`
-	ErrLctn     *Max350Text          `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 ErrLctn,omitempty"`
-	RsnDesc     *Max350Text          `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 RsnDesc,omitempty"`
-	AddtlData   *fedwire.Cdata       `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 AddtlData,omitempty"`
+	RjctgPtyRsn Max35Text            `xml:"RjctgPtyRsn"`
+	RjctnDtTm   *fedwire.ISODateTime `xml:"RjctnDtTm,omitempty"`
+	ErrLctn     *Max350Text          `xml:"ErrLctn,omitempty"`
+	RsnDesc     *Max350Text          `xml:"RsnDesc,omitempty"`
+	AddtlData   *fedwire.Cdata       `xml:"AddtlData,omitempty"`
 }
 
 type Admi00200101 struct {
-	RltdRef MessageReference `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 RltdRef"`
-	Rsn     RejectionReason2 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.002.001.01 Rsn"`
+	RltdRef MessageReference `xml:"RltdRef"`
+	Rsn     RejectionReason2 `xml:"Rsn"`
 }
 
 // XSD SimpleType declarations

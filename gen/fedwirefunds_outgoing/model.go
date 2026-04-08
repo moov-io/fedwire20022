@@ -27,227 +27,186 @@ import (
 // XSD Elements
 
 type FedwireFundsOutgoing struct {
-	XMLName xml.Name
-
-	FedwireFundsTechnicalHeader *FedwireFundsTechnicalHeader `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsOutgoingMessage FedwireFundsOutgoingMessage `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName                     xml.Name                     `xml:"FedwireFundsOutgoing"`
+	XmlnsUrn                    string                       `xml:"xmlns:urn,attr"`
+	FedwireFundsTechnicalHeader *FedwireFundsTechnicalHeader `xml:"FedwireFundsTechnicalHeader,omitempty"`
+	FedwireFundsOutgoingMessage FedwireFundsOutgoingMessage  `xml:"FedwireFundsOutgoingMessage"`
 }
 
 type FedwireFundsTechnicalHeader struct {
-	XMLName xml.Name
+	XMLName  xml.Name `xml:"FedwireFundsTechnicalHeader"`
+	XmlnsUrn string   `xml:"xmlns:urn,attr"`
 }
 
 type FedwireFundsOutgoingMessage struct {
-	XMLName xml.Name
-
-	FedwireFundsCustomerCreditTransfer *FedwireFundsCustomerCreditTransfer `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsMessageReject *FedwireFundsMessageReject `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsPaymentStatus *FedwireFundsPaymentStatus `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsBroadcast *FedwireFundsBroadcast `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsAcknowledgement *FedwireFundsAcknowledgement `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsSystemResponse *FedwireFundsSystemResponse `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsPaymentReturn *FedwireFundsPaymentReturn `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsFinancialInstitutionCreditTransfer *FedwireFundsFinancialInstitutionCreditTransfer `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsPaymentStatusRequest *FedwireFundsPaymentStatusRequest `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsDrawdownRequest *FedwireFundsDrawdownRequest `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsDrawdownResponse *FedwireFundsDrawdownResponse `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsReturnRequestResponse *FedwireFundsReturnRequestResponse `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsReturnRequest *FedwireFundsReturnRequest `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsInvestigationRequest *FedwireFundsInvestigationRequest `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsInvestigationResponse *FedwireFundsInvestigationResponse `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsAccountBalanceReportMaster *FedwireFundsAccountBalanceReportMaster `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsAccountBalanceReportSelf *FedwireFundsAccountBalanceReportSelf `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsActivityReport *FedwireFundsActivityReport `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsEndpointDetailsReport *FedwireFundsEndpointDetailsReport `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsEndpointGapReport *FedwireFundsEndpointGapReport `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
-
-	FedwireFundsEndpointTotalsReport *FedwireFundsEndpointTotalsReport `xml:"urn:fedwirefunds:outgoing:v001 ,omitempty"`
+	XMLName                                        xml.Name                                        `xml:"FedwireFundsOutgoingMessage"`
+	XmlnsUrn                                       string                                          `xml:"xmlns:urn,attr"`
+	FedwireFundsCustomerCreditTransfer             *FedwireFundsCustomerCreditTransfer             `xml:"FedwireFundsCustomerCreditTransfer,omitempty"`
+	FedwireFundsMessageReject                      *FedwireFundsMessageReject                      `xml:"FedwireFundsMessageReject,omitempty"`
+	FedwireFundsPaymentStatus                      *FedwireFundsPaymentStatus                      `xml:"FedwireFundsPaymentStatus,omitempty"`
+	FedwireFundsBroadcast                          *FedwireFundsBroadcast                          `xml:"FedwireFundsBroadcast,omitempty"`
+	FedwireFundsAcknowledgement                    *FedwireFundsAcknowledgement                    `xml:"FedwireFundsAcknowledgement,omitempty"`
+	FedwireFundsSystemResponse                     *FedwireFundsSystemResponse                     `xml:"FedwireFundsSystemResponse,omitempty"`
+	FedwireFundsPaymentReturn                      *FedwireFundsPaymentReturn                      `xml:"FedwireFundsPaymentReturn,omitempty"`
+	FedwireFundsFinancialInstitutionCreditTransfer *FedwireFundsFinancialInstitutionCreditTransfer `xml:"FedwireFundsFinancialInstitutionCreditTransfer,omitempty"`
+	FedwireFundsPaymentStatusRequest               *FedwireFundsPaymentStatusRequest               `xml:"FedwireFundsPaymentStatusRequest,omitempty"`
+	FedwireFundsDrawdownRequest                    *FedwireFundsDrawdownRequest                    `xml:"FedwireFundsDrawdownRequest,omitempty"`
+	FedwireFundsDrawdownResponse                   *FedwireFundsDrawdownResponse                   `xml:"FedwireFundsDrawdownResponse,omitempty"`
+	FedwireFundsReturnRequestResponse              *FedwireFundsReturnRequestResponse              `xml:"FedwireFundsReturnRequestResponse,omitempty"`
+	FedwireFundsReturnRequest                      *FedwireFundsReturnRequest                      `xml:"FedwireFundsReturnRequest,omitempty"`
+	FedwireFundsInvestigationRequest               *FedwireFundsInvestigationRequest               `xml:"FedwireFundsInvestigationRequest,omitempty"`
+	FedwireFundsInvestigationResponse              *FedwireFundsInvestigationResponse              `xml:"FedwireFundsInvestigationResponse,omitempty"`
+	FedwireFundsAccountBalanceReportMaster         *FedwireFundsAccountBalanceReportMaster         `xml:"FedwireFundsAccountBalanceReportMaster,omitempty"`
+	FedwireFundsAccountBalanceReportSelf           *FedwireFundsAccountBalanceReportSelf           `xml:"FedwireFundsAccountBalanceReportSelf,omitempty"`
+	FedwireFundsActivityReport                     *FedwireFundsActivityReport                     `xml:"FedwireFundsActivityReport,omitempty"`
+	FedwireFundsEndpointDetailsReport              *FedwireFundsEndpointDetailsReport              `xml:"FedwireFundsEndpointDetailsReport,omitempty"`
+	FedwireFundsEndpointGapReport                  *FedwireFundsEndpointGapReport                  `xml:"FedwireFundsEndpointGapReport,omitempty"`
+	FedwireFundsEndpointTotalsReport               *FedwireFundsEndpointTotalsReport               `xml:"FedwireFundsEndpointTotalsReport,omitempty"`
 }
 
 type FedwireFundsCustomerCreditTransfer struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document pacs_008_001_08.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsCustomerCreditTransfer"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document pacs_008_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsMessageReject struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document admi_002_001_01.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsMessageReject"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document admi_002_001_01.Document                     `xml:"Document"`
 }
 
 type FedwireFundsPaymentStatus struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document pacs_002_001_10.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsPaymentStatus"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document pacs_002_001_10.Document                     `xml:"Document"`
 }
 
 type FedwireFundsBroadcast struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document admi_004_001_02.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsBroadcast"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document admi_004_001_02.Document                     `xml:"Document"`
 }
 
 type FedwireFundsAcknowledgement struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document admi_007_001_01.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsAcknowledgement"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document admi_007_001_01.Document                     `xml:"Document"`
 }
 
 type FedwireFundsSystemResponse struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document admi_011_001_01.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsSystemResponse"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document admi_011_001_01.Document                     `xml:"Document"`
 }
 
 type FedwireFundsPaymentReturn struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document pacs_004_001_10.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsPaymentReturn"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document pacs_004_001_10.Document                     `xml:"Document"`
 }
 
 type FedwireFundsFinancialInstitutionCreditTransfer struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document pacs_009_001_08.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsFinancialInstitutionCreditTransfer"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document pacs_009_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsPaymentStatusRequest struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document pacs_028_001_03.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsPaymentStatusRequest"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document pacs_028_001_03.Document                     `xml:"Document"`
 }
 
 type FedwireFundsDrawdownRequest struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document pain_013_001_07.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsDrawdownRequest"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document pain_013_001_07.Document                     `xml:"Document"`
 }
 
 type FedwireFundsDrawdownResponse struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document pain_014_001_07.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsDrawdownResponse"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document pain_014_001_07.Document                     `xml:"Document"`
 }
 
 type FedwireFundsReturnRequestResponse struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_029_001_09.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsReturnRequestResponse"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_029_001_09.Document                     `xml:"Document"`
 }
 
 type FedwireFundsAccountBalanceReportMaster struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_052_001_08.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsAccountBalanceReportMaster"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_052_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsAccountBalanceReportSelf struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_052_001_08.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsAccountBalanceReportSelf"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_052_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsActivityReport struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_052_001_08.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsActivityReport"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_052_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsEndpointDetailsReport struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_052_001_08.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsEndpointDetailsReport"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_052_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsEndpointGapReport struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_052_001_08.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsEndpointGapReport"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_052_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsEndpointTotalsReport struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_052_001_08.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsEndpointTotalsReport"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_052_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsReturnRequest struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_056_001_08.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsReturnRequest"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_056_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsInvestigationRequest struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_110_001_01.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsInvestigationRequest"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_110_001_01.Document                     `xml:"Document"`
 }
 
 type FedwireFundsInvestigationResponse struct {
-	XMLName xml.Name
-
-	AppHdr head_001_001_03.BusinessApplicationHeaderV03 `xml:"urn:fedwirefunds:outgoing:v001 "`
-
-	Document camt_111_001_01.Document `xml:"urn:fedwirefunds:outgoing:v001 "`
+	XMLName  xml.Name                                     `xml:"FedwireFundsInvestigationResponse"`
+	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
+	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
+	Document camt_111_001_01.Document                     `xml:"Document"`
 }

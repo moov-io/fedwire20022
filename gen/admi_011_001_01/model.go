@@ -11,23 +11,23 @@ import (
 // XSD Elements
 
 type Document struct {
-	XMLName xml.Name
-
-	SysEvtAck SystemEventAcknowledgementV01 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 SysEvtAck"`
+	XMLName   xml.Name                      `xml:"Document"`
+	XmlnsUrn  string                        `xml:"xmlns:urn,attr"`
+	SysEvtAck SystemEventAcknowledgementV01 `xml:"SysEvtAck"`
 }
 
 // XSD ComplexType declarations
 
 type Event1 struct {
-	EvtCd    Max4AlphaNumericText `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 EvtCd"`
-	EvtParam []*Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 EvtParam,omitempty"`
-	EvtDesc  *Max350Text          `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 EvtDesc,omitempty"`
-	EvtTm    *fedwire.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 EvtTm,omitempty"`
+	EvtCd    Max4AlphaNumericText `xml:"EvtCd"`
+	EvtParam []*Max35Text         `xml:"EvtParam,omitempty"`
+	EvtDesc  *Max350Text          `xml:"EvtDesc,omitempty"`
+	EvtTm    *fedwire.ISODateTime `xml:"EvtTm,omitempty"`
 }
 
 type SupplementaryData1 struct {
-	PlcAndNm *Max350Text                `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 PlcAndNm,omitempty"`
-	Envlp    SupplementaryDataEnvelope1 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 Envlp"`
+	PlcAndNm *Max350Text                `xml:"PlcAndNm,omitempty"`
+	Envlp    SupplementaryDataEnvelope1 `xml:"Envlp"`
 }
 
 type SupplementaryDataEnvelope1 struct {
@@ -35,11 +35,11 @@ type SupplementaryDataEnvelope1 struct {
 }
 
 type SystemEventAcknowledgementV01 struct {
-	MsgId       Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 MsgId"`
-	OrgtrRef    *Max35Text              `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 OrgtrRef,omitempty"`
-	SttlmSsnIdr *Exact4AlphaNumericText `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 SttlmSsnIdr,omitempty"`
-	AckDtls     *Event1                 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 AckDtls,omitempty"`
-	SplmtryData []*SupplementaryData1   `xml:"urn:iso:std:iso:20022:tech:xsd:admi.011.001.01 SplmtryData,omitempty"`
+	MsgId       Max35Text               `xml:"MsgId"`
+	OrgtrRef    *Max35Text              `xml:"OrgtrRef,omitempty"`
+	SttlmSsnIdr *Exact4AlphaNumericText `xml:"SttlmSsnIdr,omitempty"`
+	AckDtls     *Event1                 `xml:"AckDtls,omitempty"`
+	SplmtryData []*SupplementaryData1   `xml:"SplmtryData,omitempty"`
 }
 
 // XSD SimpleType declarations
