@@ -19,7 +19,8 @@ import (
 {{ end -}}
 {{ range .ExportableElements }}
 	type {{ .GoName }} struct {
-		XMLName xml.Name {{- if eq .GoName "Message" -}}`xml:"Message"`{{- end -}}
+		XMLName xml.Name `xml:"{{ .GoName }}"`
+		XmlnsUrn string `xml:"xmlns:urn,attr"`
 		{{- if eq .GoName "Message" }}
 			Xmlns []xml.Attr `xml:",attr"`
 		{{- end -}}
@@ -36,7 +37,11 @@ import (
 		        	{{- $elemGoForeignModule = "fedwire." -}}
 		        {{ end }}
 
-			{{ .GoFieldName }} {{ if .Array }}[]{{ end }}{{ if eq .MinOccurs "0" }}*{{ end }}{{ $elemGoForeignModule }}{{ .GoTypeName }} `xml:"{{ $targetNS }} {{ .Name }}{{ if eq .MinOccurs "0" }},omitempty{{ end }}"`
+			{{- $elemName := .Name -}}
+			{{- if eq .Name "" -}}
+				{{- $elemName = .GoFieldName -}}
+			{{- end }}
+			{{ .GoFieldName }} {{ if .Array }}[]{{ end }}{{ if eq .MinOccurs "0" }}*{{ end }}{{ $elemGoForeignModule }}{{ .GoTypeName }} `xml:"{{ $elemName }}{{ if eq .MinOccurs "0" }},omitempty{{ end }}"`
 		{{- end }}
 	}
 
@@ -95,9 +100,9 @@ import (
 					{{- $elemGoTypeName = "Cdata" -}}
 				{{- else if eq .GoTypeName "SignatureEnvelope" -}}
 					{{- $elemGoForeignModule = "" -}}
-					{{- $elemGoTypeName = "Sgntr" -}}
+					{{- $elemGoTypeName = "SignatureEnvelope" -}}
 				{{ end }}
-				{{ .GoFieldName }} {{ if .Array }}[]{{ end }}{{ if eq .MinOccurs "0" }}*{{ end }}{{ $elemGoForeignModule }}{{ $elemGoTypeName }} `xml:"{{ $targetNS }} {{ .Name }}{{ if eq .MinOccurs "0" }},omitempty{{ end }}"`
+				{{ .GoFieldName }} {{ if .Array }}[]{{ end }}{{ if eq .MinOccurs "0" }}*{{ end }}{{ $elemGoForeignModule }}{{ $elemGoTypeName }} `xml:"{{ .Name }}{{ if eq .MinOccurs "0" }},omitempty{{ end }}"`
 			{{- end }}
 			{{- if .Sequence }}
 				{{- range .Sequence.Any }}
@@ -143,7 +148,7 @@ import (
 
 {{ define "SignatureEnvelope" }}
 
-	type Sgntr struct {
+	type SignatureEnvelope struct {
 		Signature *xmldsig.Signature `xml:"http://www.w3.org/2000/09/xmldsig# Signature"`
 	}
 {{ end }}
