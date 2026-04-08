@@ -11,103 +11,103 @@ import (
 // XSD Elements
 
 type Document struct {
-	XMLName xml.Name
-
-	RsndReq ResendRequestV01 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 RsndReq"`
+	XMLName  xml.Name         `xml:"Document"`
+	XmlnsUrn string           `xml:"xmlns:urn,attr"`
+	RsndReq  ResendRequestV01 `xml:"RsndReq"`
 }
 
 // XSD ComplexType declarations
 
 type GenericIdentification1 struct {
-	Id      Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Id"`
-	SchmeNm *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 SchmeNm,omitempty"`
-	Issr    *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Issr,omitempty"`
+	Id      Max35Text  `xml:"Id"`
+	SchmeNm *Max35Text `xml:"SchmeNm,omitempty"`
+	Issr    *Max35Text `xml:"Issr,omitempty"`
 }
 
 type GenericIdentification36 struct {
-	Id      Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Id"`
-	Issr    Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Issr"`
-	SchmeNm *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 SchmeNm,omitempty"`
+	Id      Max35Text  `xml:"Id"`
+	Issr    Max35Text  `xml:"Issr"`
+	SchmeNm *Max35Text `xml:"SchmeNm,omitempty"`
 }
 
 type MessageHeader7 struct {
-	MsgId       Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 MsgId"`
-	CreDtTm     *fedwire.ISODateTime    `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 CreDtTm,omitempty"`
-	ReqTp       *RequestType4Choice     `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 ReqTp,omitempty"`
-	OrgnlBizQry *OriginalBusinessQuery1 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 OrgnlBizQry,omitempty"`
-	QryNm       *Max35Text              `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 QryNm,omitempty"`
+	MsgId       Max35Text               `xml:"MsgId"`
+	CreDtTm     *fedwire.ISODateTime    `xml:"CreDtTm,omitempty"`
+	ReqTp       *RequestType4Choice     `xml:"ReqTp,omitempty"`
+	OrgnlBizQry *OriginalBusinessQuery1 `xml:"OrgnlBizQry,omitempty"`
+	QryNm       *Max35Text              `xml:"QryNm,omitempty"`
 }
 
 type NameAndAddress5 struct {
-	Nm  Max350Text      `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Nm"`
-	Adr *PostalAddress1 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Adr,omitempty"`
+	Nm  Max350Text      `xml:"Nm"`
+	Adr *PostalAddress1 `xml:"Adr,omitempty"`
 }
 
 type OriginalBusinessQuery1 struct {
-	MsgId   Max35Text            `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 MsgId"`
-	MsgNmId *Max35Text           `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 MsgNmId,omitempty"`
-	CreDtTm *fedwire.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 CreDtTm,omitempty"`
+	MsgId   Max35Text            `xml:"MsgId"`
+	MsgNmId *Max35Text           `xml:"MsgNmId,omitempty"`
+	CreDtTm *fedwire.ISODateTime `xml:"CreDtTm,omitempty"`
 }
 
 type PartyIdentification120Choice struct {
-	AnyBIC   *AnyBICDec2014Identifier `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 AnyBIC,omitempty"`
-	PrtryId  *GenericIdentification36 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 PrtryId,omitempty"`
-	NmAndAdr *NameAndAddress5         `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 NmAndAdr,omitempty"`
+	AnyBIC   *AnyBICDec2014Identifier `xml:"AnyBIC,omitempty"`
+	PrtryId  *GenericIdentification36 `xml:"PrtryId,omitempty"`
+	NmAndAdr *NameAndAddress5         `xml:"NmAndAdr,omitempty"`
 }
 
 type PartyIdentification136 struct {
-	Id  PartyIdentification120Choice `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Id"`
-	LEI *LEIIdentifier               `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 LEI,omitempty"`
+	Id  PartyIdentification120Choice `xml:"Id"`
+	LEI *LEIIdentifier               `xml:"LEI,omitempty"`
 }
 
 type PostalAddress1 struct {
-	AdrTp       *AddressType2Code `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 AdrTp,omitempty"`
-	AdrLine     []*Max70Text      `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 AdrLine,omitempty"`
-	StrtNm      *Max70Text        `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 StrtNm,omitempty"`
-	BldgNb      *Max16Text        `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 BldgNb,omitempty"`
-	PstCd       *Max16Text        `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 PstCd,omitempty"`
-	TwnNm       *Max35Text        `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 TwnNm,omitempty"`
-	CtrySubDvsn *Max35Text        `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 CtrySubDvsn,omitempty"`
-	Ctry        CountryCode       `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Ctry"`
+	AdrTp       *AddressType2Code `xml:"AdrTp,omitempty"`
+	AdrLine     []*Max70Text      `xml:"AdrLine,omitempty"`
+	StrtNm      *Max70Text        `xml:"StrtNm,omitempty"`
+	BldgNb      *Max16Text        `xml:"BldgNb,omitempty"`
+	PstCd       *Max16Text        `xml:"PstCd,omitempty"`
+	TwnNm       *Max35Text        `xml:"TwnNm,omitempty"`
+	CtrySubDvsn *Max35Text        `xml:"CtrySubDvsn,omitempty"`
+	Ctry        CountryCode       `xml:"Ctry"`
 }
 
 type RequestType4Choice struct {
-	PmtCtrl *ExternalPaymentControlRequestType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 PmtCtrl,omitempty"`
-	Enqry   *ExternalEnquiryRequestType1Code        `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Enqry,omitempty"`
-	Prtry   *GenericIdentification1                 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Prtry,omitempty"`
+	PmtCtrl *ExternalPaymentControlRequestType1Code `xml:"PmtCtrl,omitempty"`
+	Enqry   *ExternalEnquiryRequestType1Code        `xml:"Enqry,omitempty"`
+	Prtry   *GenericIdentification1                 `xml:"Prtry,omitempty"`
 }
 
 type ResendRequestV01 struct {
-	MsgHdr      MessageHeader7          `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 MsgHdr"`
-	RsndSchCrit []ResendSearchCriteria2 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 RsndSchCrit"`
-	SplmtryData []*SupplementaryData1   `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 SplmtryData,omitempty"`
+	MsgHdr      MessageHeader7          `xml:"MsgHdr"`
+	RsndSchCrit []ResendSearchCriteria2 `xml:"RsndSchCrit"`
+	SplmtryData []*SupplementaryData1   `xml:"SplmtryData,omitempty"`
 }
 
 type ResendSearchCriteria2 struct {
-	BizDt        *fedwire.ISODate       `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 BizDt,omitempty"`
-	SeqNb        *Max35Text             `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 SeqNb,omitempty"`
-	SeqRg        *SequenceRange1Choice  `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 SeqRg,omitempty"`
-	OrgnlMsgNmId *Max35Text             `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 OrgnlMsgNmId,omitempty"`
-	FileRef      *Max35Text             `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 FileRef,omitempty"`
-	Rcpt         PartyIdentification136 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Rcpt"`
+	BizDt        *fedwire.ISODate       `xml:"BizDt,omitempty"`
+	SeqNb        *Max35Text             `xml:"SeqNb,omitempty"`
+	SeqRg        *SequenceRange1Choice  `xml:"SeqRg,omitempty"`
+	OrgnlMsgNmId *Max35Text             `xml:"OrgnlMsgNmId,omitempty"`
+	FileRef      *Max35Text             `xml:"FileRef,omitempty"`
+	Rcpt         PartyIdentification136 `xml:"Rcpt"`
 }
 
 type SequenceRange1 struct {
-	FrSeq Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 FrSeq"`
-	ToSeq Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 ToSeq"`
+	FrSeq Max35Text `xml:"FrSeq"`
+	ToSeq Max35Text `xml:"ToSeq"`
 }
 
 type SequenceRange1Choice struct {
-	FrSeq   *Max35Text       `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 FrSeq,omitempty"`
-	ToSeq   *Max35Text       `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 ToSeq,omitempty"`
-	FrToSeq []SequenceRange1 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 FrToSeq"`
-	EQSeq   []Max35Text      `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 EQSeq"`
-	NEQSeq  []Max35Text      `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 NEQSeq"`
+	FrSeq   *Max35Text       `xml:"FrSeq,omitempty"`
+	ToSeq   *Max35Text       `xml:"ToSeq,omitempty"`
+	FrToSeq []SequenceRange1 `xml:"FrToSeq"`
+	EQSeq   []Max35Text      `xml:"EQSeq"`
+	NEQSeq  []Max35Text      `xml:"NEQSeq"`
 }
 
 type SupplementaryData1 struct {
-	PlcAndNm *Max350Text                `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 PlcAndNm,omitempty"`
-	Envlp    SupplementaryDataEnvelope1 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.006.001.01 Envlp"`
+	PlcAndNm *Max350Text                `xml:"PlcAndNm,omitempty"`
+	Envlp    SupplementaryDataEnvelope1 `xml:"Envlp"`
 }
 
 type SupplementaryDataEnvelope1 struct {

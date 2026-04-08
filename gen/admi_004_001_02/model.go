@@ -11,22 +11,22 @@ import (
 // XSD Elements
 
 type Document struct {
-	XMLName xml.Name
-
-	SysEvtNtfctn SystemEventNotificationV02 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02 SysEvtNtfctn"`
+	XMLName      xml.Name                   `xml:"Document"`
+	XmlnsUrn     string                     `xml:"xmlns:urn,attr"`
+	SysEvtNtfctn SystemEventNotificationV02 `xml:"SysEvtNtfctn"`
 }
 
 // XSD ComplexType declarations
 
 type Event2 struct {
-	EvtCd    Max4AlphaNumericText `xml:"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02 EvtCd"`
-	EvtParam []*Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02 EvtParam,omitempty"`
-	EvtDesc  *Max1000Text         `xml:"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02 EvtDesc,omitempty"`
-	EvtTm    *fedwire.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02 EvtTm,omitempty"`
+	EvtCd    Max4AlphaNumericText `xml:"EvtCd"`
+	EvtParam []*Max35Text         `xml:"EvtParam,omitempty"`
+	EvtDesc  *Max1000Text         `xml:"EvtDesc,omitempty"`
+	EvtTm    *fedwire.ISODateTime `xml:"EvtTm,omitempty"`
 }
 
 type SystemEventNotificationV02 struct {
-	EvtInf Event2 `xml:"urn:iso:std:iso:20022:tech:xsd:admi.004.001.02 EvtInf"`
+	EvtInf Event2 `xml:"EvtInf"`
 }
 
 // XSD SimpleType declarations

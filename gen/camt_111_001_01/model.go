@@ -11,21 +11,21 @@ import (
 // XSD Elements
 
 type Document struct {
-	XMLName xml.Name
-
-	InvstgtnRspn InvestigationResponseV01 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InvstgtnRspn"`
+	XMLName      xml.Name                 `xml:"Document"`
+	XmlnsUrn     string                   `xml:"xmlns:urn,attr"`
+	InvstgtnRspn InvestigationResponseV01 `xml:"InvstgtnRspn"`
 }
 
 // XSD ComplexType declarations
 
 type AccountIdentification4Choice struct {
-	IBAN *IBAN2007Identifier            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 IBAN,omitempty"`
-	Othr *GenericAccountIdentification1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Othr,omitempty"`
+	IBAN *IBAN2007Identifier            `xml:"IBAN,omitempty"`
+	Othr *GenericAccountIdentification1 `xml:"Othr,omitempty"`
 }
 
 type AccountSchemeName1Choice struct {
-	Cd    *ExternalAccountIdentification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalAccountIdentification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                          `xml:"Prtry,omitempty"`
 }
 
 type ActiveCurrencyAndAmount struct {
@@ -39,740 +39,740 @@ type ActiveOrHistoricCurrencyAndAmount struct {
 }
 
 type AddressType3Choice struct {
-	Cd    *AddressType2Code        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *GenericIdentification30 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *AddressType2Code        `xml:"Cd,omitempty"`
+	Prtry *GenericIdentification30 `xml:"Prtry,omitempty"`
 }
 
 type AdjustmentCompensation1 struct {
-	InitlAmt    *ActiveCurrencyAndAmount                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InitlAmt,omitempty"`
-	DueChrgs    *ActiveCurrencyAndAmount                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DueChrgs,omitempty"`
-	AmtDue      ActiveCurrencyAndAmount                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AmtDue"`
-	CompstnAgt  *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CompstnAgt,omitempty"`
-	CompstnAcct *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CompstnAcct,omitempty"`
-	Prd         *DatePeriod5                                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prd,omitempty"`
-	IntrstRate  *PercentageRate                               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 IntrstRate,omitempty"`
-	Rsn         *Max140Text                                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rsn,omitempty"`
+	InitlAmt    *ActiveCurrencyAndAmount                      `xml:"InitlAmt,omitempty"`
+	DueChrgs    *ActiveCurrencyAndAmount                      `xml:"DueChrgs,omitempty"`
+	AmtDue      ActiveCurrencyAndAmount                       `xml:"AmtDue"`
+	CompstnAgt  *BranchAndFinancialInstitutionIdentification6 `xml:"CompstnAgt,omitempty"`
+	CompstnAcct *CashAccount40                                `xml:"CompstnAcct,omitempty"`
+	Prd         *DatePeriod5                                  `xml:"Prd,omitempty"`
+	IntrstRate  *PercentageRate                               `xml:"IntrstRate,omitempty"`
+	Rsn         *Max140Text                                   `xml:"Rsn,omitempty"`
 }
 
 type AmendmentInformationDetails14 struct {
-	OrgnlMndtId      *Max35Text                                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlMndtId,omitempty"`
-	OrgnlCdtrSchmeId *PartyIdentification135                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlCdtrSchmeId,omitempty"`
-	OrgnlCdtrAgt     *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlCdtrAgt,omitempty"`
-	OrgnlCdtrAgtAcct *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlCdtrAgtAcct,omitempty"`
-	OrgnlDbtr        *PartyIdentification135                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlDbtr,omitempty"`
-	OrgnlDbtrAcct    *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlDbtrAcct,omitempty"`
-	OrgnlDbtrAgt     *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlDbtrAgt,omitempty"`
-	OrgnlDbtrAgtAcct *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlDbtrAgtAcct,omitempty"`
-	OrgnlFnlColltnDt *fedwire.ISODate                              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlFnlColltnDt,omitempty"`
-	OrgnlFrqcy       *Frequency36Choice                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlFrqcy,omitempty"`
-	OrgnlRsn         *MandateSetupReason1Choice                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlRsn,omitempty"`
-	OrgnlTrckgDays   *Exact2NumericText                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlTrckgDays,omitempty"`
+	OrgnlMndtId      *Max35Text                                    `xml:"OrgnlMndtId,omitempty"`
+	OrgnlCdtrSchmeId *PartyIdentification135                       `xml:"OrgnlCdtrSchmeId,omitempty"`
+	OrgnlCdtrAgt     *BranchAndFinancialInstitutionIdentification6 `xml:"OrgnlCdtrAgt,omitempty"`
+	OrgnlCdtrAgtAcct *CashAccount40                                `xml:"OrgnlCdtrAgtAcct,omitempty"`
+	OrgnlDbtr        *PartyIdentification135                       `xml:"OrgnlDbtr,omitempty"`
+	OrgnlDbtrAcct    *CashAccount40                                `xml:"OrgnlDbtrAcct,omitempty"`
+	OrgnlDbtrAgt     *BranchAndFinancialInstitutionIdentification6 `xml:"OrgnlDbtrAgt,omitempty"`
+	OrgnlDbtrAgtAcct *CashAccount40                                `xml:"OrgnlDbtrAgtAcct,omitempty"`
+	OrgnlFnlColltnDt *fedwire.ISODate                              `xml:"OrgnlFnlColltnDt,omitempty"`
+	OrgnlFrqcy       *Frequency36Choice                            `xml:"OrgnlFrqcy,omitempty"`
+	OrgnlRsn         *MandateSetupReason1Choice                    `xml:"OrgnlRsn,omitempty"`
+	OrgnlTrckgDays   *Exact2NumericText                            `xml:"OrgnlTrckgDays,omitempty"`
 }
 
 type AmountType4Choice struct {
-	InstdAmt *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InstdAmt,omitempty"`
-	EqvtAmt  *EquivalentAmount2                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 EqvtAmt,omitempty"`
+	InstdAmt *ActiveOrHistoricCurrencyAndAmount `xml:"InstdAmt,omitempty"`
+	EqvtAmt  *EquivalentAmount2                 `xml:"EqvtAmt,omitempty"`
 }
 
 type BookingConfirmation1 struct {
-	Amt       ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt"`
-	CdtDbtInd CreditDebitCode                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtDbtInd"`
-	XchgRate  *BaseOneRate                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 XchgRate,omitempty"`
-	Acct      CashAccount40                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Acct"`
-	BookgDt   *DateAndDateTime2Choice           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 BookgDt,omitempty"`
-	ValDt     DateAndDateTime2Choice            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ValDt"`
-	Refs      TransactionReferences6            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Refs"`
-	Chrgs     *Charges6                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Chrgs,omitempty"`
-	Rsn       *Max140Text                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rsn,omitempty"`
+	Amt       ActiveOrHistoricCurrencyAndAmount `xml:"Amt"`
+	CdtDbtInd CreditDebitCode                   `xml:"CdtDbtInd"`
+	XchgRate  *BaseOneRate                      `xml:"XchgRate,omitempty"`
+	Acct      CashAccount40                     `xml:"Acct"`
+	BookgDt   *DateAndDateTime2Choice           `xml:"BookgDt,omitempty"`
+	ValDt     DateAndDateTime2Choice            `xml:"ValDt"`
+	Refs      TransactionReferences6            `xml:"Refs"`
+	Chrgs     *Charges6                         `xml:"Chrgs,omitempty"`
+	Rsn       *Max140Text                       `xml:"Rsn,omitempty"`
 }
 
 type BranchAndFinancialInstitutionIdentification6 struct {
-	FinInstnId FinancialInstitutionIdentification18 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FinInstnId"`
-	BrnchId    *BranchData3                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 BrnchId,omitempty"`
+	FinInstnId FinancialInstitutionIdentification18 `xml:"FinInstnId"`
+	BrnchId    *BranchData3                         `xml:"BrnchId,omitempty"`
 }
 
 type BranchData3 struct {
-	Id      *Max35Text       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id,omitempty"`
-	LEI     *LEIIdentifier   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 LEI,omitempty"`
-	Nm      *Max140Text      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nm,omitempty"`
-	PstlAdr *PostalAddress24 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PstlAdr,omitempty"`
+	Id      *Max35Text       `xml:"Id,omitempty"`
+	LEI     *LEIIdentifier   `xml:"LEI,omitempty"`
+	Nm      *Max140Text      `xml:"Nm,omitempty"`
+	PstlAdr *PostalAddress24 `xml:"PstlAdr,omitempty"`
 }
 
 type CashAccount40 struct {
-	Id   *AccountIdentification4Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id,omitempty"`
-	Tp   *CashAccountType2Choice       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Ccy  *ActiveOrHistoricCurrencyCode `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Ccy,omitempty"`
-	Nm   *Max70Text                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nm,omitempty"`
-	Prxy *ProxyAccountIdentification1  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prxy,omitempty"`
+	Id   *AccountIdentification4Choice `xml:"Id,omitempty"`
+	Tp   *CashAccountType2Choice       `xml:"Tp,omitempty"`
+	Ccy  *ActiveOrHistoricCurrencyCode `xml:"Ccy,omitempty"`
+	Nm   *Max70Text                    `xml:"Nm,omitempty"`
+	Prxy *ProxyAccountIdentification1  `xml:"Prxy,omitempty"`
 }
 
 type CashAccountType2Choice struct {
-	Cd    *ExternalCashAccountType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalCashAccountType1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                    `xml:"Prtry,omitempty"`
 }
 
 type CategoryPurpose1Choice struct {
-	Cd    *ExternalCategoryPurpose1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalCategoryPurpose1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                    `xml:"Prtry,omitempty"`
 }
 
 type ChargeType3Choice struct {
-	Cd    *ExternalChargeType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *GenericIdentification3  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalChargeType1Code `xml:"Cd,omitempty"`
+	Prtry *GenericIdentification3  `xml:"Prtry,omitempty"`
 }
 
 type Charges6 struct {
-	TtlChrgsAndTaxAmt *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TtlChrgsAndTaxAmt,omitempty"`
-	Rcrd              []*ChargesRecord3                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rcrd,omitempty"`
+	TtlChrgsAndTaxAmt *ActiveOrHistoricCurrencyAndAmount `xml:"TtlChrgsAndTaxAmt,omitempty"`
+	Rcrd              []*ChargesRecord3                  `xml:"Rcrd,omitempty"`
 }
 
 type ChargesRecord3 struct {
-	Amt         ActiveOrHistoricCurrencyAndAmount             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt"`
-	CdtDbtInd   *CreditDebitCode                              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtDbtInd,omitempty"`
-	ChrgInclInd *ChargeIncludedIndicator                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ChrgInclInd,omitempty"`
-	Tp          *ChargeType3Choice                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Rate        *PercentageRate                               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rate,omitempty"`
-	Br          *ChargeBearerType1Code                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Br,omitempty"`
-	Agt         *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Agt,omitempty"`
-	Tax         *TaxCharges2                                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tax,omitempty"`
+	Amt         ActiveOrHistoricCurrencyAndAmount             `xml:"Amt"`
+	CdtDbtInd   *CreditDebitCode                              `xml:"CdtDbtInd,omitempty"`
+	ChrgInclInd *ChargeIncludedIndicator                      `xml:"ChrgInclInd,omitempty"`
+	Tp          *ChargeType3Choice                            `xml:"Tp,omitempty"`
+	Rate        *PercentageRate                               `xml:"Rate,omitempty"`
+	Br          *ChargeBearerType1Code                        `xml:"Br,omitempty"`
+	Agt         *BranchAndFinancialInstitutionIdentification6 `xml:"Agt,omitempty"`
+	Tax         *TaxCharges2                                  `xml:"Tax,omitempty"`
 }
 
 type ClearingSystemIdentification2Choice struct {
-	Cd    *ExternalClearingSystemIdentification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalClearingSystemIdentification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                                 `xml:"Prtry,omitempty"`
 }
 
 type ClearingSystemIdentification3Choice struct {
-	Cd    *ExternalCashClearingSystem1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalCashClearingSystem1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                       `xml:"Prtry,omitempty"`
 }
 
 type ClearingSystemMemberIdentification2 struct {
-	ClrSysId *ClearingSystemIdentification2Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ClrSysId,omitempty"`
-	MmbId    Max35Text                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MmbId"`
+	ClrSysId *ClearingSystemIdentification2Choice `xml:"ClrSysId,omitempty"`
+	MmbId    Max35Text                            `xml:"MmbId"`
 }
 
 type CompensationResponse1 struct {
-	Grantd     TrueFalseIndicator       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Grantd"`
-	InitlAmt   *ActiveCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InitlAmt,omitempty"`
-	PdChrgs    *ActiveCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PdChrgs,omitempty"`
-	AmtDue     *ActiveCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AmtDue,omitempty"`
-	XpctdValDt *fedwire.ISODate         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 XpctdValDt,omitempty"`
-	Prd        *DatePeriod2             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prd,omitempty"`
-	IntrstRate *PercentageRate          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 IntrstRate,omitempty"`
-	Rsn        *Max140Text              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rsn,omitempty"`
+	Grantd     TrueFalseIndicator       `xml:"Grantd"`
+	InitlAmt   *ActiveCurrencyAndAmount `xml:"InitlAmt,omitempty"`
+	PdChrgs    *ActiveCurrencyAndAmount `xml:"PdChrgs,omitempty"`
+	AmtDue     *ActiveCurrencyAndAmount `xml:"AmtDue,omitempty"`
+	XpctdValDt *fedwire.ISODate         `xml:"XpctdValDt,omitempty"`
+	Prd        *DatePeriod2             `xml:"Prd,omitempty"`
+	IntrstRate *PercentageRate          `xml:"IntrstRate,omitempty"`
+	Rsn        *Max140Text              `xml:"Rsn,omitempty"`
 }
 
 type Contact4 struct {
-	NmPrfx    *NamePrefix2Code             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 NmPrfx,omitempty"`
-	Nm        *Max140Text                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nm,omitempty"`
-	PhneNb    *PhoneNumber                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PhneNb,omitempty"`
-	MobNb     *PhoneNumber                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MobNb,omitempty"`
-	FaxNb     *PhoneNumber                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FaxNb,omitempty"`
-	EmailAdr  *Max2048Text                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 EmailAdr,omitempty"`
-	EmailPurp *Max35Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 EmailPurp,omitempty"`
-	JobTitl   *Max35Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 JobTitl,omitempty"`
-	Rspnsblty *Max35Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rspnsblty,omitempty"`
-	Dept      *Max70Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dept,omitempty"`
-	Othr      []*OtherContact1             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Othr,omitempty"`
-	PrefrdMtd *PreferredContactMethod1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PrefrdMtd,omitempty"`
+	NmPrfx    *NamePrefix2Code             `xml:"NmPrfx,omitempty"`
+	Nm        *Max140Text                  `xml:"Nm,omitempty"`
+	PhneNb    *PhoneNumber                 `xml:"PhneNb,omitempty"`
+	MobNb     *PhoneNumber                 `xml:"MobNb,omitempty"`
+	FaxNb     *PhoneNumber                 `xml:"FaxNb,omitempty"`
+	EmailAdr  *Max2048Text                 `xml:"EmailAdr,omitempty"`
+	EmailPurp *Max35Text                   `xml:"EmailPurp,omitempty"`
+	JobTitl   *Max35Text                   `xml:"JobTitl,omitempty"`
+	Rspnsblty *Max35Text                   `xml:"Rspnsblty,omitempty"`
+	Dept      *Max70Text                   `xml:"Dept,omitempty"`
+	Othr      []*OtherContact1             `xml:"Othr,omitempty"`
+	PrefrdMtd *PreferredContactMethod1Code `xml:"PrefrdMtd,omitempty"`
 }
 
 type CreditTransferMandateData1 struct {
-	MndtId       *Max35Text                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MndtId,omitempty"`
-	Tp           *MandateTypeInformation2   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	DtOfSgntr    *fedwire.ISODate           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DtOfSgntr,omitempty"`
-	DtOfVrfctn   *fedwire.ISODateTime       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DtOfVrfctn,omitempty"`
-	ElctrncSgntr *Max10KBinary              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ElctrncSgntr,omitempty"`
-	FrstPmtDt    *fedwire.ISODate           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FrstPmtDt,omitempty"`
-	FnlPmtDt     *fedwire.ISODate           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FnlPmtDt,omitempty"`
-	Frqcy        *Frequency36Choice         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Frqcy,omitempty"`
-	Rsn          *MandateSetupReason1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rsn,omitempty"`
+	MndtId       *Max35Text                 `xml:"MndtId,omitempty"`
+	Tp           *MandateTypeInformation2   `xml:"Tp,omitempty"`
+	DtOfSgntr    *fedwire.ISODate           `xml:"DtOfSgntr,omitempty"`
+	DtOfVrfctn   *fedwire.ISODateTime       `xml:"DtOfVrfctn,omitempty"`
+	ElctrncSgntr *Max10KBinary              `xml:"ElctrncSgntr,omitempty"`
+	FrstPmtDt    *fedwire.ISODate           `xml:"FrstPmtDt,omitempty"`
+	FnlPmtDt     *fedwire.ISODate           `xml:"FnlPmtDt,omitempty"`
+	Frqcy        *Frequency36Choice         `xml:"Frqcy,omitempty"`
+	Rsn          *MandateSetupReason1Choice `xml:"Rsn,omitempty"`
 }
 
 type CreditorReferenceInformation2 struct {
-	Tp  *CreditorReferenceType2 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Ref *Max35Text              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Ref,omitempty"`
+	Tp  *CreditorReferenceType2 `xml:"Tp,omitempty"`
+	Ref *Max35Text              `xml:"Ref,omitempty"`
 }
 
 type CreditorReferenceType1Choice struct {
-	Cd    *DocumentType3Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *DocumentType3Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text         `xml:"Prtry,omitempty"`
 }
 
 type CreditorReferenceType2 struct {
-	CdOrPrtry CreditorReferenceType1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdOrPrtry"`
-	Issr      *Max35Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	CdOrPrtry CreditorReferenceType1Choice `xml:"CdOrPrtry"`
+	Issr      *Max35Text                   `xml:"Issr,omitempty"`
 }
 
 type DateAndDateTime2Choice struct {
-	Dt   *fedwire.ISODate     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dt,omitempty"`
-	DtTm *fedwire.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DtTm,omitempty"`
+	Dt   *fedwire.ISODate     `xml:"Dt,omitempty"`
+	DtTm *fedwire.ISODateTime `xml:"DtTm,omitempty"`
 }
 
 type DateAndPlaceOfBirth1 struct {
-	BirthDt     fedwire.ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 BirthDt"`
-	PrvcOfBirth *Max35Text      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PrvcOfBirth,omitempty"`
-	CityOfBirth Max35Text       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CityOfBirth"`
-	CtryOfBirth CountryCode     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CtryOfBirth"`
+	BirthDt     fedwire.ISODate `xml:"BirthDt"`
+	PrvcOfBirth *Max35Text      `xml:"PrvcOfBirth,omitempty"`
+	CityOfBirth Max35Text       `xml:"CityOfBirth"`
+	CtryOfBirth CountryCode     `xml:"CtryOfBirth"`
 }
 
 type DatePeriod2 struct {
-	FrDt fedwire.ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FrDt"`
-	ToDt fedwire.ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ToDt"`
+	FrDt fedwire.ISODate `xml:"FrDt"`
+	ToDt fedwire.ISODate `xml:"ToDt"`
 }
 
 type DatePeriod5 struct {
-	CurValDt  fedwire.ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CurValDt"`
-	ReqdValDt fedwire.ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ReqdValDt"`
+	CurValDt  fedwire.ISODate `xml:"CurValDt"`
+	ReqdValDt fedwire.ISODate `xml:"ReqdValDt"`
 }
 
 type DebitAuthorisationConfirmation3 struct {
-	DbtAuthstn TrueFalseIndicator       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DbtAuthstn"`
-	AmtToDbt   *ActiveCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AmtToDbt,omitempty"`
-	Acct       *CashAccount40           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Acct,omitempty"`
-	ValDtToDbt *fedwire.ISODate         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ValDtToDbt,omitempty"`
-	CmonTxId   *Max52Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CmonTxId,omitempty"`
-	Rsn        *Max140Text              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rsn,omitempty"`
+	DbtAuthstn TrueFalseIndicator       `xml:"DbtAuthstn"`
+	AmtToDbt   *ActiveCurrencyAndAmount `xml:"AmtToDbt,omitempty"`
+	Acct       *CashAccount40           `xml:"Acct,omitempty"`
+	ValDtToDbt *fedwire.ISODate         `xml:"ValDtToDbt,omitempty"`
+	CmonTxId   *Max52Text               `xml:"CmonTxId,omitempty"`
+	Rsn        *Max140Text              `xml:"Rsn,omitempty"`
 }
 
 type DiscountAmountAndType1 struct {
-	Tp  *DiscountAmountType1Choice        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Amt ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt"`
+	Tp  *DiscountAmountType1Choice        `xml:"Tp,omitempty"`
+	Amt ActiveOrHistoricCurrencyAndAmount `xml:"Amt"`
 }
 
 type DiscountAmountType1Choice struct {
-	Cd    *ExternalDiscountAmountType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalDiscountAmountType1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                       `xml:"Prtry,omitempty"`
 }
 
 type Document12 struct {
-	Tp        DocumentType1Choice    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp"`
-	Id        Max35Text              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	IsseDt    DateAndDateTime2Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 IsseDt"`
-	Nm        *Max140Text            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nm,omitempty"`
-	LangCd    *LanguageCode          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 LangCd,omitempty"`
-	Frmt      DocumentFormat1Choice  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Frmt"`
-	FileNm    *Max140Text            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FileNm,omitempty"`
-	DgtlSgntr *PartyAndSignature3    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DgtlSgntr,omitempty"`
-	Nclsr     Max10MbBinary          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nclsr"`
+	Tp        DocumentType1Choice    `xml:"Tp"`
+	Id        Max35Text              `xml:"Id"`
+	IsseDt    DateAndDateTime2Choice `xml:"IsseDt"`
+	Nm        *Max140Text            `xml:"Nm,omitempty"`
+	LangCd    *LanguageCode          `xml:"LangCd,omitempty"`
+	Frmt      DocumentFormat1Choice  `xml:"Frmt"`
+	FileNm    *Max140Text            `xml:"FileNm,omitempty"`
+	DgtlSgntr *PartyAndSignature3    `xml:"DgtlSgntr,omitempty"`
+	Nclsr     Max10MbBinary          `xml:"Nclsr"`
 }
 
 type DocumentAdjustment1 struct {
-	Amt       ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt"`
-	CdtDbtInd *CreditDebitCode                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtDbtInd,omitempty"`
-	Rsn       *Max4Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rsn,omitempty"`
-	AddtlInf  *Max140Text                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AddtlInf,omitempty"`
+	Amt       ActiveOrHistoricCurrencyAndAmount `xml:"Amt"`
+	CdtDbtInd *CreditDebitCode                  `xml:"CdtDbtInd,omitempty"`
+	Rsn       *Max4Text                         `xml:"Rsn,omitempty"`
+	AddtlInf  *Max140Text                       `xml:"AddtlInf,omitempty"`
 }
 
 type DocumentFormat1Choice struct {
-	Cd    *ExternalDocumentFormat1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *GenericIdentification1      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalDocumentFormat1Code `xml:"Cd,omitempty"`
+	Prtry *GenericIdentification1      `xml:"Prtry,omitempty"`
 }
 
 type DocumentLineIdentification1 struct {
-	Tp     *DocumentLineType1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Nb     *Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nb,omitempty"`
-	RltdDt *fedwire.ISODate   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RltdDt,omitempty"`
+	Tp     *DocumentLineType1 `xml:"Tp,omitempty"`
+	Nb     *Max35Text         `xml:"Nb,omitempty"`
+	RltdDt *fedwire.ISODate   `xml:"RltdDt,omitempty"`
 }
 
 type DocumentLineInformation1 struct {
-	Id   []DocumentLineIdentification1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	Desc *Max2048Text                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Desc,omitempty"`
-	Amt  *RemittanceAmount3            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt,omitempty"`
+	Id   []DocumentLineIdentification1 `xml:"Id"`
+	Desc *Max2048Text                  `xml:"Desc,omitempty"`
+	Amt  *RemittanceAmount3            `xml:"Amt,omitempty"`
 }
 
 type DocumentLineType1 struct {
-	CdOrPrtry DocumentLineType1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdOrPrtry"`
-	Issr      *Max35Text              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	CdOrPrtry DocumentLineType1Choice `xml:"CdOrPrtry"`
+	Issr      *Max35Text              `xml:"Issr,omitempty"`
 }
 
 type DocumentLineType1Choice struct {
-	Cd    *ExternalDocumentLineType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalDocumentLineType1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                     `xml:"Prtry,omitempty"`
 }
 
 type DocumentType1Choice struct {
-	Cd    *ExternalDocumentType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *GenericIdentification1    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalDocumentType1Code `xml:"Cd,omitempty"`
+	Prtry *GenericIdentification1    `xml:"Prtry,omitempty"`
 }
 
 type EquivalentAmount2 struct {
-	Amt      ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt"`
-	CcyOfTrf ActiveOrHistoricCurrencyCode      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CcyOfTrf"`
+	Amt      ActiveOrHistoricCurrencyAndAmount `xml:"Amt"`
+	CcyOfTrf ActiveOrHistoricCurrencyCode      `xml:"CcyOfTrf"`
 }
 
 type FileData1 struct {
-	Tp                 *DocumentType1Choice    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Id                 Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	IsseDt             *DateAndDateTime2Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 IsseDt,omitempty"`
-	Frmt               *DocumentFormat1Choice  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Frmt,omitempty"`
-	FileNm             *Max140Text             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FileNm,omitempty"`
-	NtwkRef            *Max140Text             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 NtwkRef,omitempty"`
-	FileLctnElctrncAdr *Max2048Text            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FileLctnElctrncAdr,omitempty"`
+	Tp                 *DocumentType1Choice    `xml:"Tp,omitempty"`
+	Id                 Max35Text               `xml:"Id"`
+	IsseDt             *DateAndDateTime2Choice `xml:"IsseDt,omitempty"`
+	Frmt               *DocumentFormat1Choice  `xml:"Frmt,omitempty"`
+	FileNm             *Max140Text             `xml:"FileNm,omitempty"`
+	NtwkRef            *Max140Text             `xml:"NtwkRef,omitempty"`
+	FileLctnElctrncAdr *Max2048Text            `xml:"FileLctnElctrncAdr,omitempty"`
 }
 
 type FinancialIdentificationSchemeName1Choice struct {
-	Cd    *ExternalFinancialInstitutionIdentification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalFinancialInstitutionIdentification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                                       `xml:"Prtry,omitempty"`
 }
 
 type FinancialInstitutionIdentification18 struct {
-	BICFI       *BICFIDec2014Identifier              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 BICFI,omitempty"`
-	ClrSysMmbId *ClearingSystemMemberIdentification2 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ClrSysMmbId,omitempty"`
-	LEI         *LEIIdentifier                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 LEI,omitempty"`
-	Nm          *Max140Text                          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nm,omitempty"`
-	PstlAdr     *PostalAddress24                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PstlAdr,omitempty"`
-	Othr        *GenericFinancialIdentification1     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Othr,omitempty"`
+	BICFI       *BICFIDec2014Identifier              `xml:"BICFI,omitempty"`
+	ClrSysMmbId *ClearingSystemMemberIdentification2 `xml:"ClrSysMmbId,omitempty"`
+	LEI         *LEIIdentifier                       `xml:"LEI,omitempty"`
+	Nm          *Max140Text                          `xml:"Nm,omitempty"`
+	PstlAdr     *PostalAddress24                     `xml:"PstlAdr,omitempty"`
+	Othr        *GenericFinancialIdentification1     `xml:"Othr,omitempty"`
 }
 
 type Frequency36Choice struct {
-	Tp     *Frequency6Code      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Prd    *FrequencyPeriod1    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prd,omitempty"`
-	PtInTm *FrequencyAndMoment1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PtInTm,omitempty"`
+	Tp     *Frequency6Code      `xml:"Tp,omitempty"`
+	Prd    *FrequencyPeriod1    `xml:"Prd,omitempty"`
+	PtInTm *FrequencyAndMoment1 `xml:"PtInTm,omitempty"`
 }
 
 type FrequencyAndMoment1 struct {
-	Tp     Frequency6Code    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp"`
-	PtInTm Exact2NumericText `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PtInTm"`
+	Tp     Frequency6Code    `xml:"Tp"`
+	PtInTm Exact2NumericText `xml:"PtInTm"`
 }
 
 type FrequencyPeriod1 struct {
-	Tp        Frequency6Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp"`
-	CntPerPrd DecimalNumber  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CntPerPrd"`
+	Tp        Frequency6Code `xml:"Tp"`
+	CntPerPrd DecimalNumber  `xml:"CntPerPrd"`
 }
 
 type Garnishment3 struct {
-	Tp                GarnishmentType1                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp"`
-	Grnshee           *PartyIdentification135            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Grnshee,omitempty"`
-	GrnshmtAdmstr     *PartyIdentification135            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 GrnshmtAdmstr,omitempty"`
-	RefNb             *Max140Text                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RefNb,omitempty"`
-	Dt                *fedwire.ISODate                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dt,omitempty"`
-	RmtdAmt           *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RmtdAmt,omitempty"`
-	FmlyMdclInsrncInd *TrueFalseIndicator                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FmlyMdclInsrncInd,omitempty"`
-	MplyeeTermntnInd  *TrueFalseIndicator                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MplyeeTermntnInd,omitempty"`
+	Tp                GarnishmentType1                   `xml:"Tp"`
+	Grnshee           *PartyIdentification135            `xml:"Grnshee,omitempty"`
+	GrnshmtAdmstr     *PartyIdentification135            `xml:"GrnshmtAdmstr,omitempty"`
+	RefNb             *Max140Text                        `xml:"RefNb,omitempty"`
+	Dt                *fedwire.ISODate                   `xml:"Dt,omitempty"`
+	RmtdAmt           *ActiveOrHistoricCurrencyAndAmount `xml:"RmtdAmt,omitempty"`
+	FmlyMdclInsrncInd *TrueFalseIndicator                `xml:"FmlyMdclInsrncInd,omitempty"`
+	MplyeeTermntnInd  *TrueFalseIndicator                `xml:"MplyeeTermntnInd,omitempty"`
 }
 
 type GarnishmentType1 struct {
-	CdOrPrtry GarnishmentType1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdOrPrtry"`
-	Issr      *Max35Text             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	CdOrPrtry GarnishmentType1Choice `xml:"CdOrPrtry"`
+	Issr      *Max35Text             `xml:"Issr,omitempty"`
 }
 
 type GarnishmentType1Choice struct {
-	Cd    *ExternalGarnishmentType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalGarnishmentType1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                    `xml:"Prtry,omitempty"`
 }
 
 type GenericAccountIdentification1 struct {
-	Id      Max34Text                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	SchmeNm *AccountSchemeName1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SchmeNm,omitempty"`
-	Issr    *Max35Text                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	Id      Max34Text                 `xml:"Id"`
+	SchmeNm *AccountSchemeName1Choice `xml:"SchmeNm,omitempty"`
+	Issr    *Max35Text                `xml:"Issr,omitempty"`
 }
 
 type GenericFinancialIdentification1 struct {
-	Id      Max35Text                                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	SchmeNm *FinancialIdentificationSchemeName1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SchmeNm,omitempty"`
-	Issr    *Max35Text                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	Id      Max35Text                                 `xml:"Id"`
+	SchmeNm *FinancialIdentificationSchemeName1Choice `xml:"SchmeNm,omitempty"`
+	Issr    *Max35Text                                `xml:"Issr,omitempty"`
 }
 
 type GenericIdentification1 struct {
-	Id      Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	SchmeNm *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SchmeNm,omitempty"`
-	Issr    *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	Id      Max35Text  `xml:"Id"`
+	SchmeNm *Max35Text `xml:"SchmeNm,omitempty"`
+	Issr    *Max35Text `xml:"Issr,omitempty"`
 }
 
 type GenericIdentification3 struct {
-	Id   Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	Issr *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	Id   Max35Text  `xml:"Id"`
+	Issr *Max35Text `xml:"Issr,omitempty"`
 }
 
 type GenericIdentification30 struct {
-	Id      Exact4AlphaNumericText `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	Issr    Max35Text              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr"`
-	SchmeNm *Max35Text             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SchmeNm,omitempty"`
+	Id      Exact4AlphaNumericText `xml:"Id"`
+	Issr    Max35Text              `xml:"Issr"`
+	SchmeNm *Max35Text             `xml:"SchmeNm,omitempty"`
 }
 
 type GenericOrganisationIdentification1 struct {
-	Id      Max35Text                                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	SchmeNm *OrganisationIdentificationSchemeName1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SchmeNm,omitempty"`
-	Issr    *Max35Text                                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	Id      Max35Text                                    `xml:"Id"`
+	SchmeNm *OrganisationIdentificationSchemeName1Choice `xml:"SchmeNm,omitempty"`
+	Issr    *Max35Text                                   `xml:"Issr,omitempty"`
 }
 
 type GenericPersonIdentification1 struct {
-	Id      Max35Text                              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
-	SchmeNm *PersonIdentificationSchemeName1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SchmeNm,omitempty"`
-	Issr    *Max35Text                             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	Id      Max35Text                              `xml:"Id"`
+	SchmeNm *PersonIdentificationSchemeName1Choice `xml:"SchmeNm,omitempty"`
+	Issr    *Max35Text                             `xml:"Issr,omitempty"`
 }
 
 type InvestigationActionReason1 struct {
-	Orgtr    *PartyIdentification135          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Orgtr,omitempty"`
-	Rsn      InvestigationActionReason1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rsn"`
-	AddtlInf []*Max105Text                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AddtlInf,omitempty"`
+	Orgtr    *PartyIdentification135          `xml:"Orgtr,omitempty"`
+	Rsn      InvestigationActionReason1Choice `xml:"Rsn"`
+	AddtlInf []*Max105Text                    `xml:"AddtlInf,omitempty"`
 }
 
 type InvestigationActionReason1Choice struct {
-	Cd    *ExternalInvestigationActionReason1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalInvestigationActionReason1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                              `xml:"Prtry,omitempty"`
 }
 
 type InvestigationData2 struct {
-	OrgnlInvstgtnSeq      *Max3Number                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlInvstgtnSeq,omitempty"`
-	OrgnlInvstgtnRsn      *InvestigationReason1Choice        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlInvstgtnRsn,omitempty"`
-	OrgnlInvstgtnRsnSubTp *InvestigationReasonSubType1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlInvstgtnRsnSubTp,omitempty"`
-	RspnData              InvestigationDataRecord1Choice     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RspnData"`
-	RltdInvstgtnData      *RelatedInvestigationData1         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RltdInvstgtnData,omitempty"`
-	NclsdFile             []*Document12                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 NclsdFile,omitempty"`
-	RltdFileData          []*FileData1                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RltdFileData,omitempty"`
-	RspnOrgtr             *Party40Choice                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RspnOrgtr,omitempty"`
+	OrgnlInvstgtnSeq      *Max3Number                        `xml:"OrgnlInvstgtnSeq,omitempty"`
+	OrgnlInvstgtnRsn      *InvestigationReason1Choice        `xml:"OrgnlInvstgtnRsn,omitempty"`
+	OrgnlInvstgtnRsnSubTp *InvestigationReasonSubType1Choice `xml:"OrgnlInvstgtnRsnSubTp,omitempty"`
+	RspnData              InvestigationDataRecord1Choice     `xml:"RspnData"`
+	RltdInvstgtnData      *RelatedInvestigationData1         `xml:"RltdInvstgtnData,omitempty"`
+	NclsdFile             []*Document12                      `xml:"NclsdFile,omitempty"`
+	RltdFileData          []*FileData1                       `xml:"RltdFileData,omitempty"`
+	RspnOrgtr             *Party40Choice                     `xml:"RspnOrgtr,omitempty"`
 }
 
 type InvestigationDataRecord1Choice struct {
-	DbtAuthstn *DebitAuthorisationConfirmation3 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DbtAuthstn,omitempty"`
-	Compstn    *CompensationResponse1           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Compstn,omitempty"`
-	Valtn      *AdjustmentCompensation1         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Valtn,omitempty"`
-	Conf       *BookingConfirmation1            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Conf,omitempty"`
-	TxSts      *PaymentTransactionStatus1       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TxSts,omitempty"`
-	TxData     []TransactionAmendment1          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TxData"`
-	RspnNrrtv  *Max500Text                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RspnNrrtv,omitempty"`
+	DbtAuthstn *DebitAuthorisationConfirmation3 `xml:"DbtAuthstn,omitempty"`
+	Compstn    *CompensationResponse1           `xml:"Compstn,omitempty"`
+	Valtn      *AdjustmentCompensation1         `xml:"Valtn,omitempty"`
+	Conf       *BookingConfirmation1            `xml:"Conf,omitempty"`
+	TxSts      *PaymentTransactionStatus1       `xml:"TxSts,omitempty"`
+	TxData     []TransactionAmendment1          `xml:"TxData"`
+	RspnNrrtv  *Max500Text                      `xml:"RspnNrrtv,omitempty"`
 }
 
 type InvestigationLocationData1 struct {
-	Mtd        InvestigationLocationMethod1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Mtd"`
-	ElctrncAdr *Max2048Text                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ElctrncAdr,omitempty"`
-	PstlAdr    *NameAndAddress16                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PstlAdr,omitempty"`
+	Mtd        InvestigationLocationMethod1Code `xml:"Mtd"`
+	ElctrncAdr *Max2048Text                     `xml:"ElctrncAdr,omitempty"`
+	PstlAdr    *NameAndAddress16                `xml:"PstlAdr,omitempty"`
 }
 
 type InvestigationReason1Choice struct {
-	Cd    *ExternalInvestigationReason1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalInvestigationReason1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                        `xml:"Prtry,omitempty"`
 }
 
 type InvestigationReasonSubType1Choice struct {
-	Cd    *ExternalInvestigationReasonSubType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalInvestigationReasonSubType1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                               `xml:"Prtry,omitempty"`
 }
 
 type InvestigationRequest3 struct {
-	MsgId            Max35Text                                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MsgId"`
-	RqstrInvstgtnId  *Max35Text                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RqstrInvstgtnId,omitempty"`
-	RspndrInvstgtnId *Max35Text                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RspndrInvstgtnId,omitempty"`
-	EIR              *UUIDv4Identifier                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 EIR,omitempty"`
-	ReqActn          *InvestigationRequestAction1              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ReqActn,omitempty"`
-	InvstgtnTp       InvestigationType1Choice                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InvstgtnTp"`
-	InvstgtnSubTp    *InvestigationSubType1Choice              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InvstgtnSubTp,omitempty"`
-	UndrlygInstrm    *UnderlyingInvestigationInstrument1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 UndrlygInstrm,omitempty"`
-	Undrlyg          *UnderlyingData2Choice                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Undrlyg,omitempty"`
-	Rqstr            Party40Choice                             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rqstr"`
-	Rspndr           Party40Choice                             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rspndr"`
-	ReqOrgtr         *Party40Choice                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ReqOrgtr,omitempty"`
-	XpctdRspndr      *Party40Choice                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 XpctdRspndr,omitempty"`
-	SvcLvl           []*InvestigationServiceLevel1Choice       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SvcLvl,omitempty"`
+	MsgId            Max35Text                                 `xml:"MsgId"`
+	RqstrInvstgtnId  *Max35Text                                `xml:"RqstrInvstgtnId,omitempty"`
+	RspndrInvstgtnId *Max35Text                                `xml:"RspndrInvstgtnId,omitempty"`
+	EIR              *UUIDv4Identifier                         `xml:"EIR,omitempty"`
+	ReqActn          *InvestigationRequestAction1              `xml:"ReqActn,omitempty"`
+	InvstgtnTp       InvestigationType1Choice                  `xml:"InvstgtnTp"`
+	InvstgtnSubTp    *InvestigationSubType1Choice              `xml:"InvstgtnSubTp,omitempty"`
+	UndrlygInstrm    *UnderlyingInvestigationInstrument1Choice `xml:"UndrlygInstrm,omitempty"`
+	Undrlyg          *UnderlyingData2Choice                    `xml:"Undrlyg,omitempty"`
+	Rqstr            Party40Choice                             `xml:"Rqstr"`
+	Rspndr           Party40Choice                             `xml:"Rspndr"`
+	ReqOrgtr         *Party40Choice                            `xml:"ReqOrgtr,omitempty"`
+	XpctdRspndr      *Party40Choice                            `xml:"XpctdRspndr,omitempty"`
+	SvcLvl           []*InvestigationServiceLevel1Choice       `xml:"SvcLvl,omitempty"`
 }
 
 type InvestigationRequestAction1 struct {
-	Actn    InvestigationRequestAction1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Actn"`
-	ActnRsn *InvestigationActionReason1       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ActnRsn,omitempty"`
+	Actn    InvestigationRequestAction1Choice `xml:"Actn"`
+	ActnRsn *InvestigationActionReason1       `xml:"ActnRsn,omitempty"`
 }
 
 type InvestigationRequestAction1Choice struct {
-	Cd    *ExternalInvestigationAction1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalInvestigationAction1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                        `xml:"Prtry,omitempty"`
 }
 
 type InvestigationResponse3 struct {
-	MsgId            Max35Text             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MsgId"`
-	RspndrInvstgtnId *Max35Text            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RspndrInvstgtnId,omitempty"`
-	InvstgtnSts      InvestigationStatus2  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InvstgtnSts"`
-	NxtRspndr        *Party40Choice        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 NxtRspndr,omitempty"`
-	InvstgtnData     []*InvestigationData2 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InvstgtnData,omitempty"`
+	MsgId            Max35Text             `xml:"MsgId"`
+	RspndrInvstgtnId *Max35Text            `xml:"RspndrInvstgtnId,omitempty"`
+	InvstgtnSts      InvestigationStatus2  `xml:"InvstgtnSts"`
+	NxtRspndr        *Party40Choice        `xml:"NxtRspndr,omitempty"`
+	InvstgtnData     []*InvestigationData2 `xml:"InvstgtnData,omitempty"`
 }
 
 type InvestigationResponseV01 struct {
-	InvstgtnRspn     InvestigationResponse3 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InvstgtnRspn"`
-	OrgnlInvstgtnReq InvestigationRequest3  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlInvstgtnReq"`
-	SplmtryData      []*SupplementaryData1  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SplmtryData,omitempty"`
+	InvstgtnRspn     InvestigationResponse3 `xml:"InvstgtnRspn"`
+	OrgnlInvstgtnReq InvestigationRequest3  `xml:"OrgnlInvstgtnReq"`
+	SplmtryData      []*SupplementaryData1  `xml:"SplmtryData,omitempty"`
 }
 
 type InvestigationServiceLevel1Choice struct {
-	Cd    *ExternalInvestigationServiceLevel1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalInvestigationServiceLevel1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                              `xml:"Prtry,omitempty"`
 }
 
 type InvestigationStatus2 struct {
-	Sts    ExternalInvestigationStatus1Code  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Sts"`
-	StsRsn *InvestigationStatusReason1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 StsRsn,omitempty"`
+	Sts    ExternalInvestigationStatus1Code  `xml:"Sts"`
+	StsRsn *InvestigationStatusReason1Choice `xml:"StsRsn,omitempty"`
 }
 
 type InvestigationStatusReason1Choice struct {
-	Cd    *ExternalInvestigationStatusReason1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalInvestigationStatusReason1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                              `xml:"Prtry,omitempty"`
 }
 
 type InvestigationSubType1Choice struct {
-	Cd    *ExternalInvestigationSubType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalInvestigationSubType1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                         `xml:"Prtry,omitempty"`
 }
 
 type InvestigationType1Choice struct {
-	Cd    *ExternalInvestigationType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalInvestigationType1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                      `xml:"Prtry,omitempty"`
 }
 
 type LocalInstrument2Choice struct {
-	Cd    *ExternalLocalInstrument1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalLocalInstrument1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                    `xml:"Prtry,omitempty"`
 }
 
 type MandateClassification1Choice struct {
-	Cd    *MandateClassification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *MandateClassification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                  `xml:"Prtry,omitempty"`
 }
 
 type MandateRelatedData2Choice struct {
-	DrctDbtMndt *MandateRelatedInformation15 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DrctDbtMndt,omitempty"`
-	CdtTrfMndt  *CreditTransferMandateData1  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtTrfMndt,omitempty"`
+	DrctDbtMndt *MandateRelatedInformation15 `xml:"DrctDbtMndt,omitempty"`
+	CdtTrfMndt  *CreditTransferMandateData1  `xml:"CdtTrfMndt,omitempty"`
 }
 
 type MandateRelatedInformation15 struct {
-	MndtId        *Max35Text                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MndtId,omitempty"`
-	DtOfSgntr     *fedwire.ISODate               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DtOfSgntr,omitempty"`
-	AmdmntInd     *TrueFalseIndicator            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AmdmntInd,omitempty"`
-	AmdmntInfDtls *AmendmentInformationDetails14 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AmdmntInfDtls,omitempty"`
-	ElctrncSgntr  *Max1025Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ElctrncSgntr,omitempty"`
-	FrstColltnDt  *fedwire.ISODate               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FrstColltnDt,omitempty"`
-	FnlColltnDt   *fedwire.ISODate               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FnlColltnDt,omitempty"`
-	Frqcy         *Frequency36Choice             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Frqcy,omitempty"`
-	Rsn           *MandateSetupReason1Choice     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rsn,omitempty"`
-	TrckgDays     *Exact2NumericText             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TrckgDays,omitempty"`
+	MndtId        *Max35Text                     `xml:"MndtId,omitempty"`
+	DtOfSgntr     *fedwire.ISODate               `xml:"DtOfSgntr,omitempty"`
+	AmdmntInd     *TrueFalseIndicator            `xml:"AmdmntInd,omitempty"`
+	AmdmntInfDtls *AmendmentInformationDetails14 `xml:"AmdmntInfDtls,omitempty"`
+	ElctrncSgntr  *Max1025Text                   `xml:"ElctrncSgntr,omitempty"`
+	FrstColltnDt  *fedwire.ISODate               `xml:"FrstColltnDt,omitempty"`
+	FnlColltnDt   *fedwire.ISODate               `xml:"FnlColltnDt,omitempty"`
+	Frqcy         *Frequency36Choice             `xml:"Frqcy,omitempty"`
+	Rsn           *MandateSetupReason1Choice     `xml:"Rsn,omitempty"`
+	TrckgDays     *Exact2NumericText             `xml:"TrckgDays,omitempty"`
 }
 
 type MandateSetupReason1Choice struct {
-	Cd    *ExternalMandateSetupReason1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max70Text                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalMandateSetupReason1Code `xml:"Cd,omitempty"`
+	Prtry *Max70Text                       `xml:"Prtry,omitempty"`
 }
 
 type MandateTypeInformation2 struct {
-	SvcLvl    *ServiceLevel8Choice          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SvcLvl,omitempty"`
-	LclInstrm *LocalInstrument2Choice       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 LclInstrm,omitempty"`
-	CtgyPurp  *CategoryPurpose1Choice       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CtgyPurp,omitempty"`
-	Clssfctn  *MandateClassification1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Clssfctn,omitempty"`
+	SvcLvl    *ServiceLevel8Choice          `xml:"SvcLvl,omitempty"`
+	LclInstrm *LocalInstrument2Choice       `xml:"LclInstrm,omitempty"`
+	CtgyPurp  *CategoryPurpose1Choice       `xml:"CtgyPurp,omitempty"`
+	Clssfctn  *MandateClassification1Choice `xml:"Clssfctn,omitempty"`
 }
 
 type NameAndAddress16 struct {
-	Nm  Max140Text      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nm"`
-	Adr PostalAddress24 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Adr"`
+	Nm  Max140Text      `xml:"Nm"`
+	Adr PostalAddress24 `xml:"Adr"`
 }
 
 type OrganisationIdentification29 struct {
-	AnyBIC *AnyBICDec2014Identifier              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AnyBIC,omitempty"`
-	LEI    *LEIIdentifier                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 LEI,omitempty"`
-	Othr   []*GenericOrganisationIdentification1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Othr,omitempty"`
+	AnyBIC *AnyBICDec2014Identifier              `xml:"AnyBIC,omitempty"`
+	LEI    *LEIIdentifier                        `xml:"LEI,omitempty"`
+	Othr   []*GenericOrganisationIdentification1 `xml:"Othr,omitempty"`
 }
 
 type OrganisationIdentificationSchemeName1Choice struct {
-	Cd    *ExternalOrganisationIdentification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalOrganisationIdentification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                               `xml:"Prtry,omitempty"`
 }
 
 type OriginalGroupInformation29 struct {
-	OrgnlMsgId   Max35Text            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlMsgId"`
-	OrgnlMsgNmId Max35Text            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlMsgNmId"`
-	OrgnlCreDtTm *fedwire.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlCreDtTm,omitempty"`
+	OrgnlMsgId   Max35Text            `xml:"OrgnlMsgId"`
+	OrgnlMsgNmId Max35Text            `xml:"OrgnlMsgNmId"`
+	OrgnlCreDtTm *fedwire.ISODateTime `xml:"OrgnlCreDtTm,omitempty"`
 }
 
 type OriginalTransactionReference35 struct {
-	IntrBkSttlmAmt *ActiveOrHistoricCurrencyAndAmount            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 IntrBkSttlmAmt,omitempty"`
-	Amt            *AmountType4Choice                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt,omitempty"`
-	IntrBkSttlmDt  *fedwire.ISODate                              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 IntrBkSttlmDt,omitempty"`
-	ReqdColltnDt   *fedwire.ISODate                              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ReqdColltnDt,omitempty"`
-	ReqdExctnDt    *DateAndDateTime2Choice                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ReqdExctnDt,omitempty"`
-	CdtrSchmeId    *PartyIdentification135                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtrSchmeId,omitempty"`
-	SttlmInf       *SettlementInstruction11                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SttlmInf,omitempty"`
-	PmtTpInf       *PaymentTypeInformation27                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PmtTpInf,omitempty"`
-	PmtMtd         *PaymentMethod4Code                           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PmtMtd,omitempty"`
-	MndtRltdInf    *MandateRelatedData2Choice                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MndtRltdInf,omitempty"`
-	RmtInf         *RemittanceInformation21                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RmtInf,omitempty"`
-	UltmtDbtr      *Party40Choice                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 UltmtDbtr,omitempty"`
-	Dbtr           *Party40Choice                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dbtr,omitempty"`
-	DbtrAcct       *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DbtrAcct,omitempty"`
-	DbtrAgt        *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DbtrAgt,omitempty"`
-	DbtrAgtAcct    *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DbtrAgtAcct,omitempty"`
-	CdtrAgt        *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtrAgt,omitempty"`
-	CdtrAgtAcct    *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtrAgtAcct,omitempty"`
-	Cdtr           *Party40Choice                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cdtr,omitempty"`
-	CdtrAcct       *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtrAcct,omitempty"`
-	UltmtCdtr      *Party40Choice                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 UltmtCdtr,omitempty"`
-	Purp           *Purpose2Choice                               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Purp,omitempty"`
+	IntrBkSttlmAmt *ActiveOrHistoricCurrencyAndAmount            `xml:"IntrBkSttlmAmt,omitempty"`
+	Amt            *AmountType4Choice                            `xml:"Amt,omitempty"`
+	IntrBkSttlmDt  *fedwire.ISODate                              `xml:"IntrBkSttlmDt,omitempty"`
+	ReqdColltnDt   *fedwire.ISODate                              `xml:"ReqdColltnDt,omitempty"`
+	ReqdExctnDt    *DateAndDateTime2Choice                       `xml:"ReqdExctnDt,omitempty"`
+	CdtrSchmeId    *PartyIdentification135                       `xml:"CdtrSchmeId,omitempty"`
+	SttlmInf       *SettlementInstruction11                      `xml:"SttlmInf,omitempty"`
+	PmtTpInf       *PaymentTypeInformation27                     `xml:"PmtTpInf,omitempty"`
+	PmtMtd         *PaymentMethod4Code                           `xml:"PmtMtd,omitempty"`
+	MndtRltdInf    *MandateRelatedData2Choice                    `xml:"MndtRltdInf,omitempty"`
+	RmtInf         *RemittanceInformation21                      `xml:"RmtInf,omitempty"`
+	UltmtDbtr      *Party40Choice                                `xml:"UltmtDbtr,omitempty"`
+	Dbtr           *Party40Choice                                `xml:"Dbtr,omitempty"`
+	DbtrAcct       *CashAccount40                                `xml:"DbtrAcct,omitempty"`
+	DbtrAgt        *BranchAndFinancialInstitutionIdentification6 `xml:"DbtrAgt,omitempty"`
+	DbtrAgtAcct    *CashAccount40                                `xml:"DbtrAgtAcct,omitempty"`
+	CdtrAgt        *BranchAndFinancialInstitutionIdentification6 `xml:"CdtrAgt,omitempty"`
+	CdtrAgtAcct    *CashAccount40                                `xml:"CdtrAgtAcct,omitempty"`
+	Cdtr           *Party40Choice                                `xml:"Cdtr,omitempty"`
+	CdtrAcct       *CashAccount40                                `xml:"CdtrAcct,omitempty"`
+	UltmtCdtr      *Party40Choice                                `xml:"UltmtCdtr,omitempty"`
+	Purp           *Purpose2Choice                               `xml:"Purp,omitempty"`
 }
 
 type OtherContact1 struct {
-	ChanlTp Max4Text    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ChanlTp"`
-	Id      *Max128Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id,omitempty"`
+	ChanlTp Max4Text    `xml:"ChanlTp"`
+	Id      *Max128Text `xml:"Id,omitempty"`
 }
 
 type Party38Choice struct {
-	OrgId  *OrganisationIdentification29 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgId,omitempty"`
-	PrvtId *PersonIdentification13       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PrvtId,omitempty"`
+	OrgId  *OrganisationIdentification29 `xml:"OrgId,omitempty"`
+	PrvtId *PersonIdentification13       `xml:"PrvtId,omitempty"`
 }
 
 type Party40Choice struct {
-	Pty *PartyIdentification135                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Pty,omitempty"`
-	Agt *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Agt,omitempty"`
+	Pty *PartyIdentification135                       `xml:"Pty,omitempty"`
+	Agt *BranchAndFinancialInstitutionIdentification6 `xml:"Agt,omitempty"`
 }
 
 type PartyAndSignature3 struct {
-	Pty   PartyIdentification135 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Pty"`
-	Sgntr SkipPayload            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Sgntr"`
+	Pty   PartyIdentification135 `xml:"Pty"`
+	Sgntr SkipPayload            `xml:"Sgntr"`
 }
 
 type PartyIdentification135 struct {
-	Nm        *Max140Text      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nm,omitempty"`
-	PstlAdr   *PostalAddress24 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PstlAdr,omitempty"`
-	Id        *Party38Choice   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id,omitempty"`
-	CtryOfRes *CountryCode     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CtryOfRes,omitempty"`
-	CtctDtls  *Contact4        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CtctDtls,omitempty"`
+	Nm        *Max140Text      `xml:"Nm,omitempty"`
+	PstlAdr   *PostalAddress24 `xml:"PstlAdr,omitempty"`
+	Id        *Party38Choice   `xml:"Id,omitempty"`
+	CtryOfRes *CountryCode     `xml:"CtryOfRes,omitempty"`
+	CtctDtls  *Contact4        `xml:"CtctDtls,omitempty"`
 }
 
 type PaymentTransactionStatus1 struct {
-	Sts       TransactionStatus1Choice     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Sts"`
-	StsRsnInf []*StatusReasonInformation12 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 StsRsnInf,omitempty"`
+	Sts       TransactionStatus1Choice     `xml:"Sts"`
+	StsRsnInf []*StatusReasonInformation12 `xml:"StsRsnInf,omitempty"`
 }
 
 type PaymentTypeInformation27 struct {
-	InstrPrty *Priority2Code          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InstrPrty,omitempty"`
-	ClrChanl  *ClearingChannel2Code   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ClrChanl,omitempty"`
-	SvcLvl    []*ServiceLevel8Choice  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SvcLvl,omitempty"`
-	LclInstrm *LocalInstrument2Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 LclInstrm,omitempty"`
-	SeqTp     *SequenceType3Code      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SeqTp,omitempty"`
-	CtgyPurp  *CategoryPurpose1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CtgyPurp,omitempty"`
+	InstrPrty *Priority2Code          `xml:"InstrPrty,omitempty"`
+	ClrChanl  *ClearingChannel2Code   `xml:"ClrChanl,omitempty"`
+	SvcLvl    []*ServiceLevel8Choice  `xml:"SvcLvl,omitempty"`
+	LclInstrm *LocalInstrument2Choice `xml:"LclInstrm,omitempty"`
+	SeqTp     *SequenceType3Code      `xml:"SeqTp,omitempty"`
+	CtgyPurp  *CategoryPurpose1Choice `xml:"CtgyPurp,omitempty"`
 }
 
 type PersonIdentification13 struct {
-	DtAndPlcOfBirth *DateAndPlaceOfBirth1           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DtAndPlcOfBirth,omitempty"`
-	Othr            []*GenericPersonIdentification1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Othr,omitempty"`
+	DtAndPlcOfBirth *DateAndPlaceOfBirth1           `xml:"DtAndPlcOfBirth,omitempty"`
+	Othr            []*GenericPersonIdentification1 `xml:"Othr,omitempty"`
 }
 
 type PersonIdentificationSchemeName1Choice struct {
-	Cd    *ExternalPersonIdentification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalPersonIdentification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                         `xml:"Prtry,omitempty"`
 }
 
 type PostalAddress24 struct {
-	AdrTp       *AddressType3Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AdrTp,omitempty"`
-	Dept        *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dept,omitempty"`
-	SubDept     *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SubDept,omitempty"`
-	StrtNm      *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 StrtNm,omitempty"`
-	BldgNb      *Max16Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 BldgNb,omitempty"`
-	BldgNm      *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 BldgNm,omitempty"`
-	Flr         *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Flr,omitempty"`
-	PstBx       *Max16Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PstBx,omitempty"`
-	Room        *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Room,omitempty"`
-	PstCd       *Max16Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PstCd,omitempty"`
-	TwnNm       *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TwnNm,omitempty"`
-	TwnLctnNm   *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TwnLctnNm,omitempty"`
-	DstrctNm    *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DstrctNm,omitempty"`
-	CtrySubDvsn *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CtrySubDvsn,omitempty"`
-	Ctry        *CountryCode        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Ctry,omitempty"`
-	AdrLine     []*Max70Text        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AdrLine,omitempty"`
+	AdrTp       *AddressType3Choice `xml:"AdrTp,omitempty"`
+	Dept        *Max70Text          `xml:"Dept,omitempty"`
+	SubDept     *Max70Text          `xml:"SubDept,omitempty"`
+	StrtNm      *Max70Text          `xml:"StrtNm,omitempty"`
+	BldgNb      *Max16Text          `xml:"BldgNb,omitempty"`
+	BldgNm      *Max35Text          `xml:"BldgNm,omitempty"`
+	Flr         *Max70Text          `xml:"Flr,omitempty"`
+	PstBx       *Max16Text          `xml:"PstBx,omitempty"`
+	Room        *Max70Text          `xml:"Room,omitempty"`
+	PstCd       *Max16Text          `xml:"PstCd,omitempty"`
+	TwnNm       *Max35Text          `xml:"TwnNm,omitempty"`
+	TwnLctnNm   *Max35Text          `xml:"TwnLctnNm,omitempty"`
+	DstrctNm    *Max35Text          `xml:"DstrctNm,omitempty"`
+	CtrySubDvsn *Max35Text          `xml:"CtrySubDvsn,omitempty"`
+	Ctry        *CountryCode        `xml:"Ctry,omitempty"`
+	AdrLine     []*Max70Text        `xml:"AdrLine,omitempty"`
 }
 
 type ProprietaryReference1 struct {
-	Tp  Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp"`
-	Ref Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Ref"`
+	Tp  Max35Text `xml:"Tp"`
+	Ref Max35Text `xml:"Ref"`
 }
 
 type ProxyAccountIdentification1 struct {
-	Tp *ProxyAccountType1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Id Max2048Text              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id"`
+	Tp *ProxyAccountType1Choice `xml:"Tp,omitempty"`
+	Id Max2048Text              `xml:"Id"`
 }
 
 type ProxyAccountType1Choice struct {
-	Cd    *ExternalProxyAccountType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalProxyAccountType1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                     `xml:"Prtry,omitempty"`
 }
 
 type Purpose2Choice struct {
-	Cd    *ExternalPurpose1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalPurpose1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text            `xml:"Prtry,omitempty"`
 }
 
 type ReferredDocumentInformation7 struct {
-	Tp       *ReferredDocumentType4      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Nb       *Max35Text                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nb,omitempty"`
-	RltdDt   *fedwire.ISODate            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RltdDt,omitempty"`
-	LineDtls []*DocumentLineInformation1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 LineDtls,omitempty"`
+	Tp       *ReferredDocumentType4      `xml:"Tp,omitempty"`
+	Nb       *Max35Text                  `xml:"Nb,omitempty"`
+	RltdDt   *fedwire.ISODate            `xml:"RltdDt,omitempty"`
+	LineDtls []*DocumentLineInformation1 `xml:"LineDtls,omitempty"`
 }
 
 type ReferredDocumentType3Choice struct {
-	Cd    *DocumentType6Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *DocumentType6Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text         `xml:"Prtry,omitempty"`
 }
 
 type ReferredDocumentType4 struct {
-	CdOrPrtry ReferredDocumentType3Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdOrPrtry"`
-	Issr      *Max35Text                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Issr,omitempty"`
+	CdOrPrtry ReferredDocumentType3Choice `xml:"CdOrPrtry"`
+	Issr      *Max35Text                  `xml:"Issr,omitempty"`
 }
 
 type RelatedInvestigationData1 struct {
-	InvstgtnId *Max35Text                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InvstgtnId,omitempty"`
-	Lctn       []*InvestigationLocationData1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Lctn,omitempty"`
+	InvstgtnId *Max35Text                    `xml:"InvstgtnId,omitempty"`
+	Lctn       []*InvestigationLocationData1 `xml:"Lctn,omitempty"`
 }
 
 type Remittance1 struct {
-	Ustrd []*Max140Text                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Ustrd,omitempty"`
-	Strd  []*StructuredRemittanceInformation16 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Strd,omitempty"`
-	Rltd  []*RemittanceLocation7               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rltd,omitempty"`
+	Ustrd []*Max140Text                        `xml:"Ustrd,omitempty"`
+	Strd  []*StructuredRemittanceInformation16 `xml:"Strd,omitempty"`
+	Rltd  []*RemittanceLocation7               `xml:"Rltd,omitempty"`
 }
 
 type RemittanceAmount2 struct {
-	DuePyblAmt        *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DuePyblAmt,omitempty"`
-	DscntApldAmt      []*DiscountAmountAndType1          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DscntApldAmt,omitempty"`
-	CdtNoteAmt        *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtNoteAmt,omitempty"`
-	TaxAmt            []*TaxAmountAndType1               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxAmt,omitempty"`
-	AdjstmntAmtAndRsn []*DocumentAdjustment1             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AdjstmntAmtAndRsn,omitempty"`
-	RmtdAmt           *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RmtdAmt,omitempty"`
+	DuePyblAmt        *ActiveOrHistoricCurrencyAndAmount `xml:"DuePyblAmt,omitempty"`
+	DscntApldAmt      []*DiscountAmountAndType1          `xml:"DscntApldAmt,omitempty"`
+	CdtNoteAmt        *ActiveOrHistoricCurrencyAndAmount `xml:"CdtNoteAmt,omitempty"`
+	TaxAmt            []*TaxAmountAndType1               `xml:"TaxAmt,omitempty"`
+	AdjstmntAmtAndRsn []*DocumentAdjustment1             `xml:"AdjstmntAmtAndRsn,omitempty"`
+	RmtdAmt           *ActiveOrHistoricCurrencyAndAmount `xml:"RmtdAmt,omitempty"`
 }
 
 type RemittanceAmount3 struct {
-	DuePyblAmt        *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DuePyblAmt,omitempty"`
-	DscntApldAmt      []*DiscountAmountAndType1          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DscntApldAmt,omitempty"`
-	CdtNoteAmt        *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtNoteAmt,omitempty"`
-	TaxAmt            []*TaxAmountAndType1               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxAmt,omitempty"`
-	AdjstmntAmtAndRsn []*DocumentAdjustment1             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AdjstmntAmtAndRsn,omitempty"`
-	RmtdAmt           *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RmtdAmt,omitempty"`
+	DuePyblAmt        *ActiveOrHistoricCurrencyAndAmount `xml:"DuePyblAmt,omitempty"`
+	DscntApldAmt      []*DiscountAmountAndType1          `xml:"DscntApldAmt,omitempty"`
+	CdtNoteAmt        *ActiveOrHistoricCurrencyAndAmount `xml:"CdtNoteAmt,omitempty"`
+	TaxAmt            []*TaxAmountAndType1               `xml:"TaxAmt,omitempty"`
+	AdjstmntAmtAndRsn []*DocumentAdjustment1             `xml:"AdjstmntAmtAndRsn,omitempty"`
+	RmtdAmt           *ActiveOrHistoricCurrencyAndAmount `xml:"RmtdAmt,omitempty"`
 }
 
 type RemittanceInformation21 struct {
-	Ustrd []*Max140Text                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Ustrd,omitempty"`
-	Strd  []*StructuredRemittanceInformation17 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Strd,omitempty"`
+	Ustrd []*Max140Text                        `xml:"Ustrd,omitempty"`
+	Strd  []*StructuredRemittanceInformation17 `xml:"Strd,omitempty"`
 }
 
 type RemittanceLocation7 struct {
-	RmtId       *Max35Text                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RmtId,omitempty"`
-	RmtLctnDtls []*RemittanceLocationData1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RmtLctnDtls,omitempty"`
+	RmtId       *Max35Text                 `xml:"RmtId,omitempty"`
+	RmtLctnDtls []*RemittanceLocationData1 `xml:"RmtLctnDtls,omitempty"`
 }
 
 type RemittanceLocationData1 struct {
-	Mtd        RemittanceLocationMethod2Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Mtd"`
-	ElctrncAdr *Max2048Text                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ElctrncAdr,omitempty"`
-	PstlAdr    *NameAndAddress16             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PstlAdr,omitempty"`
+	Mtd        RemittanceLocationMethod2Code `xml:"Mtd"`
+	ElctrncAdr *Max2048Text                  `xml:"ElctrncAdr,omitempty"`
+	PstlAdr    *NameAndAddress16             `xml:"PstlAdr,omitempty"`
 }
 
 type ServiceLevel8Choice struct {
-	Cd    *ExternalServiceLevel1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalServiceLevel1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                 `xml:"Prtry,omitempty"`
 }
 
 type SettlementInstruction11 struct {
-	SttlmMtd             SettlementMethod1Code                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SttlmMtd"`
-	SttlmAcct            *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SttlmAcct,omitempty"`
-	ClrSys               *ClearingSystemIdentification3Choice          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ClrSys,omitempty"`
-	InstgRmbrsmntAgt     *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InstgRmbrsmntAgt,omitempty"`
-	InstgRmbrsmntAgtAcct *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InstgRmbrsmntAgtAcct,omitempty"`
-	InstdRmbrsmntAgt     *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InstdRmbrsmntAgt,omitempty"`
-	InstdRmbrsmntAgtAcct *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InstdRmbrsmntAgtAcct,omitempty"`
-	ThrdRmbrsmntAgt      *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ThrdRmbrsmntAgt,omitempty"`
-	ThrdRmbrsmntAgtAcct  *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ThrdRmbrsmntAgtAcct,omitempty"`
+	SttlmMtd             SettlementMethod1Code                         `xml:"SttlmMtd"`
+	SttlmAcct            *CashAccount40                                `xml:"SttlmAcct,omitempty"`
+	ClrSys               *ClearingSystemIdentification3Choice          `xml:"ClrSys,omitempty"`
+	InstgRmbrsmntAgt     *BranchAndFinancialInstitutionIdentification6 `xml:"InstgRmbrsmntAgt,omitempty"`
+	InstgRmbrsmntAgtAcct *CashAccount40                                `xml:"InstgRmbrsmntAgtAcct,omitempty"`
+	InstdRmbrsmntAgt     *BranchAndFinancialInstitutionIdentification6 `xml:"InstdRmbrsmntAgt,omitempty"`
+	InstdRmbrsmntAgtAcct *CashAccount40                                `xml:"InstdRmbrsmntAgtAcct,omitempty"`
+	ThrdRmbrsmntAgt      *BranchAndFinancialInstitutionIdentification6 `xml:"ThrdRmbrsmntAgt,omitempty"`
+	ThrdRmbrsmntAgtAcct  *CashAccount40                                `xml:"ThrdRmbrsmntAgtAcct,omitempty"`
 }
 
 type SkipPayload struct {
@@ -780,41 +780,41 @@ type SkipPayload struct {
 }
 
 type StatusReason6Choice struct {
-	Cd    *ExternalStatusReason1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalStatusReason1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                 `xml:"Prtry,omitempty"`
 }
 
 type StatusReasonInformation12 struct {
-	Orgtr    *PartyIdentification135 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Orgtr,omitempty"`
-	Rsn      *StatusReason6Choice    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rsn,omitempty"`
-	AddtlInf []*Max105Text           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AddtlInf,omitempty"`
+	Orgtr    *PartyIdentification135 `xml:"Orgtr,omitempty"`
+	Rsn      *StatusReason6Choice    `xml:"Rsn,omitempty"`
+	AddtlInf []*Max105Text           `xml:"AddtlInf,omitempty"`
 }
 
 type StructuredRemittanceInformation16 struct {
-	RfrdDocInf  []*ReferredDocumentInformation7 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RfrdDocInf,omitempty"`
-	RfrdDocAmt  *RemittanceAmount2              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RfrdDocAmt,omitempty"`
-	CdtrRefInf  *CreditorReferenceInformation2  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtrRefInf,omitempty"`
-	Invcr       *PartyIdentification135         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Invcr,omitempty"`
-	Invcee      *PartyIdentification135         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Invcee,omitempty"`
-	TaxRmt      *TaxInformation7                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxRmt,omitempty"`
-	GrnshmtRmt  *Garnishment3                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 GrnshmtRmt,omitempty"`
-	AddtlRmtInf []*Max140Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AddtlRmtInf,omitempty"`
+	RfrdDocInf  []*ReferredDocumentInformation7 `xml:"RfrdDocInf,omitempty"`
+	RfrdDocAmt  *RemittanceAmount2              `xml:"RfrdDocAmt,omitempty"`
+	CdtrRefInf  *CreditorReferenceInformation2  `xml:"CdtrRefInf,omitempty"`
+	Invcr       *PartyIdentification135         `xml:"Invcr,omitempty"`
+	Invcee      *PartyIdentification135         `xml:"Invcee,omitempty"`
+	TaxRmt      *TaxInformation7                `xml:"TaxRmt,omitempty"`
+	GrnshmtRmt  *Garnishment3                   `xml:"GrnshmtRmt,omitempty"`
+	AddtlRmtInf []*Max140Text                   `xml:"AddtlRmtInf,omitempty"`
 }
 
 type StructuredRemittanceInformation17 struct {
-	RfrdDocInf  []*ReferredDocumentInformation7 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RfrdDocInf,omitempty"`
-	RfrdDocAmt  *RemittanceAmount2              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RfrdDocAmt,omitempty"`
-	CdtrRefInf  *CreditorReferenceInformation2  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CdtrRefInf,omitempty"`
-	Invcr       *PartyIdentification135         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Invcr,omitempty"`
-	Invcee      *PartyIdentification135         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Invcee,omitempty"`
-	TaxRmt      *TaxData1                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxRmt,omitempty"`
-	GrnshmtRmt  *Garnishment3                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 GrnshmtRmt,omitempty"`
-	AddtlRmtInf []*Max140Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AddtlRmtInf,omitempty"`
+	RfrdDocInf  []*ReferredDocumentInformation7 `xml:"RfrdDocInf,omitempty"`
+	RfrdDocAmt  *RemittanceAmount2              `xml:"RfrdDocAmt,omitempty"`
+	CdtrRefInf  *CreditorReferenceInformation2  `xml:"CdtrRefInf,omitempty"`
+	Invcr       *PartyIdentification135         `xml:"Invcr,omitempty"`
+	Invcee      *PartyIdentification135         `xml:"Invcee,omitempty"`
+	TaxRmt      *TaxData1                       `xml:"TaxRmt,omitempty"`
+	GrnshmtRmt  *Garnishment3                   `xml:"GrnshmtRmt,omitempty"`
+	AddtlRmtInf []*Max140Text                   `xml:"AddtlRmtInf,omitempty"`
 }
 
 type SupplementaryData1 struct {
-	PlcAndNm *Max350Text                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PlcAndNm,omitempty"`
-	Envlp    SupplementaryDataEnvelope1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Envlp"`
+	PlcAndNm *Max350Text                `xml:"PlcAndNm,omitempty"`
+	Envlp    SupplementaryDataEnvelope1 `xml:"Envlp"`
 }
 
 type SupplementaryDataEnvelope1 struct {
@@ -822,222 +822,222 @@ type SupplementaryDataEnvelope1 struct {
 }
 
 type TaxAmount2 struct {
-	Rate         *PercentageRate                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rate,omitempty"`
-	TaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxblBaseAmt,omitempty"`
-	TtlAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TtlAmt,omitempty"`
-	Dtls         []*TaxRecordDetails2               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dtls,omitempty"`
+	Rate         *PercentageRate                    `xml:"Rate,omitempty"`
+	TaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"TaxblBaseAmt,omitempty"`
+	TtlAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"TtlAmt,omitempty"`
+	Dtls         []*TaxRecordDetails2               `xml:"Dtls,omitempty"`
 }
 
 type TaxAmount3 struct {
-	Rate         *PercentageRate                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rate,omitempty"`
-	TaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxblBaseAmt,omitempty"`
-	TtlAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TtlAmt,omitempty"`
-	Dtls         []*TaxRecordDetails3               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dtls,omitempty"`
+	Rate         *PercentageRate                    `xml:"Rate,omitempty"`
+	TaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"TaxblBaseAmt,omitempty"`
+	TtlAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"TtlAmt,omitempty"`
+	Dtls         []*TaxRecordDetails3               `xml:"Dtls,omitempty"`
 }
 
 type TaxAmountAndType1 struct {
-	Tp  *TaxAmountType1Choice             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Amt ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt"`
+	Tp  *TaxAmountType1Choice             `xml:"Tp,omitempty"`
+	Amt ActiveOrHistoricCurrencyAndAmount `xml:"Amt"`
 }
 
 type TaxAmountType1Choice struct {
-	Cd    *ExternalTaxAmountType1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalTaxAmountType1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                  `xml:"Prtry,omitempty"`
 }
 
 type TaxAuthorisation1 struct {
-	Titl *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Titl,omitempty"`
-	Nm   *Max140Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Nm,omitempty"`
+	Titl *Max35Text  `xml:"Titl,omitempty"`
+	Nm   *Max140Text `xml:"Nm,omitempty"`
 }
 
 type TaxCharges2 struct {
-	Id   *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Id,omitempty"`
-	Rate *PercentageRate                    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rate,omitempty"`
-	Amt  *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt,omitempty"`
+	Id   *Max35Text                         `xml:"Id,omitempty"`
+	Rate *PercentageRate                    `xml:"Rate,omitempty"`
+	Amt  *ActiveOrHistoricCurrencyAndAmount `xml:"Amt,omitempty"`
 }
 
 type TaxData1 struct {
-	Cdtr            *TaxParty1                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cdtr,omitempty"`
-	Dbtr            *TaxParty2                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dbtr,omitempty"`
-	UltmtDbtr       *TaxParty2                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 UltmtDbtr,omitempty"`
-	AdmstnZone      *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AdmstnZone,omitempty"`
-	RefNb           *Max140Text                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RefNb,omitempty"`
-	Mtd             *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Mtd,omitempty"`
-	TtlTaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TtlTaxblBaseAmt,omitempty"`
-	TtlTaxAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TtlTaxAmt,omitempty"`
-	Dt              *fedwire.ISODate                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dt,omitempty"`
-	SeqNb           *Number                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SeqNb,omitempty"`
-	Rcrd            []*TaxRecord3                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rcrd,omitempty"`
+	Cdtr            *TaxParty1                         `xml:"Cdtr,omitempty"`
+	Dbtr            *TaxParty2                         `xml:"Dbtr,omitempty"`
+	UltmtDbtr       *TaxParty2                         `xml:"UltmtDbtr,omitempty"`
+	AdmstnZone      *Max35Text                         `xml:"AdmstnZone,omitempty"`
+	RefNb           *Max140Text                        `xml:"RefNb,omitempty"`
+	Mtd             *Max35Text                         `xml:"Mtd,omitempty"`
+	TtlTaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"TtlTaxblBaseAmt,omitempty"`
+	TtlTaxAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"TtlTaxAmt,omitempty"`
+	Dt              *fedwire.ISODate                   `xml:"Dt,omitempty"`
+	SeqNb           *Number                            `xml:"SeqNb,omitempty"`
+	Rcrd            []*TaxRecord3                      `xml:"Rcrd,omitempty"`
 }
 
 type TaxInformation7 struct {
-	Cdtr            *TaxParty1                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cdtr,omitempty"`
-	Dbtr            *TaxParty2                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dbtr,omitempty"`
-	UltmtDbtr       *TaxParty2                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 UltmtDbtr,omitempty"`
-	AdmstnZone      *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AdmstnZone,omitempty"`
-	RefNb           *Max140Text                        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RefNb,omitempty"`
-	Mtd             *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Mtd,omitempty"`
-	TtlTaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TtlTaxblBaseAmt,omitempty"`
-	TtlTaxAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TtlTaxAmt,omitempty"`
-	Dt              *fedwire.ISODate                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dt,omitempty"`
-	SeqNb           *Number                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 SeqNb,omitempty"`
-	Rcrd            []*TaxRecord2                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rcrd,omitempty"`
+	Cdtr            *TaxParty1                         `xml:"Cdtr,omitempty"`
+	Dbtr            *TaxParty2                         `xml:"Dbtr,omitempty"`
+	UltmtDbtr       *TaxParty2                         `xml:"UltmtDbtr,omitempty"`
+	AdmstnZone      *Max35Text                         `xml:"AdmstnZone,omitempty"`
+	RefNb           *Max140Text                        `xml:"RefNb,omitempty"`
+	Mtd             *Max35Text                         `xml:"Mtd,omitempty"`
+	TtlTaxblBaseAmt *ActiveOrHistoricCurrencyAndAmount `xml:"TtlTaxblBaseAmt,omitempty"`
+	TtlTaxAmt       *ActiveOrHistoricCurrencyAndAmount `xml:"TtlTaxAmt,omitempty"`
+	Dt              *fedwire.ISODate                   `xml:"Dt,omitempty"`
+	SeqNb           *Number                            `xml:"SeqNb,omitempty"`
+	Rcrd            []*TaxRecord2                      `xml:"Rcrd,omitempty"`
 }
 
 type TaxParty1 struct {
-	TaxId  *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxId,omitempty"`
-	RegnId *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RegnId,omitempty"`
-	TaxTp  *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxTp,omitempty"`
+	TaxId  *Max35Text `xml:"TaxId,omitempty"`
+	RegnId *Max35Text `xml:"RegnId,omitempty"`
+	TaxTp  *Max35Text `xml:"TaxTp,omitempty"`
 }
 
 type TaxParty2 struct {
-	TaxId   *Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxId,omitempty"`
-	RegnId  *Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 RegnId,omitempty"`
-	TaxTp   *Max35Text         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxTp,omitempty"`
-	Authstn *TaxAuthorisation1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Authstn,omitempty"`
+	TaxId   *Max35Text         `xml:"TaxId,omitempty"`
+	RegnId  *Max35Text         `xml:"RegnId,omitempty"`
+	TaxTp   *Max35Text         `xml:"TaxTp,omitempty"`
+	Authstn *TaxAuthorisation1 `xml:"Authstn,omitempty"`
 }
 
 type TaxPeriod2 struct {
-	Yr     *fedwire.ISODate      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Yr,omitempty"`
-	Tp     *TaxRecordPeriod1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	FrToDt *DatePeriod2          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FrToDt,omitempty"`
+	Yr     *fedwire.ISODate      `xml:"Yr,omitempty"`
+	Tp     *TaxRecordPeriod1Code `xml:"Tp,omitempty"`
+	FrToDt *DatePeriod2          `xml:"FrToDt,omitempty"`
 }
 
 type TaxPeriod3 struct {
-	Yr     *ISOYear              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Yr,omitempty"`
-	Tp     *TaxRecordPeriod1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	FrToDt *DatePeriod2          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FrToDt,omitempty"`
+	Yr     *ISOYear              `xml:"Yr,omitempty"`
+	Tp     *TaxRecordPeriod1Code `xml:"Tp,omitempty"`
+	FrToDt *DatePeriod2          `xml:"FrToDt,omitempty"`
 }
 
 type TaxRecord2 struct {
-	Tp       *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Ctgy     *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Ctgy,omitempty"`
-	CtgyDtls *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CtgyDtls,omitempty"`
-	DbtrSts  *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DbtrSts,omitempty"`
-	CertId   *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CertId,omitempty"`
-	FrmsCd   *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FrmsCd,omitempty"`
-	Prd      *TaxPeriod2 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prd,omitempty"`
-	TaxAmt   *TaxAmount2 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxAmt,omitempty"`
-	AddtlInf *Max140Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AddtlInf,omitempty"`
+	Tp       *Max35Text  `xml:"Tp,omitempty"`
+	Ctgy     *Max35Text  `xml:"Ctgy,omitempty"`
+	CtgyDtls *Max35Text  `xml:"CtgyDtls,omitempty"`
+	DbtrSts  *Max35Text  `xml:"DbtrSts,omitempty"`
+	CertId   *Max35Text  `xml:"CertId,omitempty"`
+	FrmsCd   *Max35Text  `xml:"FrmsCd,omitempty"`
+	Prd      *TaxPeriod2 `xml:"Prd,omitempty"`
+	TaxAmt   *TaxAmount2 `xml:"TaxAmt,omitempty"`
+	AddtlInf *Max140Text `xml:"AddtlInf,omitempty"`
 }
 
 type TaxRecord3 struct {
-	Tp       *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Tp,omitempty"`
-	Ctgy     *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Ctgy,omitempty"`
-	CtgyDtls *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CtgyDtls,omitempty"`
-	DbtrSts  *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DbtrSts,omitempty"`
-	CertId   *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CertId,omitempty"`
-	FrmsCd   *Max35Text  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 FrmsCd,omitempty"`
-	Prd      *TaxPeriod3 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prd,omitempty"`
-	TaxAmt   *TaxAmount3 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TaxAmt,omitempty"`
-	AddtlInf *Max140Text `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AddtlInf,omitempty"`
+	Tp       *Max35Text  `xml:"Tp,omitempty"`
+	Ctgy     *Max35Text  `xml:"Ctgy,omitempty"`
+	CtgyDtls *Max35Text  `xml:"CtgyDtls,omitempty"`
+	DbtrSts  *Max35Text  `xml:"DbtrSts,omitempty"`
+	CertId   *Max35Text  `xml:"CertId,omitempty"`
+	FrmsCd   *Max35Text  `xml:"FrmsCd,omitempty"`
+	Prd      *TaxPeriod3 `xml:"Prd,omitempty"`
+	TaxAmt   *TaxAmount3 `xml:"TaxAmt,omitempty"`
+	AddtlInf *Max140Text `xml:"AddtlInf,omitempty"`
 }
 
 type TaxRecordDetails2 struct {
-	Prd *TaxPeriod2                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prd,omitempty"`
-	Amt ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt"`
+	Prd *TaxPeriod2                       `xml:"Prd,omitempty"`
+	Amt ActiveOrHistoricCurrencyAndAmount `xml:"Amt"`
 }
 
 type TaxRecordDetails3 struct {
-	Prd *TaxPeriod3                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prd,omitempty"`
-	Amt ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt"`
+	Prd *TaxPeriod3                       `xml:"Prd,omitempty"`
+	Amt ActiveOrHistoricCurrencyAndAmount `xml:"Amt"`
 }
 
 type TransactionAmendment1 struct {
-	Pth  *Max2048Text                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Pth,omitempty"`
-	Rcrd TransactionAmendment1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rcrd"`
+	Pth  *Max2048Text                `xml:"Pth,omitempty"`
+	Rcrd TransactionAmendment1Choice `xml:"Rcrd"`
 }
 
 type TransactionAmendment1Choice struct {
-	Agt     *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Agt,omitempty"`
-	Amt     *ActiveCurrencyAndAmount                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Amt,omitempty"`
-	AnyBIC  *AnyBICDec2014Identifier                      `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AnyBIC,omitempty"`
-	BICFI   *BICFIDec2014Identifier                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 BICFI,omitempty"`
-	CshAcct *CashAccount40                                `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 CshAcct,omitempty"`
-	Cd      *Max4Text                                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Dt      *fedwire.ISODate                              `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Dt,omitempty"`
-	DtTm    *fedwire.ISODateTime                          `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 DtTm,omitempty"`
-	Pty     *PartyIdentification135                       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Pty,omitempty"`
-	Rmt     *Remittance1                                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Rmt,omitempty"`
-	Othr    *Max140Text                                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Othr,omitempty"`
+	Agt     *BranchAndFinancialInstitutionIdentification6 `xml:"Agt,omitempty"`
+	Amt     *ActiveCurrencyAndAmount                      `xml:"Amt,omitempty"`
+	AnyBIC  *AnyBICDec2014Identifier                      `xml:"AnyBIC,omitempty"`
+	BICFI   *BICFIDec2014Identifier                       `xml:"BICFI,omitempty"`
+	CshAcct *CashAccount40                                `xml:"CshAcct,omitempty"`
+	Cd      *Max4Text                                     `xml:"Cd,omitempty"`
+	Dt      *fedwire.ISODate                              `xml:"Dt,omitempty"`
+	DtTm    *fedwire.ISODateTime                          `xml:"DtTm,omitempty"`
+	Pty     *PartyIdentification135                       `xml:"Pty,omitempty"`
+	Rmt     *Remittance1                                  `xml:"Rmt,omitempty"`
+	Othr    *Max140Text                                   `xml:"Othr,omitempty"`
 }
 
 type TransactionReferences6 struct {
-	MsgId             *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MsgId,omitempty"`
-	AcctSvcrRef       *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AcctSvcrRef,omitempty"`
-	PmtInfId          *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PmtInfId,omitempty"`
-	InstrId           *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 InstrId,omitempty"`
-	EndToEndId        *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 EndToEndId,omitempty"`
-	UETR              *UUIDv4Identifier        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 UETR,omitempty"`
-	TxId              *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 TxId,omitempty"`
-	MndtId            *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MndtId,omitempty"`
-	ChqNb             *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ChqNb,omitempty"`
-	ClrSysRef         *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ClrSysRef,omitempty"`
-	AcctOwnrTxId      *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AcctOwnrTxId,omitempty"`
-	AcctSvcrTxId      *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 AcctSvcrTxId,omitempty"`
-	MktInfrstrctrTxId *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 MktInfrstrctrTxId,omitempty"`
-	PrcgId            *Max35Text               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 PrcgId,omitempty"`
-	Prtry             []*ProprietaryReference1 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	MsgId             *Max35Text               `xml:"MsgId,omitempty"`
+	AcctSvcrRef       *Max35Text               `xml:"AcctSvcrRef,omitempty"`
+	PmtInfId          *Max35Text               `xml:"PmtInfId,omitempty"`
+	InstrId           *Max35Text               `xml:"InstrId,omitempty"`
+	EndToEndId        *Max35Text               `xml:"EndToEndId,omitempty"`
+	UETR              *UUIDv4Identifier        `xml:"UETR,omitempty"`
+	TxId              *Max35Text               `xml:"TxId,omitempty"`
+	MndtId            *Max35Text               `xml:"MndtId,omitempty"`
+	ChqNb             *Max35Text               `xml:"ChqNb,omitempty"`
+	ClrSysRef         *Max35Text               `xml:"ClrSysRef,omitempty"`
+	AcctOwnrTxId      *Max35Text               `xml:"AcctOwnrTxId,omitempty"`
+	AcctSvcrTxId      *Max35Text               `xml:"AcctSvcrTxId,omitempty"`
+	MktInfrstrctrTxId *Max35Text               `xml:"MktInfrstrctrTxId,omitempty"`
+	PrcgId            *Max35Text               `xml:"PrcgId,omitempty"`
+	Prtry             []*ProprietaryReference1 `xml:"Prtry,omitempty"`
 }
 
 type TransactionStatus1Choice struct {
-	Cd    *ExternalPaymentTransactionStatus1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                             `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalPaymentTransactionStatus1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                             `xml:"Prtry,omitempty"`
 }
 
 type UnderlyingData2Choice struct {
-	Initn    *UnderlyingPaymentInstruction8 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Initn,omitempty"`
-	IntrBk   *UnderlyingPaymentTransaction7 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 IntrBk,omitempty"`
-	StmtNtry *UnderlyingStatementEntry5     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 StmtNtry,omitempty"`
-	Acct     *CashAccount40                 `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Acct,omitempty"`
-	Othr     *GenericIdentification1        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Othr,omitempty"`
+	Initn    *UnderlyingPaymentInstruction8 `xml:"Initn,omitempty"`
+	IntrBk   *UnderlyingPaymentTransaction7 `xml:"IntrBk,omitempty"`
+	StmtNtry *UnderlyingStatementEntry5     `xml:"StmtNtry,omitempty"`
+	Acct     *CashAccount40                 `xml:"Acct,omitempty"`
+	Othr     *GenericIdentification1        `xml:"Othr,omitempty"`
 }
 
 type UnderlyingGroupInformation1 struct {
-	OrgnlMsgId         Max35Text            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlMsgId"`
-	OrgnlMsgNmId       Max35Text            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlMsgNmId"`
-	OrgnlCreDtTm       *fedwire.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlCreDtTm,omitempty"`
-	OrgnlMsgDlvryChanl *Max35Text           `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlMsgDlvryChanl,omitempty"`
+	OrgnlMsgId         Max35Text            `xml:"OrgnlMsgId"`
+	OrgnlMsgNmId       Max35Text            `xml:"OrgnlMsgNmId"`
+	OrgnlCreDtTm       *fedwire.ISODateTime `xml:"OrgnlCreDtTm,omitempty"`
+	OrgnlMsgDlvryChanl *Max35Text           `xml:"OrgnlMsgDlvryChanl,omitempty"`
 }
 
 type UnderlyingInvestigationInstrument1Choice struct {
-	Cd    *ExternalInvestigationInstrument1Code `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Cd,omitempty"`
-	Prtry *Max35Text                            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 Prtry,omitempty"`
+	Cd    *ExternalInvestigationInstrument1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                            `xml:"Prtry,omitempty"`
 }
 
 type UnderlyingPaymentInstruction8 struct {
-	OrgnlGrpInf     *UnderlyingGroupInformation1       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlGrpInf,omitempty"`
-	OrgnlPmtInfId   *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlPmtInfId,omitempty"`
-	OrgnlInstrId    *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlInstrId,omitempty"`
-	OrgnlEndToEndId *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlEndToEndId,omitempty"`
-	OrgnlUETR       *UUIDv4Identifier                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlUETR,omitempty"`
-	OrgnlInstdAmt   *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlInstdAmt,omitempty"`
-	ReqdExctnDt     *DateAndDateTime2Choice            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ReqdExctnDt,omitempty"`
-	ReqdColltnDt    *fedwire.ISODate                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 ReqdColltnDt,omitempty"`
-	OrgnlTxRef      *OriginalTransactionReference35    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlTxRef,omitempty"`
-	OrgnlSvcLvl     *ServiceLevel8Choice               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlSvcLvl,omitempty"`
+	OrgnlGrpInf     *UnderlyingGroupInformation1       `xml:"OrgnlGrpInf,omitempty"`
+	OrgnlPmtInfId   *Max35Text                         `xml:"OrgnlPmtInfId,omitempty"`
+	OrgnlInstrId    *Max35Text                         `xml:"OrgnlInstrId,omitempty"`
+	OrgnlEndToEndId *Max35Text                         `xml:"OrgnlEndToEndId,omitempty"`
+	OrgnlUETR       *UUIDv4Identifier                  `xml:"OrgnlUETR,omitempty"`
+	OrgnlInstdAmt   *ActiveOrHistoricCurrencyAndAmount `xml:"OrgnlInstdAmt,omitempty"`
+	ReqdExctnDt     *DateAndDateTime2Choice            `xml:"ReqdExctnDt,omitempty"`
+	ReqdColltnDt    *fedwire.ISODate                   `xml:"ReqdColltnDt,omitempty"`
+	OrgnlTxRef      *OriginalTransactionReference35    `xml:"OrgnlTxRef,omitempty"`
+	OrgnlSvcLvl     *ServiceLevel8Choice               `xml:"OrgnlSvcLvl,omitempty"`
 }
 
 type UnderlyingPaymentTransaction7 struct {
-	OrgnlGrpInf         *UnderlyingGroupInformation1       `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlGrpInf,omitempty"`
-	OrgnlInstrId        *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlInstrId,omitempty"`
-	OrgnlEndToEndId     *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlEndToEndId,omitempty"`
-	OrgnlTxId           *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlTxId,omitempty"`
-	OrgnlUETR           *UUIDv4Identifier                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlUETR,omitempty"`
-	OrgnlIntrBkSttlmAmt *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlIntrBkSttlmAmt,omitempty"`
-	OrgnlIntrBkSttlmDt  *fedwire.ISODate                   `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlIntrBkSttlmDt,omitempty"`
-	OrgnlTxRef          *OriginalTransactionReference35    `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlTxRef,omitempty"`
-	OrgnlSvcLvl         *ServiceLevel8Choice               `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlSvcLvl,omitempty"`
+	OrgnlGrpInf         *UnderlyingGroupInformation1       `xml:"OrgnlGrpInf,omitempty"`
+	OrgnlInstrId        *Max35Text                         `xml:"OrgnlInstrId,omitempty"`
+	OrgnlEndToEndId     *Max35Text                         `xml:"OrgnlEndToEndId,omitempty"`
+	OrgnlTxId           *Max35Text                         `xml:"OrgnlTxId,omitempty"`
+	OrgnlUETR           *UUIDv4Identifier                  `xml:"OrgnlUETR,omitempty"`
+	OrgnlIntrBkSttlmAmt *ActiveOrHistoricCurrencyAndAmount `xml:"OrgnlIntrBkSttlmAmt,omitempty"`
+	OrgnlIntrBkSttlmDt  *fedwire.ISODate                   `xml:"OrgnlIntrBkSttlmDt,omitempty"`
+	OrgnlTxRef          *OriginalTransactionReference35    `xml:"OrgnlTxRef,omitempty"`
+	OrgnlSvcLvl         *ServiceLevel8Choice               `xml:"OrgnlSvcLvl,omitempty"`
 }
 
 type UnderlyingStatementEntry5 struct {
-	OrgnlAcct      *CashAccount40                     `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlAcct,omitempty"`
-	OrgnlGrpInf    *OriginalGroupInformation29        `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlGrpInf,omitempty"`
-	OrgnlStmtId    *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlStmtId,omitempty"`
-	OrgnlNtryRef   *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlNtryRef,omitempty"`
-	OrgnlUETR      *UUIDv4Identifier                  `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlUETR,omitempty"`
-	OrgnlNtryAmt   *ActiveOrHistoricCurrencyAndAmount `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlNtryAmt,omitempty"`
-	OrgnlNtryValDt *DateAndDateTime2Choice            `xml:"urn:iso:std:iso:20022:tech:xsd:camt.111.001.01 OrgnlNtryValDt,omitempty"`
+	OrgnlAcct      *CashAccount40                     `xml:"OrgnlAcct,omitempty"`
+	OrgnlGrpInf    *OriginalGroupInformation29        `xml:"OrgnlGrpInf,omitempty"`
+	OrgnlStmtId    *Max35Text                         `xml:"OrgnlStmtId,omitempty"`
+	OrgnlNtryRef   *Max35Text                         `xml:"OrgnlNtryRef,omitempty"`
+	OrgnlUETR      *UUIDv4Identifier                  `xml:"OrgnlUETR,omitempty"`
+	OrgnlNtryAmt   *ActiveOrHistoricCurrencyAndAmount `xml:"OrgnlNtryAmt,omitempty"`
+	OrgnlNtryValDt *DateAndDateTime2Choice            `xml:"OrgnlNtryValDt,omitempty"`
 }
 
 // XSD SimpleType declarations

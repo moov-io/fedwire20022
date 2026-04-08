@@ -12,228 +12,215 @@ import (
 // XSD Elements
 
 type AppHdr struct {
-	XMLName xml.Name
-
-	CharSet *UnicodeChartsCode `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CharSet,omitempty"`
-
-	Fr Party44Choice `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Fr"`
-
-	To Party44Choice `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 To"`
-
-	BizMsgIdr Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BizMsgIdr"`
-
-	MsgDefIdr Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 MsgDefIdr"`
-
-	BizSvc *Max35Text `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BizSvc,omitempty"`
-
-	MktPrctc *ImplementationSpecification1 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 MktPrctc,omitempty"`
-
-	CreDt fedwire.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CreDt"`
-
-	BizPrcgDt *fedwire.ISODateTime `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BizPrcgDt,omitempty"`
-
-	CpyDplct *CopyDuplicate1Code `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CpyDplct,omitempty"`
-
-	PssblDplct *YesNoIndicator `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PssblDplct,omitempty"`
-
-	Prty *BusinessMessagePriorityCode `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Prty,omitempty"`
-
-	Sgntr *SignatureEnvelope `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Sgntr,omitempty"`
-
-	Rltd []*BusinessApplicationHeader7 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Rltd,omitempty"`
+	XMLName    xml.Name                      `xml:"AppHdr"`
+	XmlnsUrn   string                        `xml:"xmlns:urn,attr"`
+	CharSet    *UnicodeChartsCode            `xml:"CharSet,omitempty"`
+	Fr         Party44Choice                 `xml:"Fr"`
+	To         Party44Choice                 `xml:"To"`
+	BizMsgIdr  Max35Text                     `xml:"BizMsgIdr"`
+	MsgDefIdr  Max35Text                     `xml:"MsgDefIdr"`
+	BizSvc     *Max35Text                    `xml:"BizSvc,omitempty"`
+	MktPrctc   *ImplementationSpecification1 `xml:"MktPrctc,omitempty"`
+	CreDt      fedwire.ISODateTime           `xml:"CreDt"`
+	BizPrcgDt  *fedwire.ISODateTime          `xml:"BizPrcgDt,omitempty"`
+	CpyDplct   *CopyDuplicate1Code           `xml:"CpyDplct,omitempty"`
+	PssblDplct *YesNoIndicator               `xml:"PssblDplct,omitempty"`
+	Prty       *BusinessMessagePriorityCode  `xml:"Prty,omitempty"`
+	Sgntr      *SignatureEnvelope            `xml:"Sgntr,omitempty"`
+	Rltd       []*BusinessApplicationHeader7 `xml:"Rltd,omitempty"`
 }
 
 // XSD ComplexType declarations
 
 type AddressType3Choice struct {
-	Cd    *AddressType2Code        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Cd,omitempty"`
-	Prtry *GenericIdentification30 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Prtry,omitempty"`
+	Cd    *AddressType2Code        `xml:"Cd,omitempty"`
+	Prtry *GenericIdentification30 `xml:"Prtry,omitempty"`
 }
 
 type BranchAndFinancialInstitutionIdentification6 struct {
-	FinInstnId FinancialInstitutionIdentification18 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 FinInstnId"`
-	BrnchId    *BranchData3                         `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BrnchId,omitempty"`
+	FinInstnId FinancialInstitutionIdentification18 `xml:"FinInstnId"`
+	BrnchId    *BranchData3                         `xml:"BrnchId,omitempty"`
 }
 
 type BranchData3 struct {
-	Id      *Max35Text       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Id,omitempty"`
-	LEI     *LEIIdentifier   `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 LEI,omitempty"`
-	Nm      *Max140Text      `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Nm,omitempty"`
-	PstlAdr *PostalAddress24 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PstlAdr,omitempty"`
+	Id      *Max35Text       `xml:"Id,omitempty"`
+	LEI     *LEIIdentifier   `xml:"LEI,omitempty"`
+	Nm      *Max140Text      `xml:"Nm,omitempty"`
+	PstlAdr *PostalAddress24 `xml:"PstlAdr,omitempty"`
 }
 
 type BusinessApplicationHeader7 struct {
-	CharSet    *UnicodeChartsCode            `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CharSet,omitempty"`
-	Fr         Party44Choice                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Fr"`
-	To         Party44Choice                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 To"`
-	BizMsgIdr  Max35Text                     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BizMsgIdr"`
-	MsgDefIdr  Max35Text                     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 MsgDefIdr"`
-	BizSvc     *Max35Text                    `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BizSvc,omitempty"`
-	MktPrctc   *ImplementationSpecification1 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 MktPrctc,omitempty"`
-	CreDt      fedwire.ISODateTime           `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CreDt"`
-	BizPrcgDt  *fedwire.ISODateTime          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BizPrcgDt,omitempty"`
-	CpyDplct   *CopyDuplicate1Code           `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CpyDplct,omitempty"`
-	PssblDplct *YesNoIndicator               `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PssblDplct,omitempty"`
-	Prty       *BusinessMessagePriorityCode  `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Prty,omitempty"`
-	Sgntr      *Sgntr                        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Sgntr,omitempty"`
+	CharSet    *UnicodeChartsCode            `xml:"CharSet,omitempty"`
+	Fr         Party44Choice                 `xml:"Fr"`
+	To         Party44Choice                 `xml:"To"`
+	BizMsgIdr  Max35Text                     `xml:"BizMsgIdr"`
+	MsgDefIdr  Max35Text                     `xml:"MsgDefIdr"`
+	BizSvc     *Max35Text                    `xml:"BizSvc,omitempty"`
+	MktPrctc   *ImplementationSpecification1 `xml:"MktPrctc,omitempty"`
+	CreDt      fedwire.ISODateTime           `xml:"CreDt"`
+	BizPrcgDt  *fedwire.ISODateTime          `xml:"BizPrcgDt,omitempty"`
+	CpyDplct   *CopyDuplicate1Code           `xml:"CpyDplct,omitempty"`
+	PssblDplct *YesNoIndicator               `xml:"PssblDplct,omitempty"`
+	Prty       *BusinessMessagePriorityCode  `xml:"Prty,omitempty"`
+	Sgntr      *SignatureEnvelope            `xml:"Sgntr,omitempty"`
 }
 
 type BusinessApplicationHeaderV03 struct {
-	CharSet    *UnicodeChartsCode            `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CharSet,omitempty"`
-	Fr         Party44Choice                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Fr"`
-	To         Party44Choice                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 To"`
-	BizMsgIdr  Max35Text                     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BizMsgIdr"`
-	MsgDefIdr  Max35Text                     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 MsgDefIdr"`
-	BizSvc     *Max35Text                    `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BizSvc,omitempty"`
-	MktPrctc   *ImplementationSpecification1 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 MktPrctc,omitempty"`
-	CreDt      fedwire.ISODateTime           `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CreDt"`
-	BizPrcgDt  *fedwire.ISODateTime          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BizPrcgDt,omitempty"`
-	CpyDplct   *CopyDuplicate1Code           `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CpyDplct,omitempty"`
-	PssblDplct *YesNoIndicator               `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PssblDplct,omitempty"`
-	Prty       *BusinessMessagePriorityCode  `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Prty,omitempty"`
-	Sgntr      *Sgntr                        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Sgntr,omitempty"`
-	Rltd       []*BusinessApplicationHeader7 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Rltd,omitempty"`
+	CharSet    *UnicodeChartsCode            `xml:"CharSet,omitempty"`
+	Fr         Party44Choice                 `xml:"Fr"`
+	To         Party44Choice                 `xml:"To"`
+	BizMsgIdr  Max35Text                     `xml:"BizMsgIdr"`
+	MsgDefIdr  Max35Text                     `xml:"MsgDefIdr"`
+	BizSvc     *Max35Text                    `xml:"BizSvc,omitempty"`
+	MktPrctc   *ImplementationSpecification1 `xml:"MktPrctc,omitempty"`
+	CreDt      fedwire.ISODateTime           `xml:"CreDt"`
+	BizPrcgDt  *fedwire.ISODateTime          `xml:"BizPrcgDt,omitempty"`
+	CpyDplct   *CopyDuplicate1Code           `xml:"CpyDplct,omitempty"`
+	PssblDplct *YesNoIndicator               `xml:"PssblDplct,omitempty"`
+	Prty       *BusinessMessagePriorityCode  `xml:"Prty,omitempty"`
+	Sgntr      *SignatureEnvelope            `xml:"Sgntr,omitempty"`
+	Rltd       []*BusinessApplicationHeader7 `xml:"Rltd,omitempty"`
 }
 
 type ClearingSystemIdentification2Choice struct {
-	Cd    *ExternalClearingSystemIdentification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Cd,omitempty"`
-	Prtry *Max35Text                                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Prtry,omitempty"`
+	Cd    *ExternalClearingSystemIdentification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                                 `xml:"Prtry,omitempty"`
 }
 
 type ClearingSystemMemberIdentification2 struct {
-	ClrSysId *ClearingSystemIdentification2Choice `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 ClrSysId,omitempty"`
-	MmbId    Max35Text                            `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 MmbId"`
+	ClrSysId *ClearingSystemIdentification2Choice `xml:"ClrSysId,omitempty"`
+	MmbId    Max35Text                            `xml:"MmbId"`
 }
 
 type Contact4 struct {
-	NmPrfx    *NamePrefix2Code             `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 NmPrfx,omitempty"`
-	Nm        *Max140Text                  `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Nm,omitempty"`
-	PhneNb    *PhoneNumber                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PhneNb,omitempty"`
-	MobNb     *PhoneNumber                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 MobNb,omitempty"`
-	FaxNb     *PhoneNumber                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 FaxNb,omitempty"`
-	EmailAdr  *Max2048Text                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 EmailAdr,omitempty"`
-	EmailPurp *Max35Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 EmailPurp,omitempty"`
-	JobTitl   *Max35Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 JobTitl,omitempty"`
-	Rspnsblty *Max35Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Rspnsblty,omitempty"`
-	Dept      *Max70Text                   `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Dept,omitempty"`
-	Othr      []*OtherContact1             `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Othr,omitempty"`
-	PrefrdMtd *PreferredContactMethod1Code `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PrefrdMtd,omitempty"`
+	NmPrfx    *NamePrefix2Code             `xml:"NmPrfx,omitempty"`
+	Nm        *Max140Text                  `xml:"Nm,omitempty"`
+	PhneNb    *PhoneNumber                 `xml:"PhneNb,omitempty"`
+	MobNb     *PhoneNumber                 `xml:"MobNb,omitempty"`
+	FaxNb     *PhoneNumber                 `xml:"FaxNb,omitempty"`
+	EmailAdr  *Max2048Text                 `xml:"EmailAdr,omitempty"`
+	EmailPurp *Max35Text                   `xml:"EmailPurp,omitempty"`
+	JobTitl   *Max35Text                   `xml:"JobTitl,omitempty"`
+	Rspnsblty *Max35Text                   `xml:"Rspnsblty,omitempty"`
+	Dept      *Max70Text                   `xml:"Dept,omitempty"`
+	Othr      []*OtherContact1             `xml:"Othr,omitempty"`
+	PrefrdMtd *PreferredContactMethod1Code `xml:"PrefrdMtd,omitempty"`
 }
 
 type DateAndPlaceOfBirth1 struct {
-	BirthDt     fedwire.ISODate `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BirthDt"`
-	PrvcOfBirth *Max35Text      `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PrvcOfBirth,omitempty"`
-	CityOfBirth Max35Text       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CityOfBirth"`
-	CtryOfBirth CountryCode     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CtryOfBirth"`
+	BirthDt     fedwire.ISODate `xml:"BirthDt"`
+	PrvcOfBirth *Max35Text      `xml:"PrvcOfBirth,omitempty"`
+	CityOfBirth Max35Text       `xml:"CityOfBirth"`
+	CtryOfBirth CountryCode     `xml:"CtryOfBirth"`
 }
 
 type FinancialIdentificationSchemeName1Choice struct {
-	Cd    *ExternalFinancialInstitutionIdentification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Cd,omitempty"`
-	Prtry *Max35Text                                       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Prtry,omitempty"`
+	Cd    *ExternalFinancialInstitutionIdentification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                                       `xml:"Prtry,omitempty"`
 }
 
 type FinancialInstitutionIdentification18 struct {
-	BICFI       *BICFIDec2014Identifier              `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BICFI,omitempty"`
-	ClrSysMmbId *ClearingSystemMemberIdentification2 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 ClrSysMmbId,omitempty"`
-	LEI         *LEIIdentifier                       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 LEI,omitempty"`
-	Nm          *Max140Text                          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Nm,omitempty"`
-	PstlAdr     *PostalAddress24                     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PstlAdr,omitempty"`
-	Othr        *GenericFinancialIdentification1     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Othr,omitempty"`
+	BICFI       *BICFIDec2014Identifier              `xml:"BICFI,omitempty"`
+	ClrSysMmbId *ClearingSystemMemberIdentification2 `xml:"ClrSysMmbId,omitempty"`
+	LEI         *LEIIdentifier                       `xml:"LEI,omitempty"`
+	Nm          *Max140Text                          `xml:"Nm,omitempty"`
+	PstlAdr     *PostalAddress24                     `xml:"PstlAdr,omitempty"`
+	Othr        *GenericFinancialIdentification1     `xml:"Othr,omitempty"`
 }
 
 type GenericFinancialIdentification1 struct {
-	Id      Max35Text                                 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Id"`
-	SchmeNm *FinancialIdentificationSchemeName1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 SchmeNm,omitempty"`
-	Issr    *Max35Text                                `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Issr,omitempty"`
+	Id      Max35Text                                 `xml:"Id"`
+	SchmeNm *FinancialIdentificationSchemeName1Choice `xml:"SchmeNm,omitempty"`
+	Issr    *Max35Text                                `xml:"Issr,omitempty"`
 }
 
 type GenericIdentification30 struct {
-	Id      Exact4AlphaNumericText `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Id"`
-	Issr    Max35Text              `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Issr"`
-	SchmeNm *Max35Text             `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 SchmeNm,omitempty"`
+	Id      Exact4AlphaNumericText `xml:"Id"`
+	Issr    Max35Text              `xml:"Issr"`
+	SchmeNm *Max35Text             `xml:"SchmeNm,omitempty"`
 }
 
 type GenericOrganisationIdentification1 struct {
-	Id      Max35Text                                    `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Id"`
-	SchmeNm *OrganisationIdentificationSchemeName1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 SchmeNm,omitempty"`
-	Issr    *Max35Text                                   `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Issr,omitempty"`
+	Id      Max35Text                                    `xml:"Id"`
+	SchmeNm *OrganisationIdentificationSchemeName1Choice `xml:"SchmeNm,omitempty"`
+	Issr    *Max35Text                                   `xml:"Issr,omitempty"`
 }
 
 type GenericPersonIdentification1 struct {
-	Id      Max35Text                              `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Id"`
-	SchmeNm *PersonIdentificationSchemeName1Choice `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 SchmeNm,omitempty"`
-	Issr    *Max35Text                             `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Issr,omitempty"`
+	Id      Max35Text                              `xml:"Id"`
+	SchmeNm *PersonIdentificationSchemeName1Choice `xml:"SchmeNm,omitempty"`
+	Issr    *Max35Text                             `xml:"Issr,omitempty"`
 }
 
 type ImplementationSpecification1 struct {
-	Regy Max350Text  `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Regy"`
-	Id   Max2048Text `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Id"`
+	Regy Max350Text  `xml:"Regy"`
+	Id   Max2048Text `xml:"Id"`
 }
 
 type OrganisationIdentification29 struct {
-	AnyBIC *AnyBICDec2014Identifier              `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 AnyBIC,omitempty"`
-	LEI    *LEIIdentifier                        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 LEI,omitempty"`
-	Othr   []*GenericOrganisationIdentification1 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Othr,omitempty"`
+	AnyBIC *AnyBICDec2014Identifier              `xml:"AnyBIC,omitempty"`
+	LEI    *LEIIdentifier                        `xml:"LEI,omitempty"`
+	Othr   []*GenericOrganisationIdentification1 `xml:"Othr,omitempty"`
 }
 
 type OrganisationIdentificationSchemeName1Choice struct {
-	Cd    *ExternalOrganisationIdentification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Cd,omitempty"`
-	Prtry *Max35Text                               `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Prtry,omitempty"`
+	Cd    *ExternalOrganisationIdentification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                               `xml:"Prtry,omitempty"`
 }
 
 type OtherContact1 struct {
-	ChanlTp Max4Text    `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 ChanlTp"`
-	Id      *Max128Text `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Id,omitempty"`
+	ChanlTp Max4Text    `xml:"ChanlTp"`
+	Id      *Max128Text `xml:"Id,omitempty"`
 }
 
 type Party38Choice struct {
-	OrgId  *OrganisationIdentification29 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 OrgId,omitempty"`
-	PrvtId *PersonIdentification13       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PrvtId,omitempty"`
+	OrgId  *OrganisationIdentification29 `xml:"OrgId,omitempty"`
+	PrvtId *PersonIdentification13       `xml:"PrvtId,omitempty"`
 }
 
 type Party44Choice struct {
-	OrgId *PartyIdentification135                       `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 OrgId,omitempty"`
-	FIId  *BranchAndFinancialInstitutionIdentification6 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 FIId,omitempty"`
+	OrgId *PartyIdentification135                       `xml:"OrgId,omitempty"`
+	FIId  *BranchAndFinancialInstitutionIdentification6 `xml:"FIId,omitempty"`
 }
 
 type PartyIdentification135 struct {
-	Nm        *Max140Text      `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Nm,omitempty"`
-	PstlAdr   *PostalAddress24 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PstlAdr,omitempty"`
-	Id        *Party38Choice   `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Id,omitempty"`
-	CtryOfRes *CountryCode     `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CtryOfRes,omitempty"`
-	CtctDtls  *Contact4        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CtctDtls,omitempty"`
+	Nm        *Max140Text      `xml:"Nm,omitempty"`
+	PstlAdr   *PostalAddress24 `xml:"PstlAdr,omitempty"`
+	Id        *Party38Choice   `xml:"Id,omitempty"`
+	CtryOfRes *CountryCode     `xml:"CtryOfRes,omitempty"`
+	CtctDtls  *Contact4        `xml:"CtctDtls,omitempty"`
 }
 
 type PersonIdentification13 struct {
-	DtAndPlcOfBirth *DateAndPlaceOfBirth1           `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 DtAndPlcOfBirth,omitempty"`
-	Othr            []*GenericPersonIdentification1 `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Othr,omitempty"`
+	DtAndPlcOfBirth *DateAndPlaceOfBirth1           `xml:"DtAndPlcOfBirth,omitempty"`
+	Othr            []*GenericPersonIdentification1 `xml:"Othr,omitempty"`
 }
 
 type PersonIdentificationSchemeName1Choice struct {
-	Cd    *ExternalPersonIdentification1Code `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Cd,omitempty"`
-	Prtry *Max35Text                         `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Prtry,omitempty"`
+	Cd    *ExternalPersonIdentification1Code `xml:"Cd,omitempty"`
+	Prtry *Max35Text                         `xml:"Prtry,omitempty"`
 }
 
 type PostalAddress24 struct {
-	AdrTp       *AddressType3Choice `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 AdrTp,omitempty"`
-	Dept        *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Dept,omitempty"`
-	SubDept     *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 SubDept,omitempty"`
-	StrtNm      *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 StrtNm,omitempty"`
-	BldgNb      *Max16Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BldgNb,omitempty"`
-	BldgNm      *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 BldgNm,omitempty"`
-	Flr         *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Flr,omitempty"`
-	PstBx       *Max16Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PstBx,omitempty"`
-	Room        *Max70Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Room,omitempty"`
-	PstCd       *Max16Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 PstCd,omitempty"`
-	TwnNm       *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 TwnNm,omitempty"`
-	TwnLctnNm   *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 TwnLctnNm,omitempty"`
-	DstrctNm    *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 DstrctNm,omitempty"`
-	CtrySubDvsn *Max35Text          `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 CtrySubDvsn,omitempty"`
-	Ctry        *CountryCode        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 Ctry,omitempty"`
-	AdrLine     []*Max70Text        `xml:"urn:iso:std:iso:20022:tech:xsd:head.001.001.03 AdrLine,omitempty"`
+	AdrTp       *AddressType3Choice `xml:"AdrTp,omitempty"`
+	Dept        *Max70Text          `xml:"Dept,omitempty"`
+	SubDept     *Max70Text          `xml:"SubDept,omitempty"`
+	StrtNm      *Max70Text          `xml:"StrtNm,omitempty"`
+	BldgNb      *Max16Text          `xml:"BldgNb,omitempty"`
+	BldgNm      *Max35Text          `xml:"BldgNm,omitempty"`
+	Flr         *Max70Text          `xml:"Flr,omitempty"`
+	PstBx       *Max16Text          `xml:"PstBx,omitempty"`
+	Room        *Max70Text          `xml:"Room,omitempty"`
+	PstCd       *Max16Text          `xml:"PstCd,omitempty"`
+	TwnNm       *Max35Text          `xml:"TwnNm,omitempty"`
+	TwnLctnNm   *Max35Text          `xml:"TwnLctnNm,omitempty"`
+	DstrctNm    *Max35Text          `xml:"DstrctNm,omitempty"`
+	CtrySubDvsn *Max35Text          `xml:"CtrySubDvsn,omitempty"`
+	Ctry        *CountryCode        `xml:"Ctry,omitempty"`
+	AdrLine     []*Max70Text        `xml:"AdrLine,omitempty"`
 }
 
-type Sgntr struct {
+type SignatureEnvelope struct {
 	Signature *xmldsig.Signature `xml:"http://www.w3.org/2000/09/xmldsig# Signature"`
 }
 
