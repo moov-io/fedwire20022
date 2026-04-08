@@ -1,0 +1,138 @@
+<urn:FedwireFundsIncoming xmlns:urn="urn:fedwirefunds:incoming:v001"> 
+     <urn:FedwireFundsIncomingMessage>
+      <urn:FedwireFundsCustomerCreditTransfer>
+         <urn1:AppHdr xmlns:urn1="urn:iso:std:iso:20022:tech:xsd:head.001.001.03">
+            <urn1:Fr>
+               <urn1:FIId>
+                  <urn1:FinInstnId>
+                     <urn1:ClrSysMmbId>
+                        <urn1:MmbId>123456789</urn1:MmbId>
+                     </urn1:ClrSysMmbId>
+                  </urn1:FinInstnId>
+               </urn1:FIId>
+           </urn1:Fr>
+           <urn1:To>
+              <urn1:FIId>
+                 <urn1:FinInstnId>
+                    <urn1:ClrSysMmbId>
+                       <urn1:MmbId>021151080</urn1:MmbId>
+                    </urn1:ClrSysMmbId>
+                 </urn1:FinInstnId>
+              </urn1:FIId>
+           </urn1:To>
+           <urn1:BizMsgIdr>Customer Credit Transfer Sample</urn1:BizMsgIdr>
+           <urn1:MsgDefIdr>pacs.008.001.08</urn1:MsgDefIdr>
+           <urn1:BizSvc>TEST</urn1:BizSvc>
+           <urn1:MktPrctc>
+<urn1:Regy>www2.swift.com/mystandards/#/group/Federal_Reserve_Financial_Services/Fedwire_Funds_Service</urn1:Regy>
+              <urn1:Id>frb.fedwire.01</urn1:Id>
+           </urn1:MktPrctc>
+           <urn1:CreDt>2024-02-28T09:00:00.123-04:00</urn1:CreDt>
+         </urn1:AppHdr>
+	<urn2:Document xmlns:urn2="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08">
+	<urn2:FIToFICstmrCdtTrf>
+		<urn2:GrpHdr>
+			<urn2:MsgId>20240228B1QDRCQR000001</urn2:MsgId>
+			<urn2:CreDtTm>2024-02-28T09:00:00.123-04:00</urn2:CreDtTm>
+			<urn2:NbOfTxs>1</urn2:NbOfTxs>
+			<urn2:SttlmInf>
+				<urn2:SttlmMtd>CLRG</urn2:SttlmMtd>
+				<urn2:ClrSys>
+					<urn2:Cd>FDW</urn2:Cd>
+				</urn2:ClrSys>
+			</urn2:SttlmInf>
+		</urn2:GrpHdr>
+		<urn2:CdtTrfTxInf>
+			<urn2:PmtId>
+				<urn2:InstrId>Variation6InstrId001</urn2:InstrId>
+				<urn2:EndToEndId>Variation6EtoEId001</urn2:EndToEndId>
+				<urn2:UETR>8a562c67-ca16-48ba-b074-65581be6f011</urn2:UETR>
+			</urn2:PmtId>
+			<urn2:PmtTpInf>
+				<urn2:SvcLvl>
+					<urn2:Cd>G001</urn2:Cd>
+				</urn2:SvcLvl>
+				<urn2:LclInstrm>
+					<urn2:Prtry>CTRC</urn2:Prtry>
+				</urn2:LclInstrm>
+			</urn2:PmtTpInf>
+			<urn2:IntrBkSttlmAmt Ccy="USD">500000.00</urn2:IntrBkSttlmAmt>
+			<urn2:IntrBkSttlmDt>2024-02-28</urn2:IntrBkSttlmDt>
+			<urn2:InstdAmt Ccy="USD">500000.00</urn2:InstdAmt>
+			<urn2:ChrgBr>SHAR</urn2:ChrgBr>
+			<urn2:InstgAgt>
+				<urn2:FinInstnId>
+					<urn2:ClrSysMmbId>
+						<urn2:ClrSysId>
+							<urn2:Cd>USABA</urn2:Cd>
+						</urn2:ClrSysId>
+						<urn2:MmbId>123456789</urn2:MmbId>
+					</urn2:ClrSysMmbId>
+				</urn2:FinInstnId>
+			</urn2:InstgAgt>
+			<urn2:InstdAgt>
+				<urn2:FinInstnId>
+					<urn2:ClrSysMmbId>
+						<urn2:ClrSysId>
+							<urn2:Cd>USABA</urn2:Cd>
+						</urn2:ClrSysId>
+						<urn2:MmbId>123456789</urn2:MmbId>
+					</urn2:ClrSysMmbId>
+				</urn2:FinInstnId>
+			</urn2:InstdAgt>
+			<urn2:IntrmyAgt1>
+				<urn2:FinInstnId>
+					<urn2:BICFI>BANYBRRJ</urn2:BICFI>
+				</urn2:FinInstnId>
+			</urn2:IntrmyAgt1>
+			<urn2:Dbtr>
+				<urn2:Nm>Corporation Z</urn2:Nm>
+				<urn2:PstlAdr>
+					<urn2:StrtNm>Avenue Moliere 70</urn2:StrtNm>
+					<urn2:PstCd>1180</urn2:PstCd>
+					<urn2:TwnNm>Brussels</urn2:TwnNm>
+					<urn2:Ctry>BE</urn2:Ctry>
+				</urn2:PstlAdr>
+			</urn2:Dbtr>
+			<urn2:DbtrAcct>
+				<urn2:Id>
+					<urn2:IBAN>BE34001216371411</urn2:IBAN>
+				</urn2:Id>
+			</urn2:DbtrAcct>
+			<urn2:DbtrAgt>
+				<urn2:FinInstnId>
+					<urn2:BICFI>BANZBEBB</urn2:BICFI>
+				</urn2:FinInstnId>
+			</urn2:DbtrAgt>
+			<urn2:CdtrAgt>
+				<urn2:FinInstnId>
+					<urn2:BICFI>BANXBRRJ</urn2:BICFI>
+				</urn2:FinInstnId>
+			</urn2:CdtrAgt>
+			<urn2:Cdtr>
+				<urn2:Nm>Individual X</urn2:Nm>
+				<urn2:PstlAdr>
+					<urn2:StrtNm>Rua Aprazivel</urn2:StrtNm>
+					<urn2:BldgNb>52</urn2:BldgNb>
+					<urn2:PstCd>22630-012</urn2:PstCd>
+					<urn2:TwnNm>Rio de Janeiro</urn2:TwnNm>
+					<urn2:Ctry>BR</urn2:Ctry>
+				</urn2:PstlAdr>
+			</urn2:Cdtr>
+			<urn2:CdtrAcct>
+				<urn2:Id>
+					<urn2:IBAN>BR1800360305000010009795493C1</urn2:IBAN>
+				</urn2:Id>
+			</urn2:CdtrAcct>
+			<urn2:Purp>
+				<urn2:Cd>INSC</urn2:Cd>
+			</urn2:Purp>
+			<urn2:RmtInf>
+				<urn2:Ustrd>Insurance Benefit/Policy XXAB9876/$500000.00</urn2:Ustrd>
+			</urn2:RmtInf>
+		</urn2:CdtTrfTxInf>
+	</urn2:FIToFICstmrCdtTrf>
+	</urn2:Document>
+      </urn:FedwireFundsCustomerCreditTransfer>
+   </urn:FedwireFundsIncomingMessage>
+</urn:FedwireFundsIncoming>
