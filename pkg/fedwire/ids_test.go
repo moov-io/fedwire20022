@@ -40,6 +40,7 @@ func TestValidBusinessMessageID(t *testing.T) {
 		inputs := []string{
 			"abc123 456\\8*9_ZEF~u@[qq]$<!!>",
 			strings.ReplaceAll(uuid.NewString(), "-", ""), // UUIDs are 36 characters with dashes
+			"4ercnremljlnfaxiqyswxhatca_any",
 		}
 		for _, input := range inputs {
 			t.Run(input, func(t *testing.T) {
