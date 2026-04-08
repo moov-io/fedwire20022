@@ -2,7 +2,6 @@ package fedwiretest
 
 import (
 	"encoding/xml"
-	"fmt"
 
 	"github.com/moov-io/fedwire20022/gen/fedwirefunds_incoming"
 	"github.com/moov-io/fedwire20022/gen/fedwirefunds_outgoing"
@@ -16,7 +15,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 	// Try to unmarshal as outgoing
 	var outgoingDoc fedwirefunds_outgoing.FedwireFundsOutgoing
 	err := xml.Unmarshal(input, &outgoingDoc)
-	fmt.Printf("\n\n outgoingDoc: %v\n\n", err)
 	if err == nil {
 		// Check which message type it is
 		switch {
@@ -180,7 +178,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 	// Try to unmarshal as incoming
 	var incomingDoc fedwirefunds_incoming.FedwireFundsIncoming
 	err = xml.Unmarshal(input, &incomingDoc)
-	fmt.Printf("\n\n incomingDoc: %v\n", err)
 	if err == nil {
 		// Check which message type it is
 		switch {
