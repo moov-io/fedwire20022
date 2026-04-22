@@ -29,6 +29,15 @@ This repository contains a subset of ISO 20022 messages for FedWire payments. IS
 
 Go code is [generated with `xsdgen`](https://pkg.go.dev/aqwari.net/xml/cmd/xsdgen) inside the `gen/` folder. Please star the project if you are interested in its progress. Feedback on this early version of ISO 20022 is appreciated and vital to its success. Please let us know if you encounter any bugs/unclear documentation or have feature suggestions by opening up an issue. Thanks!
 
+## Naming Conventions
+
+The XSDs define some naming that can be confusing.
+
+| Go Package                  | Description                                                        |
+|-----------------------------|--------------------------------------------------------------------|
+| `gen/fedwirefunds_incoming` | Messages sent INTO the Fed Wire service - from a bank or vendor.   |
+| `gen/fedwirefunds_outgoing` | Messages coming INTO a bank or vendor - from the Fed Wire service. |
+
 ## Usage
 
 ### Go Library
