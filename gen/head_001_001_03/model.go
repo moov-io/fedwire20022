@@ -13,7 +13,6 @@ import (
 
 type AppHdr struct {
 	XMLName    xml.Name                      `xml:"AppHdr"`
-	XmlnsUrn   string                        `xml:"xmlns:urn,attr"`
 	CharSet    *UnicodeChartsCode            `xml:"CharSet,omitempty"`
 	Fr         Party44Choice                 `xml:"Fr"`
 	To         Party44Choice                 `xml:"To"`

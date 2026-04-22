@@ -3,17 +3,13 @@
 package admi_006_001_01
 
 import (
-	"encoding/xml"
-
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
 
 // XSD Elements
 
 type Document struct {
-	XMLName  xml.Name         `xml:"Document"`
-	XmlnsUrn string           `xml:"xmlns:urn,attr"`
-	RsndReq  ResendRequestV01 `xml:"RsndReq"`
+	RsndReq ResendRequestV01 `xml:"RsndReq"`
 }
 
 // XSD ComplexType declarations

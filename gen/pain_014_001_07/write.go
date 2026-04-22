@@ -3,8 +3,16 @@
 package pain_014_001_07
 
 import (
+	"encoding/xml"
+
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
+
+func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	start.Attr = append(start.Attr, xml.Attr{Name: xml.Name{Local: "xmlns"}, Value: "urn:iso:std:iso:20022:tech:xsd:pain.014.001.07"})
+	type alias Document
+	return e.EncodeElement((*alias)(&v), start)
+}
 
 func (a ActiveCurrencyAndAmountSimpleType) MarshalText() ([]byte, error) {
 	return fedwire.Amount(a).MarshalText()

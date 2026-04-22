@@ -3,16 +3,12 @@
 package pacs_009_001_08
 
 import (
-	"encoding/xml"
-
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
 
 // XSD Elements
 
 type Document struct {
-	XMLName  xml.Name                              `xml:"Document"`
-	XmlnsUrn string                                `xml:"xmlns:urn,attr"`
 	FICdtTrf FinancialInstitutionCreditTransferV08 `xml:"FICdtTrf"`
 }
 

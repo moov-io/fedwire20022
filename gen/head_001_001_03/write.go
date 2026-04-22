@@ -13,3 +13,9 @@ func (v SignatureEnvelope) MarshalXML(e *xml.Encoder, start xml.StartElement) er
 	e.EncodeToken(xml.EndElement{Name: xml.Name{Local: start.Name.Local}})
 	return nil
 }
+
+func (v BusinessApplicationHeaderV03) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	start.Attr = append(start.Attr, xml.Attr{Name: xml.Name{Local: "xmlns"}, Value: "urn:iso:std:iso:20022:tech:xsd:head.001.001.03"})
+	type alias BusinessApplicationHeaderV03
+	return e.EncodeElement((*alias)(&v), start)
+}
