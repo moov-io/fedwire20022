@@ -3,17 +3,13 @@
 package pacs_004_001_10
 
 import (
-	"encoding/xml"
-
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
 
 // XSD Elements
 
 type Document struct {
-	XMLName  xml.Name         `xml:"Document"`
-	XmlnsUrn string           `xml:"xmlns:urn,attr"`
-	PmtRtr   PaymentReturnV10 `xml:"PmtRtr"`
+	PmtRtr PaymentReturnV10 `xml:"PmtRtr"`
 }
 
 // XSD ComplexType declarations

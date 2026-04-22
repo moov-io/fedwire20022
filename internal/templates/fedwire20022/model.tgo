@@ -19,8 +19,9 @@ import (
 {{ end -}}
 {{ range .ExportableElements }}
 	type {{ .GoName }} struct {
+		{{- if not (or (eq .GoName "FedwireFundsOutgoing") (eq .GoName "FedwireFundsIncoming") (eq .GoName "Document")) }}
 		XMLName xml.Name `xml:"{{ .GoName }}"`
-		XmlnsUrn string `xml:"xmlns:urn,attr"`
+		{{- end }}
 		{{- if eq .GoName "Message" }}
 			Xmlns []xml.Attr `xml:",attr"`
 		{{- end -}}
@@ -101,6 +102,8 @@ import (
 				{{- else if eq .GoTypeName "SignatureEnvelope" -}}
 					{{- $elemGoForeignModule = "" -}}
 					{{- $elemGoTypeName = "SignatureEnvelope" -}}
+				{{- else if eq .GoTypeName "BusinessApplicationHeaderV03" -}}
+					{{- $elemGoTypeName = "AppHdr" -}}
 				{{ end }}
 				{{ .GoFieldName }} {{ if .Array }}[]{{ end }}{{ if eq .MinOccurs "0" }}*{{ end }}{{ $elemGoForeignModule }}{{ $elemGoTypeName }} `xml:"{{ .Name }}{{ if eq .MinOccurs "0" }},omitempty{{ end }}"`
 			{{- end }}

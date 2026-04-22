@@ -71,6 +71,30 @@ import (
 	{{ end }}
 {{ end }}
 
+{{ range .ExportableElements }}
+{{ if eq .GoName "FedwireFundsOutgoing" }}
+	func (v FedwireFundsOutgoing) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+		start.Attr = append(start.Attr, xml.Attr{Name: xml.Name{Local: "xmlns"}, Value: "{{ $targetNS }}"})
+		type alias FedwireFundsOutgoing
+		return e.EncodeElement((*alias)(&v), start)
+	}
+{{ else if eq .GoName "FedwireFundsIncoming" }}
+	func (v FedwireFundsIncoming) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+		start.Attr = append(start.Attr, xml.Attr{Name: xml.Name{Local: "xmlns"}, Value: "{{ $targetNS }}"})
+		type alias FedwireFundsIncoming
+		return e.EncodeElement((*alias)(&v), start)
+	}
+{{ else if eq .GoName "Document" }}
+	func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+		start.Attr = append(start.Attr, xml.Attr{Name: xml.Name{Local: "xmlns"}, Value: "{{ $targetNS }}"})
+		type alias Document
+		return e.EncodeElement((*alias)(&v), start)
+	}
+{{ end }}
+{{ end }}
+
+
+
 {{ range .ExportableComplexTypes }}
 	{{ if eq .GoName "SignatureEnvelope" }}
 		{{ template "SignatureEnvelope" . }}
@@ -128,6 +152,14 @@ import (
 	func (a ActiveOrHistoricCurrencyAndAmountSimpleType) MarshalText() ([]byte, error) {
 		return fedwire.Amount(a).MarshalText()
 	}
+{{ end }}
+
+{{ if eq .GoPackageName "head_001_001_03" }}
+func (v BusinessApplicationHeaderV03) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	start.Attr = append(start.Attr, xml.Attr{Name: xml.Name{Local: "xmlns"}, Value: "{{ $targetNS }}"})
+	type alias BusinessApplicationHeaderV03
+	return e.EncodeElement((*alias)(&v), start)
+}
 {{ end }}
 
 {{ define "SignatureEnvelope" }}

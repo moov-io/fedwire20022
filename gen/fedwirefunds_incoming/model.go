@@ -25,20 +25,16 @@ import (
 // XSD Elements
 
 type FedwireFundsIncoming struct {
-	XMLName                     xml.Name                     `xml:"FedwireFundsIncoming"`
-	XmlnsUrn                    string                       `xml:"xmlns:urn,attr"`
 	FedwireFundsTechnicalHeader *FedwireFundsTechnicalHeader `xml:"FedwireFundsTechnicalHeader,omitempty"`
 	FedwireFundsIncomingMessage FedwireFundsIncomingMessage  `xml:"FedwireFundsIncomingMessage"`
 }
 
 type FedwireFundsTechnicalHeader struct {
-	XMLName  xml.Name `xml:"FedwireFundsTechnicalHeader"`
-	XmlnsUrn string   `xml:"xmlns:urn,attr"`
+	XMLName xml.Name `xml:"FedwireFundsTechnicalHeader"`
 }
 
 type FedwireFundsIncomingMessage struct {
 	XMLName                                        xml.Name                                        `xml:"FedwireFundsIncomingMessage"`
-	XmlnsUrn                                       string                                          `xml:"xmlns:urn,attr"`
 	FedwireFundsCustomerCreditTransfer             *FedwireFundsCustomerCreditTransfer             `xml:"FedwireFundsCustomerCreditTransfer,omitempty"`
 	FedwireFundsFinancialInstitutionCreditTransfer *FedwireFundsFinancialInstitutionCreditTransfer `xml:"FedwireFundsFinancialInstitutionCreditTransfer,omitempty"`
 	FedwireFundsPaymentReturn                      *FedwireFundsPaymentReturn                      `xml:"FedwireFundsPaymentReturn,omitempty"`
@@ -57,98 +53,84 @@ type FedwireFundsIncomingMessage struct {
 
 type FedwireFundsCustomerCreditTransfer struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsCustomerCreditTransfer"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document pacs_008_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsFinancialInstitutionCreditTransfer struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsFinancialInstitutionCreditTransfer"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document pacs_009_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsPaymentReturn struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsPaymentReturn"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document pacs_004_001_10.Document                     `xml:"Document"`
 }
 
 type FedwireFundsConnectionCheck struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsConnectionCheck"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document admi_004_001_02.Document                     `xml:"Document"`
 }
 
 type FedwireFundsRetrievalRequest struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsRetrievalRequest"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document admi_006_001_01.Document                     `xml:"Document"`
 }
 
 type FedwireFundsReturnRequest struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsReturnRequest"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document camt_056_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsReturnRequestResponse struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsReturnRequestResponse"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document camt_029_001_09.Document                     `xml:"Document"`
 }
 
 type FedwireFundsPaymentStatusRequest struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsPaymentStatusRequest"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document pacs_028_001_03.Document                     `xml:"Document"`
 }
 
 type FedwireFundsDrawdownRequest struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsDrawdownRequest"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document pain_013_001_07.Document                     `xml:"Document"`
 }
 
 type FedwireFundsDrawdownResponse struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsDrawdownResponse"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document pain_014_001_07.Document                     `xml:"Document"`
 }
 
 type FedwireFundsAccountReportingRequest struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsAccountReportingRequest"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document camt_060_001_05.Document                     `xml:"Document"`
 }
 
 type FedwireFundsMessageReject struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsMessageReject"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document admi_002_001_01.Document                     `xml:"Document"`
 }
 
 type FedwireFundsInvestigationRequest struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsInvestigationRequest"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document camt_110_001_01.Document                     `xml:"Document"`
 }
 
 type FedwireFundsInvestigationResponse struct {
 	XMLName  xml.Name                                     `xml:"FedwireFundsInvestigationResponse"`
-	XmlnsUrn string                                       `xml:"xmlns:urn,attr"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document camt_111_001_01.Document                     `xml:"Document"`
 }

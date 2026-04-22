@@ -3,16 +3,12 @@
 package admi_002_001_01
 
 import (
-	"encoding/xml"
-
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
 
 // XSD Elements
 
 type Document struct {
-	XMLName      xml.Name     `xml:"Document"`
-	XmlnsUrn     string       `xml:"xmlns:urn,attr"`
 	Admi00200101 Admi00200101 `xml:"admi.002.001.01"`
 }
 

@@ -3,8 +3,16 @@
 package camt_060_001_05
 
 import (
+	"encoding/xml"
+
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
+
+func (v Document) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	start.Attr = append(start.Attr, xml.Attr{Name: xml.Name{Local: "xmlns"}, Value: "urn:iso:std:iso:20022:tech:xsd:camt.060.001.05"})
+	type alias Document
+	return e.EncodeElement((*alias)(&v), start)
+}
 
 func (a ActiveOrHistoricCurrencyAndAmountSimpleType) MarshalText() ([]byte, error) {
 	return fedwire.Amount(a).MarshalText()

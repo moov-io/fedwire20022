@@ -3,17 +3,13 @@
 package admi_007_001_01
 
 import (
-	"encoding/xml"
-
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
 
 // XSD Elements
 
 type Document struct {
-	XMLName  xml.Name                  `xml:"Document"`
-	XmlnsUrn string                    `xml:"xmlns:urn,attr"`
-	RctAck   ReceiptAcknowledgementV01 `xml:"RctAck"`
+	RctAck ReceiptAcknowledgementV01 `xml:"RctAck"`
 }
 
 // XSD ComplexType declarations

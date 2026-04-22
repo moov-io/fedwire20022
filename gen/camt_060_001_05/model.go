@@ -3,16 +3,12 @@
 package camt_060_001_05
 
 import (
-	"encoding/xml"
-
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
 
 // XSD Elements
 
 type Document struct {
-	XMLName     xml.Name                   `xml:"Document"`
-	XmlnsUrn    string                     `xml:"xmlns:urn,attr"`
 	AcctRptgReq AccountReportingRequestV05 `xml:"AcctRptgReq"`
 }
 

@@ -3,16 +3,12 @@
 package admi_004_001_02
 
 import (
-	"encoding/xml"
-
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
 
 // XSD Elements
 
 type Document struct {
-	XMLName      xml.Name                   `xml:"Document"`
-	XmlnsUrn     string                     `xml:"xmlns:urn,attr"`
 	SysEvtNtfctn SystemEventNotificationV02 `xml:"SysEvtNtfctn"`
 }
 

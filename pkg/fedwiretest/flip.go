@@ -21,7 +21,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsCustomerCreditTransfer != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsCustomerCreditTransfer
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsCustomerCreditTransfer: &fedwirefunds_incoming.FedwireFundsCustomerCreditTransfer{
 						AppHdr:   msg.AppHdr,
@@ -32,7 +31,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsMessageReject != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsMessageReject
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsMessageReject: &fedwirefunds_incoming.FedwireFundsMessageReject{
 						AppHdr:   msg.AppHdr,
@@ -43,7 +41,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsPaymentReturn != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsPaymentReturn
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsPaymentReturn: &fedwirefunds_incoming.FedwireFundsPaymentReturn{
 						AppHdr:   msg.AppHdr,
@@ -54,7 +51,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsMessageReject != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsMessageReject
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsMessageReject: &fedwirefunds_incoming.FedwireFundsMessageReject{
 						AppHdr:   msg.AppHdr,
@@ -65,7 +61,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsPaymentReturn != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsPaymentReturn
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsPaymentReturn: &fedwirefunds_incoming.FedwireFundsPaymentReturn{
 						AppHdr:   msg.AppHdr,
@@ -76,7 +71,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsFinancialInstitutionCreditTransfer != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsFinancialInstitutionCreditTransfer
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsFinancialInstitutionCreditTransfer: &fedwirefunds_incoming.FedwireFundsFinancialInstitutionCreditTransfer{
 						AppHdr:   msg.AppHdr,
@@ -87,7 +81,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsPaymentStatusRequest != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsPaymentStatusRequest
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsPaymentStatusRequest: &fedwirefunds_incoming.FedwireFundsPaymentStatusRequest{
 						AppHdr:   msg.AppHdr,
@@ -98,7 +91,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsDrawdownRequest != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsDrawdownRequest
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsDrawdownRequest: &fedwirefunds_incoming.FedwireFundsDrawdownRequest{
 						AppHdr:   msg.AppHdr,
@@ -109,7 +101,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsDrawdownResponse != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsDrawdownResponse
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsDrawdownResponse: &fedwirefunds_incoming.FedwireFundsDrawdownResponse{
 						AppHdr:   msg.AppHdr,
@@ -120,7 +111,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsReturnRequestResponse != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsReturnRequestResponse
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsReturnRequestResponse: &fedwirefunds_incoming.FedwireFundsReturnRequestResponse{
 						AppHdr:   msg.AppHdr,
@@ -131,7 +121,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsReturnRequest != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsReturnRequest
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsReturnRequest: &fedwirefunds_incoming.FedwireFundsReturnRequest{
 						AppHdr:   msg.AppHdr,
@@ -142,7 +131,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsInvestigationRequest != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsInvestigationRequest
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsInvestigationRequest: &fedwirefunds_incoming.FedwireFundsInvestigationRequest{
 						AppHdr:   msg.AppHdr,
@@ -153,7 +141,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsInvestigationResponse != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsInvestigationResponse
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsInvestigationResponse: &fedwirefunds_incoming.FedwireFundsInvestigationResponse{
 						AppHdr:   msg.AppHdr,
@@ -164,7 +151,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsBroadcast != nil:
 			msg := outgoingDoc.FedwireFundsOutgoingMessage.FedwireFundsBroadcast
 			return xml.Marshal(fedwirefunds_incoming.FedwireFundsIncoming{
-				XmlnsUrn: "urn:fedwirefunds:incoming:v001",
 				FedwireFundsIncomingMessage: fedwirefunds_incoming.FedwireFundsIncomingMessage{
 					FedwireFundsConnectionCheck: &fedwirefunds_incoming.FedwireFundsConnectionCheck{
 						AppHdr:   msg.AppHdr,
@@ -184,7 +170,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsCustomerCreditTransfer != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsCustomerCreditTransfer
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsCustomerCreditTransfer: &fedwirefunds_outgoing.FedwireFundsCustomerCreditTransfer{
 						AppHdr:   msg.AppHdr,
@@ -195,7 +180,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsMessageReject != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsMessageReject
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsMessageReject: &fedwirefunds_outgoing.FedwireFundsMessageReject{
 						AppHdr:   msg.AppHdr,
@@ -206,7 +190,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsPaymentReturn != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsPaymentReturn
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsPaymentReturn: &fedwirefunds_outgoing.FedwireFundsPaymentReturn{
 						AppHdr:   msg.AppHdr,
@@ -217,7 +200,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsFinancialInstitutionCreditTransfer != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsFinancialInstitutionCreditTransfer
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsFinancialInstitutionCreditTransfer: &fedwirefunds_outgoing.FedwireFundsFinancialInstitutionCreditTransfer{
 						AppHdr:   msg.AppHdr,
@@ -228,7 +210,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsPaymentStatusRequest != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsPaymentStatusRequest
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsPaymentStatusRequest: &fedwirefunds_outgoing.FedwireFundsPaymentStatusRequest{
 						AppHdr:   msg.AppHdr,
@@ -239,7 +220,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsDrawdownRequest != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsDrawdownRequest
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsDrawdownRequest: &fedwirefunds_outgoing.FedwireFundsDrawdownRequest{
 						AppHdr:   msg.AppHdr,
@@ -250,7 +230,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsDrawdownResponse != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsDrawdownResponse
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsDrawdownResponse: &fedwirefunds_outgoing.FedwireFundsDrawdownResponse{
 						AppHdr:   msg.AppHdr,
@@ -261,7 +240,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsReturnRequestResponse != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsReturnRequestResponse
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsReturnRequestResponse: &fedwirefunds_outgoing.FedwireFundsReturnRequestResponse{
 						AppHdr:   msg.AppHdr,
@@ -272,7 +250,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsReturnRequest != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsReturnRequest
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsReturnRequest: &fedwirefunds_outgoing.FedwireFundsReturnRequest{
 						AppHdr:   msg.AppHdr,
@@ -283,7 +260,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsInvestigationRequest != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsInvestigationRequest
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsInvestigationRequest: &fedwirefunds_outgoing.FedwireFundsInvestigationRequest{
 						AppHdr:   msg.AppHdr,
@@ -294,7 +270,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsInvestigationResponse != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsInvestigationResponse
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsInvestigationResponse: &fedwirefunds_outgoing.FedwireFundsInvestigationResponse{
 						AppHdr:   msg.AppHdr,
@@ -305,7 +280,6 @@ func FlipMessageDirection(input []byte) ([]byte, error) {
 		case incomingDoc.FedwireFundsIncomingMessage.FedwireFundsConnectionCheck != nil:
 			msg := incomingDoc.FedwireFundsIncomingMessage.FedwireFundsConnectionCheck
 			return xml.Marshal(fedwirefunds_outgoing.FedwireFundsOutgoing{
-				XmlnsUrn: "urn:fedwirefunds:outgoing:v001",
 				FedwireFundsOutgoingMessage: fedwirefunds_outgoing.FedwireFundsOutgoingMessage{
 					FedwireFundsBroadcast: &fedwirefunds_outgoing.FedwireFundsBroadcast{
 						AppHdr:   msg.AppHdr,
