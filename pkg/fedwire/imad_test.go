@@ -18,7 +18,7 @@ func TestInputMessageAccountabilityData(t *testing.T) {
 		expected string
 	}{
 		{
-			cycleDate:      "20060310",
+			cycleDate:      "2006-03-10",
 			endpointID:     "87654321",
 			sequenceNumber: 245,
 			expected:       "2006031087654321000245",

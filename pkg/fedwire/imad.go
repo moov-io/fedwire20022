@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
+	"strings"
 	"unicode/utf8"
 )
 
@@ -13,7 +14,9 @@ import (
 // - The Input Source must be the unique Endpoint ID of the Fedwire Sender (8 characters, alphanumeric).
 // - The Input Sequence Number should be incremental and should start with 000001 at the start of each Input Cycle Date per Endpoint ID (6 characters, numeric).
 func InputMessageAccountabilityData(cycleDate string, endpointID string, sequenceNumber int) string {
-	return fmt.Sprintf("%8.8s%8.8s%6.6d", cycleDate, endpointID, sequenceNumber)
+	// In the XML cycle dates come as "2025-05-01", but need to be "20250501" in the XML.
+	cycle := strings.ReplaceAll(cycleDate, "-", "")
+	return fmt.Sprintf("%8.8s%8.8s%6.6d", cycle, endpointID, sequenceNumber)
 }
 
 var (
