@@ -23,7 +23,7 @@ func (t *ISOTime) UnmarshalText(text []byte) error {
 }
 
 func (t ISOTime) MarshalText() ([]byte, error) {
-	out := time.Time(t).UTC().Format("15:04:05Z")
+	out := time.Time(t).UTC().Format("15:04:05")
 	return []byte(out), nil
 }
 
@@ -61,7 +61,7 @@ func (t *ISODate) UnmarshalText(text []byte) error {
 }
 
 func (t ISODate) MarshalText() ([]byte, error) {
-	out := time.Time(t).UTC().Format("2006-01-02Z")
+	out := time.Time(t).UTC().Format("2006-01-02")
 	return []byte(out), nil
 }
 

@@ -20,7 +20,7 @@ func TestISOTime(t *testing.T) {
 
 	bs, err := when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "13:15:05Z", string(bs))
+	require.Equal(t, "13:15:05", string(bs))
 
 	// Local with offset
 	input = `<ISOTime>08:15:05-05:00</ISOTime>`
@@ -31,7 +31,7 @@ func TestISOTime(t *testing.T) {
 
 	bs, err = when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "13:15:05Z", string(bs))
+	require.Equal(t, "13:15:05", string(bs))
 }
 
 func TestISODate(t *testing.T) {
@@ -45,7 +45,7 @@ func TestISODate(t *testing.T) {
 
 	bs, err := when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "2026-02-11Z", string(bs))
+	require.Equal(t, "2026-02-11", string(bs))
 
 	// Local date format (YYYY-MM-DD)
 	input = `<ISODate>2026-02-11</ISODate>`
@@ -56,7 +56,7 @@ func TestISODate(t *testing.T) {
 
 	bs, err = when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "2026-02-11Z", string(bs))
+	require.Equal(t, "2026-02-11", string(bs))
 
 	// Local date with UTC offset format (YYYY-MM-DD+/-hh:mm)
 	input = `<ISODate>2026-02-11-05:00</ISODate>`
@@ -67,7 +67,7 @@ func TestISODate(t *testing.T) {
 
 	bs, err = when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "2026-02-11Z", string(bs))
+	require.Equal(t, "2026-02-11", string(bs))
 
 	// Local date with UTC offset format (YYYY-MM-DD+/-hh:mm)
 	input = `<ISODate>2026-02-11+03:00</ISODate>`
@@ -78,7 +78,7 @@ func TestISODate(t *testing.T) {
 
 	bs, err = when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "2026-02-10Z", string(bs))
+	require.Equal(t, "2026-02-10", string(bs))
 }
 
 func TestISODateTime(t *testing.T) {
