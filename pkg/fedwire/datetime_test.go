@@ -20,7 +20,7 @@ func TestISOTime(t *testing.T) {
 
 	bs, err := when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "13:15:05", string(bs))
+	require.Equal(t, "13:15:05Z", string(bs))
 
 	// Local with offset
 	input = `<ISOTime>08:15:05-05:00</ISOTime>`
@@ -31,7 +31,7 @@ func TestISOTime(t *testing.T) {
 
 	bs, err = when.MarshalText()
 	require.NoError(t, err)
-	require.Equal(t, "13:15:05", string(bs))
+	require.Equal(t, "13:15:05Z", string(bs))
 }
 
 func TestISODate(t *testing.T) {
