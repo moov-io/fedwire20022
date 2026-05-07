@@ -2,7 +2,7 @@ module github.com/moov-io/fedwire20022
 
 go 1.24.0
 
-toolchain go1.26.2
+toolchain go1.26.3
 
 require (
 	github.com/google/uuid v1.6.0
