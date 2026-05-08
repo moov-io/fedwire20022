@@ -1,12 +1,12 @@
 module github.com/moov-io/fedwire20022
 
-go 1.24.0
+go 1.25.0
 
 toolchain go1.26.3
 
 require (
 	github.com/google/uuid v1.6.0
-	github.com/moov-io/base v0.61.1
+	github.com/moov-io/base v0.61.2
 	github.com/stretchr/testify v1.11.1
 )
 
