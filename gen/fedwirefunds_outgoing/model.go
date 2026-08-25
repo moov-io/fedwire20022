@@ -52,8 +52,8 @@ type FedwireFundsOutgoingMessage struct {
 	FedwireFundsReturnRequest                      *FedwireFundsReturnRequest                      `xml:"FedwireFundsReturnRequest,omitempty"`
 	FedwireFundsInvestigationRequest               *FedwireFundsInvestigationRequest               `xml:"FedwireFundsInvestigationRequest,omitempty"`
 	FedwireFundsInvestigationResponse              *FedwireFundsInvestigationResponse              `xml:"FedwireFundsInvestigationResponse,omitempty"`
-	FedwireFundsAccountBalanceReportMaster         *FedwireFundsAccountBalanceReportMaster         `xml:"FedwireFundsAccountBalanceReportMaster,omitempty"`
-	FedwireFundsAccountBalanceReportSelf           *FedwireFundsAccountBalanceReportSelf           `xml:"FedwireFundsAccountBalanceReportSelf,omitempty"`
+	FedwireFundsAccountBalanceReportMaster         *FedwireFundsAccountBalanceReportMaster         `xml:"FedwireFundsAccountBalanceReport_Master,omitempty"`
+	FedwireFundsAccountBalanceReportSelf           *FedwireFundsAccountBalanceReportSelf           `xml:"FedwireFundsAccountBalanceReport_Self,omitempty"`
 	FedwireFundsActivityReport                     *FedwireFundsActivityReport                     `xml:"FedwireFundsActivityReport,omitempty"`
 	FedwireFundsEndpointDetailsReport              *FedwireFundsEndpointDetailsReport              `xml:"FedwireFundsEndpointDetailsReport,omitempty"`
 	FedwireFundsEndpointGapReport                  *FedwireFundsEndpointGapReport                  `xml:"FedwireFundsEndpointGapReport,omitempty"`
@@ -133,13 +133,13 @@ type FedwireFundsReturnRequestResponse struct {
 }
 
 type FedwireFundsAccountBalanceReportMaster struct {
-	XMLName  xml.Name                                     `xml:"FedwireFundsAccountBalanceReportMaster"`
+	XMLName  xml.Name                                     `xml:"FedwireFundsAccountBalanceReport_Master"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document camt_052_001_08.Document                     `xml:"Document"`
 }
 
 type FedwireFundsAccountBalanceReportSelf struct {
-	XMLName  xml.Name                                     `xml:"FedwireFundsAccountBalanceReportSelf"`
+	XMLName  xml.Name                                     `xml:"FedwireFundsAccountBalanceReport_Self"`
 	AppHdr   head_001_001_03.BusinessApplicationHeaderV03 `xml:"AppHdr"`
 	Document camt_052_001_08.Document                     `xml:"Document"`
 }
