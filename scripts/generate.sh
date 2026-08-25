@@ -26,3 +26,9 @@ do
     gofmt -w $file
     goimports -w $file
 done
+
+# xsd2go camel-cases element names into XML tags. Fed's outgoing XSD keeps
+# underscores on the account-balance report wrappers, and those names appear
+# on the wire. Restore them after generate so unmarshal matches Fed.
+perl -pi -e 's/xml:"FedwireFundsAccountBalanceReportMaster/xml:"FedwireFundsAccountBalanceReport_Master/g; s/xml:"FedwireFundsAccountBalanceReportSelf/xml:"FedwireFundsAccountBalanceReport_Self/g' \
+	gen/fedwirefunds_outgoing/model.go
