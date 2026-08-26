@@ -46,7 +46,10 @@ func FuzzFedWireXML(f *testing.F) {
 func FuzzFedWireTypes(f *testing.F) {
 	f.Add("2019-03-21")
 	f.Add("2019-03-21T10:36:19-04:00")
+	f.Add("2019-03-21T10:36:19.123")
 	f.Add("10:36:19")
+	f.Add("10:51:23.123")
+	f.Add("10:51:23.123Z")
 	f.Add("0")
 	f.Add("1234.56")
 	f.Add("")
