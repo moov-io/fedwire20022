@@ -2,6 +2,7 @@ package fedwire_test
 
 import (
 	"encoding/xml"
+	"math"
 	"testing"
 
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
@@ -37,4 +38,7 @@ func TestAmountFormat(t *testing.T) {
 func TestAmountValidate(t *testing.T) {
 	var amt = fedwire.Amount(634)
 	require.NoError(t, amt.Validate())
+
+	require.Error(t, fedwire.Amount(math.NaN()).Validate())
+	require.Error(t, fedwire.Amount(math.Inf(1)).Validate())
 }
