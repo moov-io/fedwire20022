@@ -24,6 +24,20 @@ func TestValidatePattern(t *testing.T) {
 	require.NoError(t, fedwire.ValidatePattern("20230713145322200000057A11712044729", pattern))
 	require.Error(t, fedwire.ValidatePattern("20230931145322200000057A11712044729", pattern)) // invalid MMDD
 
+	t.Run("anchored", func(t *testing.T) {
+		// XSD patterns must match the whole value
+		require.NoError(t, fedwire.ValidatePattern("123", `[0-9]{1,15}`))
+		require.Error(t, fedwire.ValidatePattern("abc1", `[0-9]{1,15}`))
+		require.Error(t, fedwire.ValidatePattern("12345678901234567890", `[0-9]{1,15}`))
+		require.Error(t, fedwire.ValidatePattern("USDX", `[A-Z]{3,3}`))
+		require.Error(t, fedwire.ValidatePattern("", `[A-Z]{3,3}`))
+
+		// Alternatives are anchored as a group
+		require.NoError(t, fedwire.ValidatePattern("CRED", `CRED|DEBT`))
+		require.Error(t, fedwire.ValidatePattern("CREDX", `CRED|DEBT`))
+		require.Error(t, fedwire.ValidatePattern("XDEBT", `CRED|DEBT`))
+	})
+
 	t.Run("concurrent", func(t *testing.T) {
 		iterations := 1000
 
@@ -34,7 +48,7 @@ func TestValidatePattern(t *testing.T) {
 			go func(idx int) {
 				wg.Done()
 
-				patern := fmt.Sprintf("[0-9]{0,%d}", idx/5) // add/get regexes from cache
+				patern := fmt.Sprintf("[0-9]{0,%d}", idx/5+1) // add/get regexes from cache
 				require.NoError(t, fedwire.ValidatePattern("4", patern))
 			}(i)
 		}
