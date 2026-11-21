@@ -42,3 +42,8 @@ func TestAmountValidate(t *testing.T) {
 	require.Error(t, fedwire.Amount(math.NaN()).Validate())
 	require.Error(t, fedwire.Amount(math.Inf(1)).Validate())
 }
+
+func TestAmountString(t *testing.T) {
+	require.Equal(t, "634.00", fedwire.Amount(634).String())
+	require.Equal(t, "1.23", fedwire.Amount(1.234).String()) // rounds to two decimal places
+}

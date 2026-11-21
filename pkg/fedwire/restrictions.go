@@ -3,7 +3,9 @@ package fedwire
 import (
 	"cmp"
 	"fmt"
+	"math"
 	"regexp"
+	"strconv"
 	"strings"
 	"sync"
 	"unicode/utf8"
@@ -122,8 +124,26 @@ func ValidateFractionDigits(value string, maxValue int) error {
 	return nil
 }
 
+// ValidateFinite returns an error when value is NaN or infinite.
+// XSD decimal values must be finite numbers.
+func ValidateFinite(value float64) error {
+	if math.IsNaN(value) || math.IsInf(value, 0) {
+		return fmt.Errorf("%v fails validation as it is not a finite number", value)
+	}
+	return nil
+}
+
+// FormatDecimal writes value as a plain decimal number with no exponent.
+// Use it with ValidateTotalDigits and ValidateFractionDigits.
+func FormatDecimal(value float64) string {
+	return strconv.FormatFloat(value, 'f', -1, 64)
+}
+
 func ValidateTotalDigits(value string, maxValue int) error {
-	str := strings.ReplaceAll(value, ".", "")
+	// The sign and leading zeros are not digits in the XSD totalDigits facet.
+	str := strings.TrimLeft(value, "+-")
+	str = strings.TrimLeft(str, "0")
+	str = strings.ReplaceAll(str, ".", "")
 	var strLength = utf8.RuneCountInString(str)
 	if strLength > maxValue {
 		return fmt.Errorf("%s fails validation with length %v <= required totalDigits %v", value, strLength, maxValue)
