@@ -33,6 +33,53 @@ func (v FedwireFundsTechnicalHeader) Validate() error {
 func (v FedwireFundsIncomingMessage) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "FedwireFundsIncomingMessage"
+	{
+		var count int
+		if v.FedwireFundsCustomerCreditTransfer != nil {
+			count++
+		}
+		if v.FedwireFundsFinancialInstitutionCreditTransfer != nil {
+			count++
+		}
+		if v.FedwireFundsPaymentReturn != nil {
+			count++
+		}
+		if v.FedwireFundsConnectionCheck != nil {
+			count++
+		}
+		if v.FedwireFundsRetrievalRequest != nil {
+			count++
+		}
+		if v.FedwireFundsReturnRequest != nil {
+			count++
+		}
+		if v.FedwireFundsReturnRequestResponse != nil {
+			count++
+		}
+		if v.FedwireFundsPaymentStatusRequest != nil {
+			count++
+		}
+		if v.FedwireFundsDrawdownRequest != nil {
+			count++
+		}
+		if v.FedwireFundsDrawdownResponse != nil {
+			count++
+		}
+		if v.FedwireFundsAccountReportingRequest != nil {
+			count++
+		}
+		if v.FedwireFundsMessageReject != nil {
+			count++
+		}
+		if v.FedwireFundsInvestigationRequest != nil {
+			count++
+		}
+		if v.FedwireFundsInvestigationResponse != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "FedwireFundsCustomerCreditTransfer", "FedwireFundsFinancialInstitutionCreditTransfer", "FedwireFundsPaymentReturn", "FedwireFundsConnectionCheck", "FedwireFundsRetrievalRequest", "FedwireFundsReturnRequest", "FedwireFundsReturnRequestResponse", "FedwireFundsPaymentStatusRequest", "FedwireFundsDrawdownRequest", "FedwireFundsDrawdownResponse", "FedwireFundsAccountReportingRequest", "FedwireFundsMessageReject", "FedwireFundsInvestigationRequest", "FedwireFundsInvestigationResponse"))
+	}
+
 	if v.FedwireFundsCustomerCreditTransfer != nil {
 		fedwire.AddError(&errs, baseName+".FedwireFundsCustomerCreditTransfer", v.FedwireFundsCustomerCreditTransfer.Validate())
 	}

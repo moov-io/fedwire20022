@@ -153,3 +153,20 @@ func ValidateTotalDigits(value string, maxValue int) error {
 	}
 	return nil
 }
+
+// ValidateChoice checks that exactly one element of an XSD choice is present.
+// count is the number of elements that are present and names lists the elements of the choice.
+func ValidateChoice(count int, names ...string) error {
+	if count != 1 {
+		return fmt.Errorf("requires exactly one of (%s), found %d", strings.Join(names, ", "), count)
+	}
+	return nil
+}
+
+// ValidateChoiceAtLeastOne checks that one or more elements of a repeated XSD choice are present.
+func ValidateChoiceAtLeastOne(count int, names ...string) error {
+	if count < 1 {
+		return fmt.Errorf("requires one or more of (%s), found %d", strings.Join(names, ", "), count)
+	}
+	return nil
+}
