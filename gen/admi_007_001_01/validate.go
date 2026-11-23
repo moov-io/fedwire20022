@@ -83,6 +83,20 @@ func (v NameAndAddress5) Validate() error {
 func (v PartyIdentification120Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "PartyIdentification120Choice"
+	{
+		var count int
+		if v.AnyBIC != nil {
+			count++
+		}
+		if v.PrtryId != nil {
+			count++
+		}
+		if v.NmAndAdr != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "AnyBIC", "PrtryId", "NmAndAdr"))
+	}
+
 	if v.AnyBIC != nil {
 		fedwire.AddError(&errs, baseName+".AnyBIC", v.AnyBIC.Validate())
 	}

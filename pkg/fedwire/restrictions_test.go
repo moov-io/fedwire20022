@@ -149,3 +149,13 @@ func TestFormatDecimal(t *testing.T) {
 	require.Equal(t, "0", fedwire.FormatDecimal(0))
 	require.Error(t, fedwire.ValidateTotalDigits(fedwire.FormatDecimal(1e20), 18))
 }
+
+func TestValidateChoice(t *testing.T) {
+	require.NoError(t, fedwire.ValidateChoice(1, "A", "B"))
+	require.ErrorContains(t, fedwire.ValidateChoice(0, "A", "B"), "requires exactly one of (A, B), found 0")
+	require.ErrorContains(t, fedwire.ValidateChoice(2, "A", "B"), "found 2")
+
+	require.NoError(t, fedwire.ValidateChoiceAtLeastOne(1, "A", "B"))
+	require.NoError(t, fedwire.ValidateChoiceAtLeastOne(3, "A", "B"))
+	require.ErrorContains(t, fedwire.ValidateChoiceAtLeastOne(0, "A", "B"), "requires one or more of (A, B)")
+}

@@ -33,6 +33,74 @@ func (v FedwireFundsTechnicalHeader) Validate() error {
 func (v FedwireFundsOutgoingMessage) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "FedwireFundsOutgoingMessage"
+	{
+		var count int
+		if v.FedwireFundsCustomerCreditTransfer != nil {
+			count++
+		}
+		if v.FedwireFundsMessageReject != nil {
+			count++
+		}
+		if v.FedwireFundsPaymentStatus != nil {
+			count++
+		}
+		if v.FedwireFundsBroadcast != nil {
+			count++
+		}
+		if v.FedwireFundsAcknowledgement != nil {
+			count++
+		}
+		if v.FedwireFundsSystemResponse != nil {
+			count++
+		}
+		if v.FedwireFundsPaymentReturn != nil {
+			count++
+		}
+		if v.FedwireFundsFinancialInstitutionCreditTransfer != nil {
+			count++
+		}
+		if v.FedwireFundsPaymentStatusRequest != nil {
+			count++
+		}
+		if v.FedwireFundsDrawdownRequest != nil {
+			count++
+		}
+		if v.FedwireFundsDrawdownResponse != nil {
+			count++
+		}
+		if v.FedwireFundsReturnRequestResponse != nil {
+			count++
+		}
+		if v.FedwireFundsReturnRequest != nil {
+			count++
+		}
+		if v.FedwireFundsInvestigationRequest != nil {
+			count++
+		}
+		if v.FedwireFundsInvestigationResponse != nil {
+			count++
+		}
+		if v.FedwireFundsAccountBalanceReportMaster != nil {
+			count++
+		}
+		if v.FedwireFundsAccountBalanceReportSelf != nil {
+			count++
+		}
+		if v.FedwireFundsActivityReport != nil {
+			count++
+		}
+		if v.FedwireFundsEndpointDetailsReport != nil {
+			count++
+		}
+		if v.FedwireFundsEndpointGapReport != nil {
+			count++
+		}
+		if v.FedwireFundsEndpointTotalsReport != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "FedwireFundsCustomerCreditTransfer", "FedwireFundsMessageReject", "FedwireFundsPaymentStatus", "FedwireFundsBroadcast", "FedwireFundsAcknowledgement", "FedwireFundsSystemResponse", "FedwireFundsPaymentReturn", "FedwireFundsFinancialInstitutionCreditTransfer", "FedwireFundsPaymentStatusRequest", "FedwireFundsDrawdownRequest", "FedwireFundsDrawdownResponse", "FedwireFundsReturnRequestResponse", "FedwireFundsReturnRequest", "FedwireFundsInvestigationRequest", "FedwireFundsInvestigationResponse", "FedwireFundsAccountBalanceReportMaster", "FedwireFundsAccountBalanceReportSelf", "FedwireFundsActivityReport", "FedwireFundsEndpointDetailsReport", "FedwireFundsEndpointGapReport", "FedwireFundsEndpointTotalsReport"))
+	}
+
 	if v.FedwireFundsCustomerCreditTransfer != nil {
 		fedwire.AddError(&errs, baseName+".FedwireFundsCustomerCreditTransfer", v.FedwireFundsCustomerCreditTransfer.Validate())
 	}

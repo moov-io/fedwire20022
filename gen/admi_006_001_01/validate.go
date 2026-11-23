@@ -105,6 +105,20 @@ func (v OriginalBusinessQuery1) Validate() error {
 func (v PartyIdentification120Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "PartyIdentification120Choice"
+	{
+		var count int
+		if v.AnyBIC != nil {
+			count++
+		}
+		if v.PrtryId != nil {
+			count++
+		}
+		if v.NmAndAdr != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "AnyBIC", "PrtryId", "NmAndAdr"))
+	}
+
 	if v.AnyBIC != nil {
 		fedwire.AddError(&errs, baseName+".AnyBIC", v.AnyBIC.Validate())
 	}
@@ -169,6 +183,20 @@ func (v PostalAddress1) Validate() error {
 func (v RequestType4Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "RequestType4Choice"
+	{
+		var count int
+		if v.PmtCtrl != nil {
+			count++
+		}
+		if v.Enqry != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "PmtCtrl", "Enqry", "Prtry"))
+	}
+
 	if v.PmtCtrl != nil {
 		fedwire.AddError(&errs, baseName+".PmtCtrl", v.PmtCtrl.Validate())
 	}
@@ -241,6 +269,26 @@ func (v SequenceRange1) Validate() error {
 func (v SequenceRange1Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "SequenceRange1Choice"
+	{
+		var count int
+		if v.FrSeq != nil {
+			count++
+		}
+		if v.ToSeq != nil {
+			count++
+		}
+		if len(v.FrToSeq) > 0 {
+			count++
+		}
+		if len(v.EQSeq) > 0 {
+			count++
+		}
+		if len(v.NEQSeq) > 0 {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "FrSeq", "ToSeq", "FrToSeq", "EQSeq", "NEQSeq"))
+	}
+
 	if v.FrSeq != nil {
 		fedwire.AddError(&errs, baseName+".FrSeq", v.FrSeq.Validate())
 	}

@@ -24,6 +24,17 @@ func (v Document) Validate() error {
 func (v AccountIdentification4Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "AccountIdentification4Choice"
+	{
+		var count int
+		if v.IBAN != nil {
+			count++
+		}
+		if v.Othr != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "IBAN", "Othr"))
+	}
+
 	if v.IBAN != nil {
 		fedwire.AddError(&errs, baseName+".IBAN", v.IBAN.Validate())
 	}
@@ -57,6 +68,17 @@ func (v AccountReportingRequestV05) Validate() error {
 func (v AccountSchemeName1Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "AccountSchemeName1Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -85,6 +107,17 @@ func (v ActiveOrHistoricCurrencyAndAmount) Validate() error {
 func (v AddressType3Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "AddressType3Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -100,6 +133,17 @@ func (v AddressType3Choice) Validate() error {
 func (v BalanceSubType1Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "BalanceSubType1Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -115,6 +159,17 @@ func (v BalanceSubType1Choice) Validate() error {
 func (v BalanceType10Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "BalanceType10Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -199,6 +254,17 @@ func (v CashAccount38) Validate() error {
 func (v CashAccountType2Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "CashAccountType2Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -214,6 +280,17 @@ func (v CashAccountType2Choice) Validate() error {
 func (v ClearingSystemIdentification2Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "ClearingSystemIdentification2Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -317,6 +394,17 @@ func (v DatePeriodDetails1) Validate() error {
 func (v EntryStatus1Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "EntryStatus1Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -332,6 +420,17 @@ func (v EntryStatus1Choice) Validate() error {
 func (v FinancialIdentificationSchemeName1Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "FinancialIdentificationSchemeName1Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -497,6 +596,17 @@ func (v OrganisationIdentification29) Validate() error {
 func (v OrganisationIdentificationSchemeName1Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "OrganisationIdentificationSchemeName1Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -525,6 +635,17 @@ func (v OtherContact1) Validate() error {
 func (v Party38Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "Party38Choice"
+	{
+		var count int
+		if v.OrgId != nil {
+			count++
+		}
+		if v.PrvtId != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "OrgId", "PrvtId"))
+	}
+
 	if v.OrgId != nil {
 		fedwire.AddError(&errs, baseName+".OrgId", v.OrgId.Validate())
 	}
@@ -540,6 +661,17 @@ func (v Party38Choice) Validate() error {
 func (v Party40Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "Party40Choice"
+	{
+		var count int
+		if v.Pty != nil {
+			count++
+		}
+		if v.Agt != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Pty", "Agt"))
+	}
+
 	if v.Pty != nil {
 		fedwire.AddError(&errs, baseName+".Pty", v.Pty.Validate())
 	}
@@ -596,6 +728,17 @@ func (v PersonIdentification13) Validate() error {
 func (v PersonIdentificationSchemeName1Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "PersonIdentificationSchemeName1Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -683,6 +826,17 @@ func (v ProxyAccountIdentification1) Validate() error {
 func (v ProxyAccountType1Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "ProxyAccountType1Choice"
+	{
+		var count int
+		if v.Cd != nil {
+			count++
+		}
+		if v.Prtry != nil {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "Cd", "Prtry"))
+	}
+
 	if v.Cd != nil {
 		fedwire.AddError(&errs, baseName+".Cd", v.Cd.Validate())
 	}
@@ -757,6 +911,26 @@ func (v SequenceRange1) Validate() error {
 func (v SequenceRange1Choice) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "SequenceRange1Choice"
+	{
+		var count int
+		if v.FrSeq != nil {
+			count++
+		}
+		if v.ToSeq != nil {
+			count++
+		}
+		if len(v.FrToSeq) > 0 {
+			count++
+		}
+		if len(v.EQSeq) > 0 {
+			count++
+		}
+		if len(v.NEQSeq) > 0 {
+			count++
+		}
+		fedwire.AddError(&errs, baseName, fedwire.ValidateChoice(count, "FrSeq", "ToSeq", "FrToSeq", "EQSeq", "NEQSeq"))
+	}
+
 	if v.FrSeq != nil {
 		fedwire.AddError(&errs, baseName+".FrSeq", v.FrSeq.Validate())
 	}
