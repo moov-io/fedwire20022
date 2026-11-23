@@ -1,3 +1,20 @@
+## v0.3.6 (Released 2026-11-23)
+
+BUG FIXES
+
+- validate: check amount values in generated `Validate()` ([#86](https://github.com/moov-io/fedwire20022/pull/86))
+- fedwire: anchor XSD patterns in `ValidatePattern` ([#87](https://github.com/moov-io/fedwire20022/pull/87))
+- validate: check `xs:choice` elements in generated `Validate()` ([#88](https://github.com/moov-io/fedwire20022/pull/88))
+- Reject NaN and infinite Fedwire amounts in Validate ([#70](https://github.com/moov-io/fedwire20022/pull/70))
+
+IMPROVEMENTS
+
+- docs: add install steps, usage examples, and supported messages ([#89](https://github.com/moov-io/fedwire20022/pull/89))
+
+BUILD
+
+- fix(deps): update module github.com/moov-io/base to v0.68.3
+
 ## v0.3.5 (Released 2026-08-26)
 
 BUG FIXES
