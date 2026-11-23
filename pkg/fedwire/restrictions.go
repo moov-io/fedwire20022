@@ -30,12 +30,15 @@ var (
 	compiledRegexes    = make(map[string]*regexp.Regexp)
 )
 
+// ValidatePattern checks that the whole value matches an XSD pattern.
+// XSD patterns are implicitly anchored at both ends, so the regex is
+// compiled as ^(?:regex)$.
 func ValidatePattern(value string, regex string) error {
 	compiledRegexeLock.RLock()
 	rr, exists := compiledRegexes[regex]
 	compiledRegexeLock.RUnlock()
 	if !exists {
-		r, err := regexp.Compile(regex)
+		r, err := regexp.Compile("^(?:" + regex + ")$")
 		if err != nil {
 			return err
 		}
