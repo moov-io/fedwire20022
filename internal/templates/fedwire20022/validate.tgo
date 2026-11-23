@@ -59,6 +59,9 @@ import (
                         {{- if or (gt (len .Attributes) 0) (gt (len .Elements) 0) }}
                         baseName := "{{ .GoName }}"
                         {{- end }}
+			{{- if .ContainsText }}
+				fedwire.AddError(&errs, baseName+".Value", v.Value.Validate())
+			{{- end }}
 			{{- range .Attributes }}
 				{{ if eq .Use "optional" }}if v.{{ .GoName }} != nil { {{ end }}
 					fedwire.AddError(&errs, baseName+".{{ .GoName }}", v.{{ .GoName }}.Validate())
@@ -88,15 +91,19 @@ import (
 	// XSD SimpleType validations
 {{ end }}
 {{ range .ExportableSimpleTypes }}
-	{{ if eq .GoName "ActiveCurrencyAndAmountSimpleType" }}
-	{{ else if eq .GoName "ActiveOrHistoricCurrencyAndAmountSimpleType" }}
-        {{ else if eq .GoName "ISOTime" }}
+	{{ if eq .GoName "ISOTime" }}
 	{{ else if eq .GoName "ISODate" }}
 	{{ else if eq .GoName "ISODateTime" }}
 	{{ else if eq .GoName "ISONormalisedDateTime" }}
 	{{ else if eq .GoName "Max20000Text" }}
 	{{ else }}
+		{{- $isAmount := or (eq .GoName "ActiveCurrencyAndAmountSimpleType") (eq .GoName "ActiveOrHistoricCurrencyAndAmountSimpleType") }}
 		func (v {{ .GoName }}) Validate() error {
+			{{- if eq .GoTypeName "float64" }}
+				if err := fedwire.ValidateFinite(float64(v)); err != nil {
+					return err
+				}
+			{{- end }}
 			{{- if .Restriction.Pattern }}
                         {{- if ne .GoName "XSequenceNumberFedwireFunds1" }}
 				if err := fedwire.ValidatePattern(string(v), `{{ .Restriction.Pattern.Value }}`); err != nil {
@@ -130,12 +137,12 @@ import (
                                 }
 			{{- end }}
 			{{- if .Restriction.FractionDigits }}
-				if err := fedwire.ValidateFractionDigits(fmt.Sprintf("%v", v), {{ .Restriction.FractionDigits.Value }}); err != nil {
+				if err := fedwire.ValidateFractionDigits({{ if $isAmount }}fedwire.Amount(v).String(){{ else if eq .GoTypeName "float64" }}fedwire.FormatDecimal(float64(v)){{ else }}fmt.Sprintf("%v", v){{ end }}, {{ .Restriction.FractionDigits.Value }}); err != nil {
                                 	return err
                                 }
 			{{- end }}
 			{{- if .Restriction.TotalDigits }}
-				if err := fedwire.ValidateTotalDigits(fmt.Sprintf("%v", v), {{ .Restriction.TotalDigits.Value }}); err != nil {
+				if err := fedwire.ValidateTotalDigits({{ if $isAmount }}fedwire.Amount(v).String(){{ else if eq .GoTypeName "float64" }}fedwire.FormatDecimal(float64(v)){{ else }}fmt.Sprintf("%v", v){{ end }}, {{ .Restriction.TotalDigits.Value }}); err != nil {
                                 	return err
                                 }
 			{{- end }}

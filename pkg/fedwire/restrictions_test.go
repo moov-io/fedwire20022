@@ -2,6 +2,7 @@ package fedwire_test
 
 import (
 	"fmt"
+	"math"
 	"sync"
 	"testing"
 
@@ -113,4 +114,24 @@ func TestValidateTotalDigits(t *testing.T) {
 	require.NoError(t, fedwire.ValidateTotalDigits("3.141", maxVal))
 	require.NoError(t, fedwire.ValidateTotalDigits("3.1415", maxVal))
 	require.Error(t, fedwire.ValidateTotalDigits("3.14159", maxVal))
+
+	// The sign and leading zeros are not counted
+	require.NoError(t, fedwire.ValidateTotalDigits("-3.1415", maxVal))
+	require.NoError(t, fedwire.ValidateTotalDigits("0.1234", 4))
+	require.Error(t, fedwire.ValidateTotalDigits("0.12345", 4))
+}
+
+func TestValidateFinite(t *testing.T) {
+	require.NoError(t, fedwire.ValidateFinite(0))
+	require.NoError(t, fedwire.ValidateFinite(-1.5))
+	require.Error(t, fedwire.ValidateFinite(math.NaN()))
+	require.Error(t, fedwire.ValidateFinite(math.Inf(1)))
+	require.Error(t, fedwire.ValidateFinite(math.Inf(-1)))
+}
+
+func TestFormatDecimal(t *testing.T) {
+	require.Equal(t, "100000000000000000000", fedwire.FormatDecimal(1e20))
+	require.Equal(t, "1.25", fedwire.FormatDecimal(1.25))
+	require.Equal(t, "0", fedwire.FormatDecimal(0))
+	require.Error(t, fedwire.ValidateTotalDigits(fedwire.FormatDecimal(1e20), 18))
 }

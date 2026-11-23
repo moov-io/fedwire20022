@@ -3,8 +3,6 @@
 package camt_056_001_08
 
 import (
-	"fmt"
-
 	"github.com/moov-io/base"
 	"github.com/moov-io/fedwire20022/pkg/fedwire"
 )
@@ -56,6 +54,7 @@ func (v AccountSchemeName1Choice) Validate() error {
 func (v ActiveOrHistoricCurrencyAndAmount) Validate() error {
 	var errs base.ErrorList = base.ErrorList{}
 	baseName := "ActiveOrHistoricCurrencyAndAmount"
+	fedwire.AddError(&errs, baseName+".Value", v.Value.Validate())
 
 	fedwire.AddError(&errs, baseName+".Ccy", v.Ccy.Validate())
 
@@ -1833,6 +1832,22 @@ func (v UnderlyingTransaction23) Validate() error {
 
 // XSD SimpleType validations
 
+func (v ActiveOrHistoricCurrencyAndAmountSimpleType) Validate() error {
+	if err := fedwire.ValidateFinite(float64(v)); err != nil {
+		return err
+	}
+	if err := fedwire.ValidateMinInclusive(float64(v), 0); err != nil {
+		return err
+	}
+	if err := fedwire.ValidateFractionDigits(fedwire.Amount(v).String(), 5); err != nil {
+		return err
+	}
+	if err := fedwire.ValidateTotalDigits(fedwire.Amount(v).String(), 18); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (v ActiveOrHistoricCurrencyCode) Validate() error {
 	if err := fedwire.ValidatePattern(string(v), `[A-Z]{3,3}`); err != nil {
 		return err
@@ -1883,10 +1898,13 @@ func (v CreditDebitCode) Validate() error {
 }
 
 func (v DecimalNumber) Validate() error {
-	if err := fedwire.ValidateFractionDigits(fmt.Sprintf("%v", v), 17); err != nil {
+	if err := fedwire.ValidateFinite(float64(v)); err != nil {
 		return err
 	}
-	if err := fedwire.ValidateTotalDigits(fmt.Sprintf("%v", v), 18); err != nil {
+	if err := fedwire.ValidateFractionDigits(fedwire.FormatDecimal(float64(v)), 17); err != nil {
+		return err
+	}
+	if err := fedwire.ValidateTotalDigits(fedwire.FormatDecimal(float64(v)), 18); err != nil {
 		return err
 	}
 	return nil
@@ -2250,10 +2268,13 @@ func (v NamePrefix2Code) Validate() error {
 }
 
 func (v Number) Validate() error {
-	if err := fedwire.ValidateFractionDigits(fmt.Sprintf("%v", v), 0); err != nil {
+	if err := fedwire.ValidateFinite(float64(v)); err != nil {
 		return err
 	}
-	if err := fedwire.ValidateTotalDigits(fmt.Sprintf("%v", v), 18); err != nil {
+	if err := fedwire.ValidateFractionDigits(fedwire.FormatDecimal(float64(v)), 0); err != nil {
+		return err
+	}
+	if err := fedwire.ValidateTotalDigits(fedwire.FormatDecimal(float64(v)), 18); err != nil {
 		return err
 	}
 	return nil
@@ -2267,10 +2288,13 @@ func (v PaymentMethod4Code) Validate() error {
 }
 
 func (v PercentageRate) Validate() error {
-	if err := fedwire.ValidateFractionDigits(fmt.Sprintf("%v", v), 10); err != nil {
+	if err := fedwire.ValidateFinite(float64(v)); err != nil {
 		return err
 	}
-	if err := fedwire.ValidateTotalDigits(fmt.Sprintf("%v", v), 11); err != nil {
+	if err := fedwire.ValidateFractionDigits(fedwire.FormatDecimal(float64(v)), 10); err != nil {
+		return err
+	}
+	if err := fedwire.ValidateTotalDigits(fedwire.FormatDecimal(float64(v)), 11); err != nil {
 		return err
 	}
 	return nil
